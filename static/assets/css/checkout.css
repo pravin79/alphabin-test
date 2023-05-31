@@ -1,0 +1,81 @@
+.checkout {
+    padding-top: 150px;
+}
+
+.checkout .row {
+    width: 100%;
+}
+
+.billing {
+    /* background-color: aquamarine; */
+    /* padding: 30px; */
+    margin-bottom: 50px;
+
+}
+
+.billing form {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.input-field {
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.input-field2 {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+input {
+    padding: 10px 20px;
+    border-radius: 6px;
+    border: 1px solid;
+}
+
+label {
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 15px 20px;
+    background-color: #171332;
+    color: #fff;
+    border: 1px solid;
+    border-radius: 6px;
+}
+
+.items {
+    /* padding: 20px 20px; */
+    display: flex;
+}
+
+.items img {
+    width: 150px;
+}
+
+.items{
+    padding: 10px 10px;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+.total {
+    margin-top: 30px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.btn {
+    margin-top: 30px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}

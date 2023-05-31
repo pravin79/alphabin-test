@@ -1,0 +1,89 @@
+.product-details {
+    padding-top: 150px;
+    padding-bottom: 150px;
+}
+
+.cont-bx {
+    padding: 20px 30px;
+}
+
+.cont-bx h2 {
+    margin-bottom: 15px;
+    color: #171332;
+}
+
+.cont-bx p {
+    margin-bottom: 15px;
+    color: #444;
+}
+
+.select-category, .select-duration {
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.select-category  h5, .select-duration h5 {
+    margin-bottom: 15px;
+}
+
+.categories {
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+    /* flex-direction: column; */
+}
+
+.categories  label {
+    padding: 20px 30px;
+    background-color: #9a9a9a20;
+    margin: 5px;
+    width: 48%;
+    border-radius: 6px;
+}
+
+.duration  label {
+    padding: 15px 10px;
+    background-color: #9a9a9a20;
+    margin: 5px;
+    width: 48%;
+    border-radius: 6px;
+}
+
+.categories  label input, .duration label input {
+    float: right;
+}
+
+.cta-buttons {
+    justify-content: space-around;
+}
+
+.cta-buttons button {
+    width: 48%;
+    padding: 15px;
+    border-radius: 50px;
+    transition: .2s linear;
+}
+
+.btn1 {
+    background-color: #171332;
+    color: #fff;
+    border: 1px solid;
+}
+
+.cta-buttons button:hover {
+    /* background-color: transparent; */
+    /* color: #4ae3b5; */
+    transform: scale(1.05);
+}
+
+.btn2 {
+    background-color: transparent;
+    border: 1px solid #4ae3b5;
+    color: #4ae3b5;
+}
+
+/* .btn2:hover {
+    background-color: #171332;
+    color: #fff;
+    border: 1px solid;
+} */

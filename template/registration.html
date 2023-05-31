@@ -1,0 +1,112 @@
+
+{% extends "base.html" %}
+{% block content %}
+<head>
+<link rel="stylesheet" href="static/assets/css/registration.css" />
+</head>
+
+    <section class="registration-form">
+      <div class="container registration__container">
+        <form action="registerUser" method="POST">
+        {% csrf_token %}
+          <h2>Registration</h2>
+          <div class="input_field">
+            <label for="firstname">Username</label>
+            <input name="username" type="text" />
+            <span class="error-message" id="firstname-error"></span>
+          </div>
+          <div class="input_field">
+            <label for="email">Email</label>
+            <input name="email" type="email" />
+            <span class="error-message" id="email-error"></span>
+          </div>
+          <div class="input_field">
+            <label for="password">Password</label>
+            <input name="password1" type="password" />
+            <span class="error-message" id="password-error"></span>
+          </div>
+          <div class="input_field">
+            <label for="confirm-password">Confirm Password</label>
+            <input name="password2" type="password" />
+            <span class="error-message" id="confirm-password-error"></span>
+          </div>
+          <button class="registration-btn">Registration</button>
+        </form>
+      </div>
+    </section>
+
+    {% comment %} <script>
+      const form = document.querySelector("form");
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const firstNameInput = form.elements.firstname;
+        const lastNameInput = form.elements.lastname;
+        const emailInput = form.elements.email;
+        const passwordInput = form.elements.password;
+        const confirmPasswordInput = form.elements["confirm-password"];
+
+        const firstNameValue = firstNameInput.value.trim();
+        const lastNameValue = lastNameInput.value.trim();
+        const emailValue = emailInput.value.trim();
+        const passwordValue = passwordInput.value.trim();
+        const confirmPasswordValue = confirmPasswordInput.value.trim();
+
+        if (firstNameValue === "") {
+          showError(firstNameInput, "Please enter your first name.");
+          return;
+        }
+
+        if (lastNameValue === "") {
+          showError(lastNameInput, "Please enter your last name.");
+          return;
+        }
+
+        if (emailValue === "") {
+          showError(emailInput, "Please enter your email address.");
+          return;
+        } else if (!isValidEmail(emailValue)) {
+          showError(emailInput, "Please enter a valid email address.");
+          return;
+        }
+
+        if (passwordValue === "") {
+          showError(passwordInput, "Please enter a password.");
+          return;
+        } else if (passwordValue.length < 6) {
+          showError(
+            passwordInput,
+            "Password must be at least 6 characters long."
+          );
+          return;
+        }
+
+        if (confirmPasswordValue === "") {
+          showError(confirmPasswordInput, "Please confirm your password.");
+          return;
+        } else if (passwordValue !== confirmPasswordValue) {
+          showError(confirmPasswordInput, "Passwords do not match.");
+          return;
+        }
+
+        form.submit();
+      });
+
+      function showError(input, message) {
+        const errorSpan = document.querySelector(`#${input.name}-error`);
+        input.classList.add("error");
+        errorSpan.textContent = message;
+        errorSpan.style.display = "block";
+
+        input.addEventListener("input", () => {
+          if (input.classList.contains("error")) {
+            input.classList.remove("error");
+          }
+          errorSpan.style.display = "none";
+        });
+      }
+    </script> {% endcomment %}
+    
+
+{% endblock %}

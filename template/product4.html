@@ -1,0 +1,83 @@
+
+{% extends "base.html" %}
+{% block content %}
+<head>
+<link rel="stylesheet" href="static/assets/css/product-details.css" />
+</head>
+
+    <section class="container-fuild product-details">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 img-bx">
+                    <img src="static/assets//imgs/api.png" alt="">
+                </div>
+                <div class="col-lg-6 cont-bx">
+                    <h2>API Automation Testing</h2>
+                    <p>Our API testing experts use advanced testing tools and frameworks to identify and resolve issues related to functionality, performance, and security of your APIs. We provide comprehensive API testing services that cover all aspects of API testing, including functional testing, load testing, security testing, and performance testing. Our API testing services help you ensure the quality and reliability of your APIs, improve their performance, and deliver a seamless user experience to your customers.</p>
+                    <div class="select-category">
+                        <h5>Select Category</h5>
+                        <div class="categories col-lg-12 row">
+                            <label class=" col-lg-6">
+                                Functionality Testing
+                                <input type="checkbox" name="functionality-testing">
+                            </label>
+                            <label class=" col-lg-6">
+                                Performance Tesitng
+                                <input type="checkbox" name="performance-tesitng">
+                            </label>
+                            <label class=" col-lg-6">
+                                Usability Testing
+                                <input type="checkbox" name="usability-testing">
+                            </label>
+                            <label class=" col-lg-6">
+                                Security Testing
+                                <input type="checkbox" name="security-testing">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="select-duration">
+                        <h5>Select Duration</h5>
+                        <div class="duration col-lg-12 row">
+                            <label class="col-lg-6">
+                                6 Months (price $10,000)
+                                <input type="radio" name="duration" value="6 Months">
+                            </label>
+                            <label class="col-lg-6">
+                                12 Months (price $15,000)
+                                <input type="radio" name="duration" value="12 Months">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="ctas">
+                        <div class="cta-buttons col-lg-12 row">
+                            <Button class="col-lg-6 btn1">Buy Now</Button>
+                            <Button class="col-lg-6 btn2">Add to Cart</Button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <script>
+      const decrementBtn = document.querySelector(".decrement");
+      const incrementBtn = document.querySelector(".increment");
+      const quantityInput = document.querySelector('input[type="number"]');
+
+      decrementBtn.addEventListener("click", () => {
+        let currentValue = parseInt(quantityInput.value);
+        if (currentValue > 1) {
+          quantityInput.value = --currentValue;
+        }
+      });
+
+      incrementBtn.addEventListener("click", () => {
+        let currentValue = parseInt(quantityInput.value);
+        if (currentValue < parseInt(quantityInput.getAttribute("max"))) {
+          quantityInput.value = ++currentValue;
+        }
+      });
+    </script>
+
+{% endblock %}

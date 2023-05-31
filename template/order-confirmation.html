@@ -1,0 +1,116 @@
+
+{% extends "home.html" %}
+{% block content %}
+<head>
+<link rel="stylesheet" href="static/assets/css/order-confirmation.css" />
+</head>
+
+    <section class="container-fluid">
+      <div class="order-confirmation">
+        <h2>Order Confirmation</h2>
+        <div class="order-summary">
+          <h3>Order Summary</h3>
+          <div class="product-container">
+            <div class="product">
+              <img src="../assets/imgs/api.png" alt="Product 1" />
+              <div class="product-details">
+                <h4>API Automation Testing</h4>
+                <h5>$25,000</h5>
+              </div>
+            </div>
+        </div>
+        <div style="display: flex; ">
+            <div class="shipping-info">
+                <h3>Shipping Information</h3>
+                <p>John Doe</p>
+                <p>123 Main St.</p>
+                <p>Anytown, USA 12345</p>
+                <p>Email: johndoe@example.com</p>
+                <p>Phone: 555-555-5555</p>
+              </div>
+              <div class="payment-info">
+                <h3>Payment Information</h3>
+                <p>Credit Card: **** **** **** 1234</p>
+                <p>Expiration Date: 12/23</p>
+                <p>Billing Address: 123 Main St.</p>
+                <p>Anytown, USA 12345</p>
+              </div>
+        </div>
+        <div class="confirmation-message">
+          <p>Thank you for your order! Your order number is: 123456.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-5">
+            <h4>Alpha Test</h4>
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita
+              ducimus accusantium corrupti quod odio exercitationem doloribus
+              laborum illo maiores sit.
+            </p>
+          </div>
+          <div class="col-lg-2 all-serv">
+            <h5>All Services</h5>
+            <p><a href="#">UI Testing</a></p>
+            <p><a href="#">Functional Testing</a></p>
+            <p><a href="#">Usability Testing</a></p>
+            <p><a href="#">Performance Testing</a></p>
+          </div>
+          <div class="col-lg-2 user-link">
+            <h5>Userful Links</h5>
+            <p><a href="#">About Us</a></p>
+            <p><a href="#">Contact Us</a></p>
+            <p><a href="#">Blog</a></p>
+          </div>
+          <div class="col-lg-2">
+            <h5>Social</h5>
+            <div class="links">
+              <a href="#" target="_blank"><i class="bi bi-linkedin"></i></a>
+              <a href=""><i class="bi bi-skype"></i></a>
+              <a href=""><i class="bi bi-instagram icon"></i></a>
+              <a href="#" target="_blank"
+                ><i class="bi bi-facebook icon"></i
+              ></a>
+              <a href=""><i class="bi bi-twitter icon"></i></a>
+            </div>
+          </div>
+        </div>
+        <hr class="hr" />
+        <div class="row term-condition">
+          <div class="col-lg-6">
+            <h6>Privacy</h6>
+            <p>Copyright &copy; Alpha Test 2023. All rights reserved.</p>
+          </div>
+          <div class="col-lg-6">
+            <h6>Contact Us</h6>
+            <p>info@alpha-test.co</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const decrementBtn = document.querySelector(".decrement");
+      const incrementBtn = document.querySelector(".increment");
+      const quantityInput = document.querySelector('input[type="number"]');
+
+      decrementBtn.addEventListener("click", () => {
+        let currentValue = parseInt(quantityInput.value);
+        if (currentValue > 1) {
+          quantityInput.value = --currentValue;
+        }
+      });
+
+      incrementBtn.addEventListener("click", () => {
+        let currentValue = parseInt(quantityInput.value);
+        if (currentValue < parseInt(quantityInput.getAttribute("max"))) {
+          quantityInput.value = ++currentValue;
+        }
+      });
+    </script>
+
+{% endblock %}

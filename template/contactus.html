@@ -1,0 +1,89 @@
+
+{% extends "base.html" %}
+{% block content %}
+<head>
+<link rel="stylesheet" href="static/assets/css/contactus.css" />
+</head>
+
+    <section class="container-fuild contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 cont-bx">
+                    <h1>Contact Us</h1>
+                </div>
+                <div class="col-lg-6">
+                    <img src="../assets/imgs/contact.png" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container-fuild company-detials">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 details-bx">
+                    <i class="bi bi-geo-alt-fill"></i>
+                    <h5>Address</h5>
+                    <p>1100 Silver Business Point, VIP Cir, Uttran, Surat, Gujarat 394105</p>
+                </div>
+                <div class="col-lg-4 details-bx">
+                    <i class="bi bi-telephone-fill"></i>
+                    <h5>Phone</h5>
+                    <p>Office: +91 1234567890</p>
+                    <p>HR: +91 1234567890</p>
+                </div>
+                <div class="col-lg-4 details-bx">
+                    <i class="bi bi-envelope-fill"></i>
+                    <h5>Email Address</h5>
+                    <p>info@alphabin.co</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container-fluid contact-form">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 form-bx">
+                    <form action="">
+                        <h3>Get In Touch</h3>
+                        <div class="input-bx">
+                            <input type="text" placeholder="Your Name">
+                            <input type="text" placeholder="Your Email">
+                        </div>
+                        <div class="text-area">
+                            <textarea name="" id="" cols="30" rows="10" placeholder="Write your message here..."></textarea>
+                        </div>
+                        <button class="submit-btn">Submit</button>
+                    </form>
+                </div>
+                <div class="col-lg-5">
+                    <div class="map-bx" data-aos="fade-up" data-aos-anchor-placement="top-center" data-aos-duration="2000">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3718.96047969418!2d72.86119411533575!3d21.23341568588787!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04f69caf27d6f%3A0x3fc5ab98b491d145!2sAlphabin%20Technology%20Consulting!5e0!3m2!1sen!2sin!4v1645620919102!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+      const decrementBtn = document.querySelector(".decrement");
+      const incrementBtn = document.querySelector(".increment");
+      const quantityInput = document.querySelector('input[type="number"]');
+
+      decrementBtn.addEventListener("click", () => {
+        let currentValue = parseInt(quantityInput.value);
+        if (currentValue > 1) {
+          quantityInput.value = --currentValue;
+        }
+      });
+
+      incrementBtn.addEventListener("click", () => {
+        let currentValue = parseInt(quantityInput.value);
+        if (currentValue < parseInt(quantityInput.getAttribute("max"))) {
+          quantityInput.value = ++currentValue;
+        }
+      });
+    </script>
+
+    {% endblock %}

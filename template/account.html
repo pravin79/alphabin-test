@@ -1,0 +1,40 @@
+
+{% extends "home.html" %}
+{% block content %}
+<head>
+<link rel="stylesheet" href="/static/assets/css/account.css" />
+</head>
+
+    <section class="container-fluid account">
+        <div class="container">
+            <div class="account__box">
+                <div class="row">
+                    <div class="col-lg-5 profile_img-box"><img src="static/assets/imgs/profile_img.png" alt="profile_image"></div>
+                    <div class="col-lg-6">
+                        <h2>My Account</h2>
+                        <div class="account_information">
+                            <div class="firstname">
+                              <label for="">First Name</label>
+                              <h5>John</h5>
+                            </div>
+                            <div class="lastname">
+                              <label for="">Last Name</label>
+                              <h5>Wick</h5>
+                            </div>
+                            <div class="email">
+                              <label for="">Email</label>
+                              <h5>johnwick@gmail.com</h5>
+                            </div>
+                            <div class="password">
+                              <label for="">Password</label>
+                              <h5>*********</h5>
+                            </div>
+                            <!-- <button>Save</button> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,62 @@
+
+.account {
+    padding: 150px;
+}
+
+.profile_img-box img {
+    width: 200px;
+    /* height: 200px; */
+    border-radius: 6px;
+}
+
+.account_information h4{
+    margin-top: 15px;
+}
+
+.firstname {
+    margin-top: 30px;
+}
+
+.firstname h5 {
+    background-color: #eee;
+    padding: 10px 20px;
+    border-radius: 6px;
+    margin-top: 10px;
+    width: 300px;
+}
+
+.lastname {
+    margin-top: 30px;
+}
+
+.lastname h5 {
+    background-color: #eee;
+    padding: 10px 20px;
+    border-radius: 6px;
+    margin-top: 10px;
+    width: 300px;
+}
+
+.email {
+    margin-top: 30px;
+}
+
+.email h5 {
+    background-color: #eee;
+    padding: 10px 20px;
+    border-radius: 6px;
+    margin-top: 10px;
+    width: 300px;
+}
+
+.password {
+    margin-top: 30px;
+}
+
+.password h5 {
+    background-color: #eee;
+    padding: 10px 20px;
+    border-radius: 6px;
+    margin-top: 10px;
+    width: 300px;
+}

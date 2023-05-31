@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alpha Test</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Teko:700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="/static/assets/css/style.css" />
+  </head>
+  <body>
+    <header class="container-fuild header">
+      <div class="container header__container">
+        <div class="header__nav-links">
+          <div class="header__logo">
+            <a href="home">Alpha Test</a>
+          </div>
+          <ul>
+            <li><a href="home">Home</a></li>
+            <li class="dropdown"><a class="dropbtn" href="#">Services</a>
+              <div class="dropdown-content">
+                <a href="product1"><p>AI/ML Model Testing</p></a>
+                <a href="product2"><p>UI Automation Testing (Web)</p></a>
+                <a href="product3"><p>UI Automation Testing (Mobile)</p></a>
+                <a href="product4"><p>API Automation Testing</p></a>
+                <a href="product5"><p>Smart UI Automation Testing (Web)</p></a>
+                <a href="product6"><p>QA Performance & Capacity Planning</p></a>
+                <a href="product7"><p>Manual Functional Testing</p></a>
+              </div>
+            </li>
+            <li><a href="">About us</a></li>
+            <li><a href="">Contact us</a></li>
+          </ul>
+        </div>
+        <div class="header__account-links">
+          <a href="login">Log in</a>
+          <a href="registration">Sign up</a>
+        </div>
+      </div>
+    </header>
+
+    {% block content %}
+    {% endblock %}
+
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-5">
+            <h4>Alpha Test</h4>
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita
+              ducimus accusantium corrupti quod odio exercitationem doloribus
+              laborum illo maiores sit.
+            </p>
+          </div>
+          <div class="col-lg-2 all-serv">
+            <h5>All Services</h5>
+            <p><a href="#">UI Testing</a></p>
+            <p><a href="#">Functional Testing</a></p>
+            <p><a href="#">Usability Testing</a></p>
+            <p><a href="#">Performance Testing</a></p>
+          </div>
+          <div class="col-lg-2 user-link">
+            <h5>Userful Links</h5>
+            <p><a href="#">About Us</a></p>
+            <p><a href="#">Contact Us</a></p>
+            <p><a href="#">Blog</a></p>
+          </div>
+          <div class="col-lg-2">
+            <h5>Social</h5>
+            <div class="links">
+              <a href="#" target="_blank"><i class="bi bi-linkedin"></i></a>
+              <a href=""><i class="bi bi-skype"></i></a>
+              <a href=""><i class="bi bi-instagram icon"></i></a>
+              <a href="#" target="_blank"
+                ><i class="bi bi-facebook icon"></i
+              ></a>
+              <a href=""><i class="bi bi-twitter icon"></i></a>
+            </div>
+          </div>
+        </div>
+        <hr class="hr"/>
+        <div class="row term-condition">
+          <div class="col-lg-6">
+            <h6>Privacy</h6>
+            <p>Copyright &copy; Alpha Test 2023. All rights reserved.</p>
+          </div>
+          <div class="col-lg-6">
+            <h6>Contact Us</h6>
+            <p>info@alpha-test.co</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
