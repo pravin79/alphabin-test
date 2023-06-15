@@ -2,6 +2,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from .models import CustomUserCreationForm
 from django.shortcuts import render, redirect
+from django.views.decorators.csrf import csrf_exempt
 
 from django.http.response import JsonResponse
 import json
@@ -85,7 +86,7 @@ def product7(request):
         return render(request,'product1.html')
     else:
         return render(request,'home_product1.html')
-
+@csrf_exempt
 def loginUser(request):
     if request.method == 'POST':
         username = request.POST['username']
