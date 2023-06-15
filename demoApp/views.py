@@ -101,7 +101,8 @@ def loginUser(request):
     else:
         return JsonResponse("Invalid Login Method",safe=False,status=405)
         # return render(request, 'login.html')
-    
+
+@csrf_exempt
 def registerUser(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
@@ -112,11 +113,12 @@ def registerUser(request):
         form = UserCreationForm()
     return render(request, 'registration.html', {'error': 'User registration failed'})
 
-
+@csrf_exempt
 def logoutHtml(request):
     logout(request)
     return redirect('login')
 
+@csrf_exempt
 def myCart(request):
     return render(request,'mycart.html')
 
