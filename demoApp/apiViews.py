@@ -2,10 +2,12 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from django.http.response import JsonResponse
 from django.contrib.auth.models import User
+from django.views.decorators.csrf import csrf_exempt
 from .models import Cart
 
 from .serializers import *
 
+@csrf_exempt
 @login_required
 def addToCart(request):
     if request.method == 'POST':
@@ -86,11 +88,13 @@ def addToCart(request):
 #             return JsonResponse(e, safe=False,status=400)
 
 
-
+@csrf_exempt
 @login_required 
 def getUser(request):
     if request.method == 'GET':
        return 'Testing'
+
+@csrf_exempt
 @login_required
 def mycart(request):
     result={}
@@ -105,6 +109,7 @@ def mycart(request):
         result_list.append(result)
     return render(request,'mycart.html',{'result':result_list})
 
+@csrf_exempt
 @login_required
 def account(request):
     return render(request,'account.html')
