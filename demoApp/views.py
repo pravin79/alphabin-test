@@ -31,6 +31,7 @@ def aboutus(request):
     else:
         return render(request,'aboutus.html')
 
+@csrf_exempt
 def checkout(request):
     return render(request,'checkout.html')
 
@@ -40,8 +41,7 @@ def contactus(request):
     else:
         return render(request,'home_contactus.html')
 
-
-
+@csrf_exempt
 def orderConfirmation(request):
     return render(request,'order-confirmation.html')
 
