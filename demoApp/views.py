@@ -89,42 +89,49 @@ def orderConfirmation(request):
     Cart.objects.filter(user_id=user_id).delete()
     return render(request,'order-confirmation.html',{'userdata':userdata})
 
+@csrf_exempt
 def product1(request):
     if str(request.user)=='AnonymousUser':
         return render(request,'product1.html')
     else:
         return render(request,'home_product1.html')
 
+@csrf_exempt
 def product2(request):
     if str(request.user)=='AnonymousUser':
         return render(request,'product2.html')
     else:
         return render(request,'home_product2.html')
 
+@csrf_exempt
 def product3(request):
     if str(request.user)=='AnonymousUser':
         return render(request,'product3.html')
     else:
         return render(request,'home_product3.html')
 
+@csrf_exempt
 def product4(request):
     if str(request.user)=='AnonymousUser':
         return render(request,'product4.html')
     else:
         return render(request,'home_product4.html')
 
+@csrf_exempt
 def product5(request):
     if str(request.user)=='AnonymousUser':
         return render(request,'product5.html')
     else:
         return render(request,'home_product5.html')
 
+@csrf_exempt
 def product6(request):
     if str(request.user)=='AnonymousUser':
         return render(request,'product6.html')
     else:
         return render(request,'home_product6.html')
 
+@csrf_exempt
 def product7(request):
     if str(request.user)=='AnonymousUser':
         return render(request,'product7.html')
