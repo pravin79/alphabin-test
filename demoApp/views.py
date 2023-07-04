@@ -18,7 +18,8 @@ def home(request):
         return render(request,'index.html')
     else:
         return render(request,'homepage.html')
-    
+
+@csrf_exempt
 @login_required
 def account(request):
     users = User.objects.filter(username = request.user).values()[0]
@@ -36,6 +37,7 @@ def aboutus(request):
     else:
         return render(request,'aboutus.html')
 
+@csrf_exempt
 @login_required
 def checkout(request):
     total=0
@@ -60,6 +62,7 @@ def contactus(request):
     else:
         return render(request,'home_contactus.html')
 
+@csrf_exempt
 @login_required
 def orderConfirmation(request):
     userdata = {}
@@ -142,7 +145,7 @@ def loginUser(request):
     else:
         return JsonResponse("Invalid Login Method",safe=False,status=405)
 
-
+@csrf_exempt
 def registerUser(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
@@ -158,11 +161,13 @@ def registerUser(request):
         form = UserCreationForm()
     return render(request, 'registration.html', {'error': errors})
 
+@csrf_exempt
 @login_required
 def logoutHtml(request):
     logout(request)
     return redirect('login')
 
+@csrf_exempt
 @login_required
 def myCart(request):
     return render(request,'mycart.html')
