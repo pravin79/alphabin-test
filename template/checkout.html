@@ -1,10 +1,9 @@
 
-{% extends "base.html" %}
+{% extends "home.html" %}
 {% block content %}
 <head>
 <link rel="stylesheet" href="static/assets/css/checkout.css" />
 </head>
-
     <section class="container-fluid checkout">
       <div class="container">
         <div class="row">
@@ -12,7 +11,7 @@
             <div class="billing">
               <h2>Billing Information</h2>
               <hr />
-              <form action="" class="form">
+              <form action="orderConfirmation" class="form">
                 <div class="input-field col-lg-12">
                   <label for="full-name">Full Name</label>
                   <input name="full-name" type="text" />
@@ -41,13 +40,12 @@
                     <input name="zipcode" type="text" />
                   </div>
                 </div>
-                <button>Save your address</button>
-              </form>
+              <!-- </form> -->
             </div>
             <div class="billing">
               <h2>Payment Information</h2>
               <hr />
-              <form action="" class="form">
+              <!-- <form action="orderConfirmation" class="form"> -->
                 <!-- <div class="input-field col-lg-12">
                                 <label for="full-name">Full Name</label>
                                 <input name="full-name" type="text">
@@ -62,16 +60,16 @@
                 >
                   <h6>Expiry Date</h6>
                   <div class="input-field col-lg-4">
-                    <label for="city">Month</label>
-                    <input name="city" type="text" />
+                    <label for="month">Month</label>
+                    <input name="month" type="number" />
                   </div>
                   <div class="input-field col-lg-4">
-                    <label for="state">Year</label>
-                    <input name="state" type="text" />
+                    <label for="year">Year</label>
+                    <input name="year" type="number" />
                   </div>
                   <div class="input-field col-lg-4">
-                    <label for="state">CVV</label>
-                    <input name="state" type="text" />
+                    <label for="cvv">CVV</label>
+                    <input name="cvv" type="number" />
                   </div>
                 </div>
                 <!-- <div class="input-field2 col-lg-12 row">
@@ -84,7 +82,7 @@
                                     <input name="zipcode" type="text">
                                 </div>
                             </div> -->
-                <h5 style="margin-bottom: 30px">Total: $25,000</h5>
+                <h5 style="margin-bottom: 30px">Total: ${{total}}</h5>
                 <p style="margin-bottom: 30px">
                   <input style="margin-right: 10px" type="checkbox" />I aggre
                   with the <a href="#">Privacy Policy</a>by Proceesing thie
@@ -95,28 +93,25 @@
             </div>
           </div>
           <div class="col-lg-4 details-bx">
+            {% for item in result %}
             <div class="items">
-              <img src="../assets//imgs/api.png" alt="" />
+              <img style="height: 100px;width: 100px;" src={{item.image}} alt="" />
               <div class="details">
-                <p>API Automation Testing</p>
-                <p style="font-size: 12px">6 Months</p>
-                <p style="margin-top: 10px">$10,000</p>
+                <p>{{item.product}}</p>
+                <p style="font-size: 12px">{{item.duration}}</p>
+                <p>{{item.category}}</p>
+                <p>{{item.qty}}</p>
+                <p style="margin-top: 10px">${{item.price}}</p>
               </div>
             </div>
-            <div class="items">
-              <img src="../assets//imgs/manual-tesing.png" alt="" />
-              <div class="details">
-                <p>Manual Functional Testing</p>
-                <p style="font-size: 12px">12 Months</p>
-                <p style="margin-top: 10px">$15,000</p>
-              </div>
-            </div>
+            {% endfor %}
+            
             <div class="total">
               <h5>Total</h5>
-              <h5>$25,000</h5>
+              <h5>${{total}}</h5>
             </div>
             <div class="btn">
-              <button>View Cart</button>
+              <button onclick="mycart()">View Cart</button>
             </div>
           </div>
         </div>
@@ -125,6 +120,15 @@
 
 
     <script>
+      function mycart(){
+        window.open("mycart","_self");
+      }
+
+      function orderConfimation(){
+        alert('Testing');
+        window.open("orderConfirmation","_self");
+      }
+
       const decrementBtn = document.querySelector(".decrement");
       const incrementBtn = document.querySelector(".increment");
       const quantityInput = document.querySelector('input[type="number"]');

@@ -3,7 +3,26 @@
 {% block content %}
 <head>
 <link rel="stylesheet" href="static/assets/css/mycart.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<style>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    /* border: none; */
+  }
+  
+  th, td {
+    border: none;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  img {
+    width: 70px;
+  }
+</style>
 </head>
+
 
     <!-- <section class="container-fluid mycart">
       <div class="container mycart__container">
@@ -81,37 +100,58 @@
     <section class="container-fuild mycart">
       <div class="container">
         <div class="row" style="width: 100%; margin-bottom: 30px">
-          <div class="col-lg-6" style="border-bottom: 1px solid #eee">
-            <p>Cart Item</p>
-          </div>
-          <div class="col-lg-2" style="border-bottom: 1px solid #eee">
-            <p>Price</p>
-          </div>
-          <div class="col-lg-2" style="border-bottom: 1px solid #eee">
-            <!-- <p>Subtotal</p> -->
-          </div>
-        </div>
-        {% for item in result %}
-        <div class="row" style="width: 100%; margin-bottom: 30px">
+          
+        <!-- <div class="row" style="width: 100%; margin-bottom: 30px">
           <div class="col-lg-6">
             <dic class="item">
               <img src={{item.image}} alt="" />
               <div class="details">
                 <h6>{{item.product}}</h6>
-                <p>{{item.duration}}</p>
+                <p>Duration : {{item.duration}}</p>
+                <p>Category : {{item.category}}</p>
+                <p>Quantity : {{item.qty}}</p>
               </div>
             </dic>
           </div>
           <div class="col-lg-1">
-            <p>{{item.price}}</p>
+            <p>${{item.price}}</p>
           </div>
           <div class="col-lg-1">
-            <button class="delete-btn">
+            <button class="delete-btn" onclick="deleteProduct()">
               <i class="bi bi-trash3-fill"></i>
             </button>
           </div>
-        </div>
+        </div> -->
+
+        <table id="tableMain">
+          <th></th>
+          <th>Cart Item</th>
+          <th>Duration</th>
+          <th>Category</th>
+          <th>Quantity</th>
+          <th>Subtotal</th>
+          <th></th>
+
+          <tbody>
+        {% for item in result %}
+
+            <tr>
+              <td><img src={{item.image}} alt="" /></td>
+              <!-- <br> -->
+              <td id="product">{{item.product}}</td>
+              <td id="duration">{{item.duration}}</td>
+              <td id="category">{{item.category}}</td>
+              <td id="qty">{{item.qty}}</td>
+              <td id="prce">${{item.price}}</td>
+              <td class="testing"><button class="delete-btn"  >
+                <i class="bi bi-trash3-fill"></i>
+              </button></td>
+            </tr>
+
   {% endfor %}
+
+          </tbody>
+        </table>
         <div class="row" style="width: 100%; margin-bottom: 30px">
           <div
             class="col-lg-6"
@@ -127,14 +167,14 @@
             class="col-lg-2"
             style="border-top: 1px solid #eee; padding-top: 20px"
           >
-            <h5>$25,000</h5>
+            <h5>${{total}}</h5>
           </div>
         </div>
         <div class="row" style="width: 100%; margin-bottom: 30px">
           <div class="col-lg-5"></div>
           <div class="col-lg-6">
-            <button class="continue-btn">Continue to buy</button>
-            <button class="proceed-checkout">Proceed to checkout</button>
+            <button class="continue-btn" onclick="home()">Continue to buy</button>
+            <button class="proceed-checkout" onclick="checkout()">Proceed to checkout</button>
           </div>
         </div>
       </div>
@@ -151,6 +191,44 @@
 
     
     <script>
+      $(document).ready(function() {
+        $( ".testing" ).click(function() {
+        let rowLength = document.getElementById("tableMain").rows.length;
+         var $this = $(this);
+         let product = $this.closest('tr').children().eq(1).html();
+         let duration = $this.closest('tr').children().eq(2).html();
+         let category = $this.closest('tr').children().eq(3).html();
+         let qty = $this.closest('tr').children().eq(4).html();
+         let price = $this.closest('tr').children().eq(5).html();
+         window.open("deleteProduct?product="+product+"&duration="+duration
+            +"&category="+category+"&qty="+qty+"&price="+price,"_self");
+        //  if(parseInt($this.closest('tr').children().eq(9).html()) > 0){
+        //     w
+        //     $("#please_wait").css({'display':'flex','cursor': 'no-drop'})
+        //     setTimeout(function(){document.getElementById("please_wait").style.display = 'none';},8000);
+        //  }else{
+        //     alert("No Record Found");
+        //  }
+
+        });
+      });
+
+
+
+      function home(){
+        window.open("home","_self");
+      }
+
+      function checkout(){
+        window.open("checkout","_self");
+      }
+      // function deleteProduct(){
+      //   alert("In delete");
+      //   let rowLength = document.getElementById("tableMain").rows.length;
+      // }
+        
+      
+        
       const decrementBtn = document.querySelector(".decrement");
       const incrementBtn = document.querySelector(".increment");
       const quantityInput = document.querySelector('input[type="number"]');

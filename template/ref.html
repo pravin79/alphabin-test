@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head style="font-family:arial;">
+    <meta charset="UTF-8">
+<title >Finished Stock</title>
+{% load static %}
+<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+<!--<h1 style="font-family:arial;margin-left: 50px">Bank Cash Voucher</h1>-->
+    <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
+    <style>
+    html{
+        height:100%;
+        }
+
+        .loader_symbol{
+            border: 9px solid white;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border-top-color:yellow;
+            -webkit-animation: spin 2s linear infinite; /* Safari */
+            animation: spin 2s linear infinite;
+        }
+
+        @-webkit-keyframes spin {
+          0% { -webkit-transform: rotate(0deg); }
+          100% { -webkit-transform: rotate(360deg); }
+        }
+
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+
+
+.container{
+                height:490px;
+                overflow:auto;
+                background-color: #66ccff;
+                margin-top: 5px;
+            }
+.container1{
+
+                width:100%;
+                height:140px;
+                overflow:auto;
+                background-color: #66ccff;
+                margin-top:10px;
+            }
+
+            table.gridtable {
+                width:100%;
+                overflow:auto;
+                font-family:arial;
+                font-size:13px;
+                color:black;
+                border-width: 1px;
+                border-color: #666666;
+                border-collapse: collapse;
+                text-align: center;
+                border-right: 1px solid;
+                width: 100% !important;
+
+            }
+            table.gridtable th {
+                border-width: 1px;
+                padding:2px;
+                border-style: solid;
+                border-color: #666666;
+                background-color: #ffff66;
+                border-bottom: 0px !important;
+                border-right: 0px !important;
+
+
+            }
+
+            table.dataTable thead th, table.dataTable thead td {
+    padding: 6px 13px !important;
+    border-bottom: 1px solid #111;
+}
+            table.gridtablefooter th {
+                border-width: 2px;
+                padding: 8px;
+                border-style: solid;
+                border-color: #666666;
+                background-color: #F6B4A5;
+
+            }
+
+            .footer {
+                border-width: 2px;
+                width:87%;
+                padding: 8px;
+                border-style: solid;
+                border-color: #666666;
+                background-color: #F6B4A5;
+
+            }
+            table.gridtable td {
+                border-width: 1px;
+                border-style: solid;
+                border-color: #666666;
+                font-weight: bold;
+                border-bottom: 0;
+                border-right: 0px;
+
+            }
+            td:hover {background-color: white}
+.containerfooter{
+                margin: 10px auto;
+                width:88%;
+                height:50px;
+                font-family:arial;
+
+            }
+
+            select,
+.select2 {
+    width: 90%;
+    margin: 0 auto;
+    border-radius: 0 !important;
+    display: block;
+}
+.select2-container .select2-selection {
+    height: 50px;
+    overflow: scroll;
+    overflow-x:hidden;
+}
+.select2-container--default .select2-selection--multiple {
+    border-radius: 0;
+    line-height: 10px;
+    font-size: 10p;
+    border: 1px solid #fafafa;
+}
+
+.select2-results__options{
+max-height:200px !important;
+}
+
+.today{
+display: inline-block;
+margin-left: 2%;
+margin-right: 2%;
+}
+
+.itemtype{
+display: inline-block;
+width: 13vw;
+}
+
+.itemtype .select2-container{
+width:6vw !important;
+}
+
+.doperw{
+display: inline-block;
+width: 13vw;
+}
+
+.doperw .select2-container{
+width:7vw !important;
+}
+
+.site{
+display: inline-block;
+width:16vw;
+}
+
+.site .select2-container{
+width:13vw !important;
+}
+
+.grade{
+display: inline-block;
+width:10vw;
+}
+
+.grade .select2-container{
+width:6vw !important;
+}
+
+.button_apply{
+display: inline-block;
+font-weight:bold;
+width: fit-content;
+}
+
+.button_apply > div{
+width:fit-content;
+border : 3px solid;
+animation: example_button 5s infinite;
+}
+
+@keyframes spin {
+  from {transform: translate(-50%, -50%) rotate(0);}
+  to   {transform: translate(-50%, -50%) rotate(360deg);}
+}
+
+@keyframes example_button{
+0%{border-color: black;}
+25%{border-color: crimson;}
+50%{border-color: red;}
+75%{border-color: navy;}
+100%{border-color: fuchsia;}
+}
+
+.button_apply button{
+width: 4vw; height:2vw;
+border:none;
+cursor: pointer;
+font-weight:bold;
+animation: button_textColor 5s infinite;
+}
+
+@keyframes button_textColor {
+0%{color: black;}
+25%{color: crimson;}
+50%{color: red;}
+75%{color: navy;}
+100%{color: fuchsia;}
+}
+
+.search{
+position: absolute;
+top: 0;
+right: 2vw;
+}
+
+input[type='search']{
+height:2.3vw;
+}
+
+input[type='search']::-webkit-search-cancel-button{
+    display:none;
+}
+
+
+/*.rdbtn{
+position:absolute;
+margin-top:10px;
+margin-left:10px;
+}
+
+.ordertype{
+position:absolute;
+margin-left:680px;
+}
+
+#grade{
+width:70px;
+
+}
+#itemtype{
+width:100px;
+
+}
+#site{
+width:150px;
+}
+
+.class{
+position:absolute;
+}*/
+
+.qualities {
+position:absolute;
+border:2px solid #ccc;
+ width:200px;
+ height: 170px;
+ overflow-y: scroll;
+margin : 530px 1000px;
+background-color: white;
+}
+
+.shade {
+position:absolute;
+border:2px solid #ccc;
+ width:200px;
+ height: 230px;
+ overflow-y: scroll;
+margin : 400px 1220px;
+background-color: white;
+}
+
+.windingtype {
+position:absolute;
+border:2px solid #ccc;
+ width:200px;
+ height: 230px;
+ overflow-y: scroll;
+margin : 100px 1220px;
+background-color: white;
+}
+body{
+overflow-x: hidden;
+}
+.please_wait{
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    height:100%;
+    width:100%;
+    z-index:100;
+    align-items: center;
+    background: rgb(255 255 255 / 65%);
+    cursor: auto;
+}
+.doperw .select2-selection__rendered {
+    padding-right:0px !important;
+}
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
+
+<script>
+    $(document).ready(function()
+	{
+        $("#itemtype").select2();
+            $("#ordertype").select2();
+            $("#site").select2();
+            $("#grade").select2();
+            $("#doperw").select2();
+	});
+
+	//$(document).ready(function() {
+   //     if (document.readyState !== "complete") {
+    //            document.querySelector("#Loader_finshed").style.visibility = "hidden";
+//  //              document.querySelector("#Loader").style.visibility = "visible";
+//            } else {
+   //             document.querySelector( "#Loader").style.display = "none";
+   //             document.querySelector("#Loader_finshed").style.visibility = "visible";
+ //   //        }
+  //  });
+
+
+</script>
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
+	<style type="text/css" class="init">
+
+</style>
+
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+<style>.dataTables_length select{ width: 30px}</style>
+    </head>
+<body style="background-color:#dd99ff; position:relative;">
+<!--loader code start-->
+<div class="Loader" id="Loader" style="height:100%; display: none;">
+    <div style="display: flex; justify-content: center; height:100%;">
+        <div style="display: flex; justify-content: center; width: 50%; align-items:center; height:100%; position: relative; cursor:progress;">
+            <div class="loader_symbol"></div>
+            <span style="position:absolute;"><b>Loading...</b></span>
+        </div>
+    </div>
+</div>
+<!-- Loader Finished code-->
+
+<!--Please wait start code-->
+<div class="please_wait" id="please_wait" style="display:none;">
+    <div class="please_wait_box">
+        <div style="width: 3em;margin-left: 12%;">
+            <img src="https://i.gifer.com/origin/b4/b4d657e7ef262b88eb5f7ac021edda87.gif" alt="noImage" width="100%" height="100%">
+        </div>
+        <div style="text-align: center;font-weight: 800;">please wait</div>
+    </div>
+</div>
+<!--Please wait.. start code end-->
+
+<div id="Loader_finshed" >
+    <form action="FinishedStock_Apply"  id="form1">
+        <div class="today">
+           <label for='datenow'><b>As On Date:</b></label>
+            <input type="date" id="datenow" name="datenow">
+            <script>
+                document.getElementById("datenow").value = '{{startdate}}';
+            </script>
+        </div>
+        <div class="itemtype">
+            <label for='itemtype'><b>Item Type:</b></label>
+            <select name='itemtype' id='itemtype' multiple>
+                {%for i in GDataItemTypeCode%}
+                <option value="{{i.ITEMTYPE}}">{{i.ITEMTYPE}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="doperw">
+            <label for='doperw'><b>Dope\RW: </b></label>
+             <select name='doperw' id='doperw' >
+                <option value=1>All</option>
+                {%for i in GDataDopeCode%}
+                <option value="{{i.CODE}}">{{i.CODE}}</option>
+                {% endfor %}
+             </select>
+        </div>
+
+    <!-- <div class="ordertype">
+        <label for='ordertype'><b>Stock Type:</b></label>
+        <select name='ordertype' id='ordertype' multiple>
+
+    </select>
+    </div> -->
+
+        <div class="site">
+            <label for='site'><b>Sites:</b></label>
+            <select name='site' id='site' multiple>
+                {%for i in GDataPlantCode%}
+                <option value="{{i.CODE}}-{{i.PLANT}}">{{i.CODE }}-{{i.PLANT}}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="grade">
+            <label for='grade'><b>Grade:</b></label>
+            <select name='grade' id='grade' multiple>
+                {%for i in GDataQualityLevelCode%}
+                <option value="{{i.CODE}}">{{i.SORTDESCRIPTION}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="button_apply">
+            <div style="display:inline-block">
+                <button style="" type='submit' form='form1' value='PDF' class="mar" onclick="goHere()">Apply</button>
+            </div>
+            <button id="btnExport" onclick="exportTableToExcel('tableMain')" style="width: 6vw;border: 1px solid;border-radius: 0.4vw;"> Export
+                    <iconify-icon icon="fa6-regular:file-excel" style="color:green;"></iconify-icon>
+            </button>
+        </div>
+    </form>
+    <script>
+        goHere = () =>{
+            $(".please_wait").css({'display':'flex','cursor': 'no-drop'});
+            setTimeout(function(){document.getElementById("please_wait").style.display = 'none';},15000);
+        }
+    </script>
+    <div class="search">
+        <input type="search" id="myInput" onkeyup="searchFunction()"  placeholder="Search for Item.." title="Search Items Only">
+    </div>
+
+<!--    <div  class="details">-->
+
+<!--    </div>-->
+
+    <div class="container" id="wrap" >
+
+        <table class="gridtable" id="tableMain">
+            <thead style="position: sticky; top: 0;">
+                <tr>
+                    <th style="text-align:left;width:150px;">TOTAL</th>
+                    <th style="display:none;">tp</th>
+                    <th style="display:none;">tp</th>
+                    <th style="text-align:right;"></th>
+                    <th style="text-align:right;"></th>
+                    <th style="text-align:right;">{{itemopenqtytotal}}</th>
+                    <th style="text-align:right;">{{itemrecqtytotal}}</th>
+                    <th style="text-align:right;">{{itemissqtytotal}}</th>
+                    <th style="text-align:right;">{{itemisscopstotal}}</th>
+                    <th style="text-align:right;">{{itemclqtytotal}}</th>
+                    <th style="text-align:right;">{{itemclcopstotal}}</th>
+                    <th style="text-align:right;">{{itemclboxestotal}}</th>
+                    <th style="text-align:right;">{{itemorderpendqtytotal}}</th>
+                    <th style="text-align:right;"></th>
+                    <th style="display:none;"></th>
+                </tr>
+                <tr style=" font-family:arial;font-weight: bold;">
+                    <th style="width: 80px;">Items</th>
+                    <th style="display:none;">tp</th>
+                    <th style="display:none;">tp</th>
+                    <th>Qlt.</th>
+                    <th>Site</th>
+                    <th>Opn. Qty.</th>
+                    <th>Rec. Qty.</th>
+                    <th>Iss. Qty.</th>
+                    <th>Iss. Cops.</th>
+                    <th>Cl. Qty.</th>
+                    <th>Cl. Cops</th>
+                    <th>Cl. Boxes</th>
+                    <th>Ord.Pend. Qty</th>
+                    <th>Sel</th>
+                    <th style="display:none;">Sel</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+                {%for i in GDataDetail%}
+
+                <tr>
+                    <td style="text-align:left;" class="clqty">{{ i.PRODUCT  }}</td>
+
+                    <td style="text-align:right;display:none;">{{ i.ITEMCODE }}</td>
+
+                    <td style="text-align:right;display:none;">{{ i.ID }}</td>
+
+                    <td style="text-align:right;" class="clqty">{{ i.QLT }}</td>
+
+                    <td style="text-align:left; background-color: RGB(230,179,255);" class="clqty">{{ i.SITE }}</td>
+
+                    <td style="text-align:right;background-color: pink;" class="clqty">{{ i.OPNETWT }}</td>
+
+                    <td style="text-align:right;background-color: pink;" class="clqty">{{ i.PNETWT }}</td>
+
+                    <td style="text-align:right;background-color: pink;" class="clqty">{{ i.ISSUENETWT }}</td>
+
+                    <td style="text-align:right;background-color: rgb(102,255,102);" class="clqty">{{ i.ISSUECOPS }}</td>
+
+                    <td style="text-align:right;background-color: pink;" class="clqty">{{ i.CLNETWT }}</td>
+
+                    <td style="text-align:right;background-color: rgb(102,255,102);" class="clqty">{{ i.CLCOPS }}</td>
+
+                    <td style="text-align:right;" class="clqty">{{ i.CLBOXES }}</td>
+
+                    <td style="text-align:right;" class="ordpendqty">{{ i.ORDPENQTY }}</td>
+
+                    <td style="text-align:right;"></td>
+                    <td style="display:none;">{{i.QUALITY}}</td>
+
+                </tr>
+                {% endfor %}
+
+            </tbody>
+            <tfoot>
+
+                <tr style=" font-family:arial;font-weight: bold;">
+                    <th>Items</th>
+                    <th style="display:none;">tp</th>
+                    <th style="display:none;">tp</th>
+                    <th>Qlt.</th>
+                    <th>Site</th>
+                    <th>Opn. Qty.</th>
+                    <th>Rec. Qty.</th>
+                    <th>Iss. Qty.</th>
+                    <th>Iss. Cops.</th>
+                    <th>Cl. Qty.</th>
+                    <th>Cl. Cops</th>
+                    <th>Cl. Boxes</th>
+                    <th>Ord.Pend. Qty</th>
+                    <th>Sel</th>
+
+                </tr>
+
+
+            </tfoot>
+
+            </table>
+
+    </div>
+
+
+    <div class="container1" id="wrap1" >
+
+        <table class="gridtable" id="tableMain1">
+            <thead style="position: sticky; top: 0;">
+
+                <tr style=" font-family:arial;font-weight: bold;">
+                    <th style="text-align:center;width:370px;" >Sites</th>
+                    <th>Opn. Qty.</th>
+                    <th>Rec. Qty.</th>
+                    <th>Iss. Qty.</th>
+                    <th>Iss. Cops.</th>
+                    <th>Cl. Qty.</th>
+                    <th>Cl. Cops.</th>
+                    <th>Cl. Boxes.</th>
+                    <th>Ord.Pend. Qty</th>
+                </tr>
+
+                <tr>
+
+                <th style="text-align:left;width:150px;">TOTAL</th>
+
+                    <th style="text-align:right;">{{plantopnqtytotal}}</th>
+                    <th style="text-align:right;">{{plantrecqtytotal}}</th>
+                    <th style="text-align:right;">{{plantissqtytotal}}</th>
+                    <th style="text-align:right;">{{plantisscopstotal}}</th>
+                    <th style="text-align:right;">{{plantclqtytotal}}</th>
+                    <th style="text-align:right;">{{ plantclcopstotal }}</th>
+                    <th style="text-align:right;">{{ plantclboxestotal }}</th>
+                    <th style="text-align:right;">{{ plantordpendqtytotal }}</th>
+                </tr>
+            </thead>
+
+
+            <tbody>
+                {%for i in GDataPlantDetail%}
+
+                <tr>
+                    <td style="text-align:left;background-color: #e6b3ff">{{ i.SITE  }}</td>
+
+                    <td style="text-align:right;width:20px;background-color: pink;">{{ i.OPNETWT }}</td>
+
+                    <td style="text-align:right;width:20px;background-color: pink;">{{ i.PNETWT }}</td>
+
+                    <td style="text-align:right;width:20px;background-color: pink;">{{ i.ISSUENETWT }}</td>
+
+                    <td style="text-align:right;width:20px;background-color: #66ff66;">{{ i.ISSUECOPS }}</td>
+
+                    <td style="text-align:right;width:20px;background-color: pink;">{{ i.CLNETWT }}</td>
+
+                    <td style="text-align:right;width:20px;background-color: #66ff66;">{{ i.CLCOPS }}</td>
+
+                    <td style="text-align:right;width:20px;">{{ i.CLBOXES }}</td>
+
+                    <td style="text-align:right;width:40px;">{{ i.ORDPENQTY }}</td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+
+                </table>
+
+    </div>
+
+    <div>
+    <label><b>{%if Exception %}
+    <script>alert("Note: No Result found according to your selected criteria ");</script>
+    {% endif  %}
+    </b></label>
+    </div>
+</div>
+
+
+
+<script type="text/javascript" class="init">
+
+// export to excel button
+function exportTableToExcel(tableID, filename = 'FinshedSockNowMis'){
+    var downloadLink;
+    var dataType = 'application/vnd.ms-excel';
+    var tableSelect = document.getElementById(tableID);
+    //console.log($("#tableMain").find('tr:not([style*="display: none"])'));
+    var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+
+    // Specify file name
+    filename = filename?filename+'.xls':'excel_data.xls';
+
+    // Create download link element
+    downloadLink = document.createElement("a");
+
+    document.body.appendChild(downloadLink);
+
+    if(navigator.msSaveOrOpenBlob){
+        var blob = new Blob(['\ufeff', tableHTML], {
+            type: dataType
+        });
+        navigator.msSaveOrOpenBlob( blob, filename);
+    }else{
+        // Create a link to the file
+        downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+
+        // Setting the file name
+        downloadLink.download = filename;
+
+        //triggering the function
+        downloadLink.click();
+    }
+}
+
+// end export fun
+
+var backGroundColor = '';
+var backGroundColorChange = '';
+var colIndex = -1;
+
+        $(document).ready(function()
+            {
+            $('#tableMain').DataTable({
+            info:false,
+            "paging":   false,
+            searching: false,
+            "columnDefs": [{ "width": "3%", "targets": [3,13] },{ "width": "12%", "targets": 4 }
+            ,{ "width": "25%", "targets": 0 },{ "width": "5%", "targets":[5,12] }]
+
+        });
+
+
+            });
+
+        var optionsToSelect = '{{ItemType}}';
+        var select = document.getElementById( 'itemtype' );
+
+        for ( var i = 0, l = select.options.length, o; i < l; i++ )
+        {
+          o = select.options[i];
+          if ( optionsToSelect.indexOf( o.text ) != -1 )
+          {
+            o.selected = true;
+          }
+        }
+
+         var optionsToSelect = '{{Doperw}}';
+        var select = document.getElementById( 'doperw' );
+
+        for ( var i = 0, l = select.options.length, o; i < l; i++ )
+        {
+          o = select.options[i];
+          if ( optionsToSelect.indexOf( o.value ) != -1 )
+          {
+            o.selected = true;
+          }
+        }
+
+        var optionsToSelect = '{{Site}}';
+        var select = document.getElementById( 'site' );
+
+        for ( var i = 0, l = select.options.length, o; i < l; i++ )
+        {
+          o = select.options[i];
+          if ( optionsToSelect.indexOf( o.value ) != -1 )
+          {
+            o.selected = true;
+          }
+        }
+
+
+        var optionsToSelect = {{Grade|safe}};
+        //console.log(String(optionsToSelect))
+        var select = document.getElementById( 'grade' );
+
+        for ( var i = 0, l = select.options.length, o; i < l; i++ )
+        {
+          o = select.options[i];
+          //console.log(optionsToSelect)
+          if ( optionsToSelect.indexOf( o.value ) != -1 )
+          {
+            o.selected = true;
+          }
+        }
+        //document.getElementById("wrap").addEventListener("scroll",function(){
+        //   var translate = "translate(0,"+this.scrollTop+"px)";
+        //   this.querySelector("thead").style.transform = translate;
+        //});
+
+        //document.getElementById("wrap1").addEventListener("scroll",function(){
+        //   var translate = "translate(0,"+this.scrollTop+"px)";
+        //   this.querySelector("thead").style.transform = translate;
+        //});
+
+
+        $( ".clqty" ).click(function() {
+        let rowLength = document.getElementById("tableMain").rows.length;
+        let counti= 1;
+        if(colIndex > -1){
+            while (counti < rowLength){
+                if (document.getElementById("tableMain").rows[counti].cells[colIndex].style.backgroundColor == backGroundColorChange){
+                    document.getElementById("tableMain").rows[counti].cells[colIndex].style.backgroundColor = backGroundColor;
+                    return;
+                }
+                counti += 1;
+            }
+        }
+        colIndex = this.cellIndex;
+        backGroundColor = $(this).css("background-color");
+
+         var $this = $(this);
+         //alert($this.closest('tr').children().eq(9).html());
+         let ItemType = $('#itemtype').val();
+         let OrderType = $('#ordertype').val();
+         let Grade = $this.closest('tr').children().eq(14).html();
+         let Site = $('#site').val();
+         let date = $('#datenow').val();
+         var cellIndex = $this.index();
+
+         let ITEMCODE = $this.closest('tr').children().eq(2).html();
+         let Quality = $this.closest('tr').children().eq(3).html();
+         let ItemName = $this.closest('tr').children().eq(1).html();
+         let ItemCode = $this.closest('tr').children().eq(0).html();
+         if(parseInt($this.closest('tr').children().eq(9).html()) > 0){
+            window.open("FinishedStock_ItemDetail_ClosingQty?itemcode="+ITEMCODE+"&ordertype="+OrderType
+            +"&grade="+Grade+"&site="+Site+"&itemtype="+ItemType+"&quality="+Quality+"&itemname="+ItemName+"&itemcodee="+ItemCode+"&startdate="+date,"_self");
+            $("#please_wait").css({'display':'flex','cursor': 'no-drop'})
+            setTimeout(function(){document.getElementById("please_wait").style.display = 'none';},8000);
+         }else{
+            alert("No Record Found");
+         }
+        $this.css('background-color', '#00ffff');
+        backGroundColorChange = $(this).css("background-color");
+
+        });
+
+        $( ".ordpendqty" ).click(function() {
+        let rowLength = document.getElementById("tableMain").rows.length;
+        let counti= 1;
+        if(colIndex > -1){
+            while (counti < rowLength){
+                if (document.getElementById("tableMain").rows[counti].cells[colIndex].style.backgroundColor == backGroundColorChange){
+                    document.getElementById("tableMain").rows[counti].cells[colIndex].style.backgroundColor = backGroundColor;
+                    return;
+                }
+                counti += 1;
+            }
+        }
+        colIndex = this.cellIndex;
+        backGroundColor = $(this).css("background-color");
+
+         var $this = $(this);
+         //alert($this.closest('tr').children().eq(12).html());
+         let ItemType = $('#itemtype').val();
+         let OrderType = $('#ordertype').val();
+         let Grade = $('#grade').val();
+         let Site = $('#site').val();
+         var cellIndex = $this.index();
+         let ITEMCODE = $this.closest('tr').children().eq(2).html();
+         let Quality = $this.closest('tr').children().eq(3).html();
+         let ItemName = $this.closest('tr').children().eq(1).html();
+         let Product = $this.closest('tr').children().eq(0).html();
+         if(parseInt($this.closest('tr').children().eq(12).html()) > 0){
+            window.open("FinishedStock_ItemDetail_OrdPendQty?itemcode="+ITEMCODE+"&ordertype="+OrderType+"&grade="+Grade+"&site="+Site+"&itemtype="+ItemType+"&quality="+Quality+"&itemname="+ItemName+"&product="+Product,"_self");
+            $("#please_wait").css({'display':'flex','cursor': 'no-drop'})
+            setTimeout(function(){document.getElementById("please_wait").style.display = 'none';},8000);
+         }else{
+            alert("No Record Found");
+         }
+        //alert($this.css('background-color'));
+        $this.css('background-color', '#00ffff');
+        backGroundColorChange = $(this).css("background-color");
+        });
+
+        function searchFunction() {
+          var input, filter, table, tr, td, i, txtValue;
+          input = document.getElementById("myInput");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("tableMain");
+          tr = table.getElementsByTagName("tr");
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+              txtValue = td.textContent || td.innerText;
+              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }
+          }
+        }
+
+
+</script>
+
+</body>
+</html>

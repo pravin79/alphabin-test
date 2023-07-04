@@ -1,0 +1,121 @@
+
+{% extends "home.html" %}
+{% block content %}
+<head>
+<link rel="stylesheet" href="static/assets/css/mycart.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<style>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    /* border: none; */
+  }
+  
+  th, td {
+    border: none;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  img {
+    width: 70px;
+  }
+</style>
+</head>
+    <section class="container-fuild mycart">
+      <div class="container">
+        <div class="row" style="width: 100%; margin-bottom: 30px">
+        
+        <table id="tableMain">
+          <th></th>
+          <th>Cart Item</th>
+          <th>Duration</th>
+          <th>Category</th>
+          <th>Quantity</th>
+          <th>Subtotal</th>
+
+          <tbody>
+        {% for item in result %}
+
+            <tr>
+              <td><img src={{item.image}} alt="" /></td>
+              <!-- <br> -->
+              <td id="product">{{item.product}}</td>
+              <td id="duration">{{item.duration}}</td>
+              <td id="category">{{item.category}}</td>
+              <td id="qty">{{item.qty}}</td>
+              <td id="prce">${{item.price}}</td>
+            </tr>
+
+  {% endfor %}
+
+          </tbody>
+        </table>
+        <div class="row" style="width: 100%; margin-bottom: 30px">
+          <div
+            class="col-lg-6"
+            style="
+              border-top: 1px solid #eee;
+              text-align: right;
+              padding-top: 20px;
+            "
+          >
+            <h5>Total</h5>
+          </div>
+          <div
+            class="col-lg-2"
+            style="border-top: 1px solid #eee; padding-top: 20px"
+          >
+            <h5>${{total}}</h5>
+          </div>
+        </div>
+        <div class="row" style="width: 100%; margin-bottom: 30px">
+          <div class="col-lg-5"></div>
+          <div class="col-lg-6">
+            <button class="continue-btn" onclick="home()">Continue to buy</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- <section class="container-fluid amount">
+      <div class="container">
+        <div class="total">
+          <h4>Subtotal</h4>
+          <p>$25,000</p>
+        </div>
+      </div>
+    </section> -->
+
+    
+    <script>
+      function home(){
+        window.open("home","_self");
+      }
+
+      // function deleteProduct(){
+      //   alert("In delete");
+      //   let rowLength = document.getElementById("tableMain").rows.length;
+      // }
+        
+      
+        
+      const decrementBtn = document.querySelector(".decrement");
+      const incrementBtn = document.querySelector(".increment");
+      const quantityInput = document.querySelector('input[type="number"]');
+
+      decrementBtn.addEventListener("click", () => {
+        let currentValue = parseInt(quantityInput.value);
+        if (currentValue > 1) {
+          quantityInput.value = --currentValue;
+        }
+      });
+
+      incrementBtn.addEventListener("click", () => {
+        let currentValue = parseInt(quantityInput.value);
+        if (currentValue < parseInt(quantityInput.getAttribute("max"))) {
+          quantityInput.value = ++currentValue;
+        }
+      });
+    </script>
+  {% endblock %}

@@ -1,14 +1,14 @@
-
-{% extends "base.html" %}
-{% block content %}
+{% extends "base.html" %} {% block content %}
 <head>
-<link rel="stylesheet" href="static/assets/css/login.css" />
+  <link rel="stylesheet" href="static/assets/css/login.css" />
 </head>
-    
-    <section class="login-form">
-      <div class="container login__container">
-        <form action="loginUser" method='POST'>
-        {% csrf_token %}
+
+<section class="login-form">
+  <div class="container login__container">
+    <div class="row">
+      <div class="col-lg-6">
+        <form action="loginUser" method="POST">
+          {% csrf_token %}
           <h2>Login</h2>
           <div class="input_field">
             <label for="username">Username</label>
@@ -21,50 +21,53 @@
             <span class="error-message" id="password-error"></span>
           </div>
           <button class="login-btn">Login</button>
+          <a class="create-account" href="registration.html">Create Account</a>
         </form>
-        
       </div>
-    </section>
+      <div class="col-lg-6">
+        <img src="static/assets/imgs/Contact us-rafiki.png" alt="" />
+      </div>
+    </div>
+  </div>
+</section>
 
-    <script>
-    
-      const form = document.querySelector("form");
+<script>
+  const form = document.querySelector("form");
 
-      form.addEventListener("submit", (event) => {
-        event.preventDefault();
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-        const usernameInput = form.elements.username;
-        const passwordInput = form.elements.password;
-        const usernameValue = usernameInput.value.trim();
-        const passwordValue = passwordInput.value.trim();
+    const usernameInput = form.elements.username;
+    const passwordInput = form.elements.password;
+    const usernameValue = usernameInput.value.trim();
+    const passwordValue = passwordInput.value.trim();
 
-        if (usernameValue === "") {
-          showError(usernameInput, "Please enter your username.");
-          return;
-        }
+    if (usernameValue === "") {
+      showError(usernameInput, "*Please enter your username.");
+      return;
+    }
 
-        if (passwordValue === "") {
-          showError(passwordInput, "Please enter your password.");
-          return;
-        }
+    if (passwordValue === "") {
+      showError(passwordInput, "*Please enter your password.");
+      return;
+    }
 
-        form.submit();
-      });
+    form.submit();
+  });
 
-      function showError(input, message) {
-        const errorSpan = document.querySelector(`#${input.name}-error`);
-        input.classList.add("error");
-        errorSpan.textContent = message;
-        errorSpan.style.display = "block";
+  function showError(input, message) {
+    const errorSpan = document.querySelector(`#${input.name}-error`);
+    input.classList.add("error");
+    errorSpan.textContent = message;
+    errorSpan.style.display = "block";
 
-        input.addEventListener("input", () => {
-          if (input.classList.contains("error")) {
-            input.classList.remove("error");
-          }
-          errorSpan.style.display = "none";
-        });
+    input.addEventListener("input", () => {
+      if (input.classList.contains("error")) {
+        input.classList.remove("error");
       }
-    </script>
-
+      errorSpan.style.display = "none";
+    });
+  }
+</script>
 
 {% endblock %}

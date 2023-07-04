@@ -23,6 +23,8 @@ urlpatterns = [
     path('getUser',apiViews.getUser,name='getUser'),    
     path('logout',views.logoutHtml,name='logout'),   
     path('addToCart',apiViews.addToCart,name='addToCart'),  
+    path('deleteProduct',apiViews.deleteProduct,name='deleteProduct'),
+    path('orderHistory',apiViews.order_history,name='orderHistory')
      
 
 ]

@@ -22,22 +22,22 @@
         <div style="display: flex; ">
             <div class="shipping-info">
                 <h3>Shipping Information</h3>
-                <p>John Doe</p>
-                <p>123 Main St.</p>
-                <p>Anytown, USA 12345</p>
-                <p>Email: johndoe@example.com</p>
-                <p>Phone: 555-555-5555</p>
+                <p>{{userdata.fullname}}</p>
+                <p>{{userdata.city}}</p>
+                <p>{{userdata.state}}, {{userdata.country}}-{{userdata.zipcode}}</p>
+                <p>Email: {{userdata.email}}</p>
               </div>
               <div class="payment-info">
                 <h3>Payment Information</h3>
-                <p>Credit Card: **** **** **** 1234</p>
-                <p>Expiration Date: 12/23</p>
-                <p>Billing Address: 123 Main St.</p>
-                <p>Anytown, USA 12345</p>
+                <p>Credit Card: {{userdata.cardnumber}}</p>
+                <p>Expiration Date: {{userdata.month}}-{{userdata.year}}</p>
+                <p>Billing Address</p>
+                <p>{{userdata.city}}</p>
+                <p>{{userdata.state}}, {{userdata.country}}-{{userdata.zipcode}}</p>
               </div>
         </div>
         <div class="confirmation-message">
-          <p>Thank you for your order! Your order number is: 123456.</p>
+          <p>Thank you for your order!</p>
         </div>
       </div>
     </section>

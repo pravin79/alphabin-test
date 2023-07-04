@@ -7,32 +7,41 @@
 
     <section class="registration-form">
       <div class="container registration__container">
-        <form action="registerUser" method="POST">
-        {% csrf_token %}
-          <h2>Registration</h2>
-          <div class="input_field">
-            <label for="firstname">Username</label>
-            <input name="username" type="text" />
-            <span class="error-message" id="firstname-error"></span>
-          </div>
-          <div class="input_field">
-            <label for="email">Email</label>
-            <input name="email" type="email" />
-            <span class="error-message" id="email-error"></span>
-          </div>
-          <div class="input_field">
-            <label for="password">Password</label>
-            <input name="password1" type="password" />
-            <span class="error-message" id="password-error"></span>
-          </div>
-          <div class="input_field">
-            <label for="confirm-password">Confirm Password</label>
-            <input name="password2" type="password" />
-            <span class="error-message" id="confirm-password-error"></span>
-          </div>
-          <button class="registration-btn">Registration</button>
-        </form>
+       <div class="row">
+        <div class="col-lg-6">
+          <form action="registerUser" method="POST">
+            {% csrf_token %}
+              <h2>Registration</h2>
+              <div class="input_field">
+                <label for="firstname">Username</label>
+                <input name="username" type="text" />
+                <span class="error-message" id="firstname-error"></span>
+              </div>
+              <div class="input_field">
+                <label for="email">Email</label>
+                <input name="email" type="email" />
+                <span class="error-message" id="email-error"></span>
+              </div>
+              <div class="input_field">
+                <label for="password">Password</label>
+                <input name="password1" type="password" />
+                <span class="error-message" id="password-error"></span>
+              </div>
+              <div class="input_field">
+                <label for="confirm-password">Confirm Password</label>
+                <input name="password2" type="password" />
+                <span class="error-message" id="confirm-password-error"></span>
+              </div>
+              <button class="registration-btn">Registration</button>
+              <a class="login-account" href="registration.html">Already a user? Login</a>
+            </form>
+        </div>
+        <div class="col-lg-6">
+          <img src="static/assets/imgs/Contact us-rafiki.png" alt="" />
+        </div>
+       </div>
       </div>
+      {{error}}
     </section>
 
     {% comment %} <script>
