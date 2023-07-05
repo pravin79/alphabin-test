@@ -82,7 +82,7 @@ def order_history(request):
          "Join	demoApp_category on demoApp_order.category_id=demoApp_category.id   "
          "Join	demoApp_product on demoApp_order.product_id=demoApp_product.id   "
          "Join	demoApp_duration on demoApp_order.duration_id=demoApp_duration.id  "
-         "where auth_user.username='jigarmodha'  "
+         "where auth_user.username='"+str(request.user)+"'  "
          "Group by  demoApp_product.name,demoApp_product.image,demoApp_duration.name,demoApp_category.name,demoApp_duration.price"))
     for i in data:
         result['product']=i.prod
