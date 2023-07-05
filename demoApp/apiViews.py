@@ -6,7 +6,7 @@ from django.views.decorators.csrf import csrf_exempt
 from .models import Cart,Product,Duration,Category,Order
 
 from .serializers import *
-
+@csrf_exempt
 @login_required
 def deleteProduct(request):
     user_id=User.objects.filter(username=request.user).values()[0]['id']
@@ -17,7 +17,7 @@ def deleteProduct(request):
     deleted = Cart.objects.filter(id=rs_delete).delete()
     return redirect('mycart')
 
-
+@csrf_exempt
 @login_required
 def addToCart(request):
     if request.method == 'POST':
@@ -62,7 +62,7 @@ def addToCart(request):
             return JsonResponse("Product added to cart successfully.", safe=False,status=200)
         else:
             return redirect('mycart')
-
+@csrf_exempt
 @login_required
 def order_history(request):
     total=0
@@ -97,12 +97,12 @@ def order_history(request):
     print(result_list)
     return render(request,'orderHistory.html',{'result':result_list,'total':total})
 
-
+@csrf_exempt
 @login_required 
 def getUser(request):
     if request.method == 'GET':
        return 'Testing'
-
+@csrf_exempt
 @login_required
 def mycart(request):
     total=0
@@ -121,7 +121,7 @@ def mycart(request):
         result={}
     # print(result_list)
     return render(request,'mycart.html',{'result':result_list,'total':total})
-
+@csrf_exempt
 @login_required
 def account(request):
     
