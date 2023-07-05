@@ -138,7 +138,7 @@ def product7(request):
     else:
         return render(request,'home_product7.html')
 
-
+@csrf_exempt
 def loginUser(request):
     if request.method == 'POST':
         username = request.POST['username']
