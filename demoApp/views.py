@@ -55,7 +55,7 @@ def checkout(request):
         result_list.append(result)
         result={}
     return render(request,'checkout.html',{'result':result_list,'total':total})
-
+@csrf_exempt
 def contactus(request):
     if str(request.user)=='AnonymousUser':
         return render(request,'contactus.html')
