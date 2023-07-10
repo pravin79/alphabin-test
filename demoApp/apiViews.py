@@ -21,6 +21,7 @@ def deleteProduct(request):
 @login_required
 def addToCart(request):
     if request.method == 'POST':
+        print('BY nOW',request.user)
         users = User.objects.filter(username = request.user).values()
         user_id = users[0]['id']
         data={
@@ -105,6 +106,7 @@ def getUser(request):
 @csrf_exempt
 @login_required
 def mycart(request):
+    print(request.user)
     total=0
     result={}
     result_list=[]

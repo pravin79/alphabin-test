@@ -5,63 +5,71 @@
 
 <section class="container-fuild product-details">
   <div class="container">
-    <div class="row">
-      <div class="col-lg-6 img-bx">
-        <img src="static/assets/imgs/product-3.png" alt="" />
+    <form action="addToCart" method="POST" onsubmit="return validateForm()">
+      {% csrf_token %}
+      <div class="row">
+        <div class="col-lg-6 img-bx">
+          <img src="static/assets/imgs/product-3.png" alt="" />
+        </div>
+        <div class="col-lg-6 cont-bx">
+          <h2>AI / ML Model Test</h2>
+          <input type="text" value="1" name="product" style="display: none" />
+          <p>
+            AI/ML model test is the process of evaluating a machine learning
+            model's performance on new data to ensure its ability to make
+            accurate predictions, using metrics such as accuracy, precision,
+            recall, and F1-score.
+          </p>
+          <div class="select-category">
+            <h5>Select Category</h5>
+            <div class="categories col-lg-12 row">
+              <label class="col-lg-6">
+                Functionality Testing
+                <input type="checkbox" name="functionality-testing" />
+              </label>
+              <label class="col-lg-6">
+                Performance Tesitng
+                <input type="checkbox" name="performance-tesitng" />
+              </label>
+              <label class="col-lg-6">
+                Usability Testing
+                <input type="checkbox" name="usability-testing" />
+              </label>
+              <label class="col-lg-6">
+                Security Testing
+                <input type="checkbox" name="security-testing" />
+              </label>
+            </div>
+            <!-- <span class="error-message" id="category-error"></span> -->
+            <span class="error-message" id="category-error"></span>
+          </div>
+          <div class="select-duration">
+            <h5>Select Duration</h5>
+            <div class="duration col-lg-12 row">
+              <label class="col-lg-6">
+                6 Months (price $10,000)
+                <input type="radio" name="duration" value="6 Months" />
+              </label>
+              <label class="col-lg-6">
+                12 Months (price $15,000)
+                <input type="radio" name="duration" value="12 Months" />
+              </label>
+            </div>
+            <span class="error-message" id="duration-error"></span>
+          </div>
+          <div class="ctas">
+            <div class="cta-buttons col-lg-12 row">
+              <button class="col-lg-6 btn1" value="1" name="button1">
+                Buy Now
+              </button>
+              <button class="col-lg-6 btn2" value="2" name="button1">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="col-lg-6 cont-bx">
-        <h2>UI Automation Testing (Mobile)</h2>
-        <input type="text" value="3" name="product" style="display: none" />
-        <p>
-          Our UI automation testing services for mobile apps use advanced tools
-          and techniques to automate your app's UI testing, ensuring that your
-          app delivers a seamless user experience across all devices and
-          platforms. Our experienced testers use a combination of manual and
-          automated testing techniques to identify any defects or issues,
-          helping you deliver a high-quality app that meets your users' needs.
-        </p>
-        <div class="select-category">
-          <h5>Select Category</h5>
-          <div class="categories col-lg-12 row">
-            <label class="col-lg-6">
-              Functionality Testing
-              <input type="checkbox" name="functionality-testing" />
-            </label>
-            <label class="col-lg-6">
-              Performance Tesitng
-              <input type="checkbox" name="performance-tesitng" />
-            </label>
-            <label class="col-lg-6">
-              Usability Testing
-              <input type="checkbox" name="usability-testing" />
-            </label>
-            <label class="col-lg-6">
-              Security Testing
-              <input type="checkbox" name="security-testing" />
-            </label>
-          </div>
-        </div>
-        <div class="select-duration">
-          <h5>Select Duration</h5>
-          <div class="duration col-lg-12 row">
-            <label class="col-lg-6">
-              6 Months (price $10,000)
-              <input type="radio" name="duration" value="6 Months" />
-            </label>
-            <label class="col-lg-6">
-              12 Months (price $15,000)
-              <input type="radio" name="duration" value="12 Months" />
-            </label>
-          </div>
-        </div>
-        <div class="ctas">
-          <div class="cta-buttons col-lg-12 row">
-            <button class="col-lg-6 btn1">Buy Now</button>
-            <button class="col-lg-6 btn2">Add to Cart</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    </form>
   </div>
 </section>
 
@@ -83,5 +91,67 @@
       quantityInput.value = ++currentValue;
     }
   });
+
+  function validateForm() {
+    var categoryCheckboxes = document.querySelectorAll(
+      'input[type="checkbox"]'
+    );
+    var durationRadios = document.getElementsByName("duration");
+
+    var categoryChecked = false;
+    for (var i = 0; i < categoryCheckboxes.length; i++) {
+      if (categoryCheckboxes[i].checked) {
+        categoryChecked = true;
+        break;
+      }
+    }
+    if (!categoryChecked) {
+      showCategoryError("*Please select a category");
+      return false;
+    } else {
+      hideCategoryError();
+    }
+
+    var durationChecked = false;
+    for (var i = 0; i < durationRadios.length; i++) {
+      if (durationRadios[i].checked) {
+        durationChecked = true;
+        break;
+      }
+    }
+    if (!durationChecked) {
+      showDurationError("*Please select a duration");
+      return false;
+    } else {
+      hideDurationError();
+    }
+
+    return true;
+  }
+
+  function showCategoryError(message) {
+    var categoryError = document.getElementById("category-error");
+    categoryError.textContent = message;
+    categoryError.style.display = "block";
+  }
+
+  function hideCategoryError() {
+    var categoryError = document.getElementById("category-error");
+    categoryError.textContent = "";
+    categoryError.style.display = "none";
+  }
+
+  function showDurationError(message) {
+    var durationError = document.getElementById("duration-error");
+    durationError.textContent = message;
+    durationError.style.display = "block";
+  }
+
+  function hideDurationError() {
+    var durationError = document.getElementById("duration-error");
+    durationError.textContent = "";
+    durationError.style.display = "none";
+  }
 </script>
+
 {% endblock %}

@@ -5,63 +5,63 @@
 
 <section class="container-fuild product-details">
   <div class="container">
-    <div class="row">
-      <div class="col-lg-6 img-bx">
-        <img src="static/assets/imgs/product-2.png" alt="" />
+    <form action="addToCart" method="POST">
+      {% csrf_token %}
+      <div class="row">
+        <div class="col-lg-6 img-bx">
+          <img src="static/assets/imgs/product-2.png" alt="" />
+        </div>
+        <div class="col-lg-6 cont-bx">
+          <h2>AI / ML Model Test</h2>
+          <p>
+            AI/ML model test is the process of evaluating a machine learning
+            model's performance on new data to ensure its ability to make
+            accurate predictions, using metrics such as accuracy, precision,
+            recall, and F1-score.
+          </p>
+          <div class="select-category">
+            <h5>Select Category</h5>
+            <div class="categories col-lg-12 row">
+              <label class="col-lg-6">
+                Functionality Testing
+                <input type="checkbox" name="functionality-testing" />
+              </label>
+              <label class="col-lg-6">
+                Performance Tesitng
+                <input type="checkbox" name="performance-tesitng" />
+              </label>
+              <label class="col-lg-6">
+                Usability Testing
+                <input type="checkbox" name="usability-testing" />
+              </label>
+              <label class="col-lg-6">
+                Security Testing
+                <input type="checkbox" name="security-testing" />
+              </label>
+            </div>
+          </div>
+          <div class="select-duration">
+            <h5>Select Duration</h5>
+            <div class="duration col-lg-12 row">
+              <label class="col-lg-6">
+                6 Months (price $10,000)
+                <input type="radio" name="duration" value="6 Months" />
+              </label>
+              <label class="col-lg-6">
+                12 Months (price $15,000)
+                <input type="radio" name="duration" value="12 Months" />
+              </label>
+            </div>
+          </div>
+          <div class="ctas">
+            <div class="cta-buttons col-lg-12 row">
+              <button class="col-lg-6 btn1">Buy Now</button>
+              <button class="col-lg-6 btn2">Add to Cart</button>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="col-lg-6 cont-bx">
-        <h2>UI Automation Testing (Web)</h2>
-        <p>
-          Our UI automation testing services use the latest tools and
-          technologies to automate your web app testing, ensuring that your
-          app's UI is tested comprehensively and efficiently. Our team of
-          experts uses a combination of manual and automated testing techniques
-          to provide you with reliable and accurate test results, helping you
-          save time and resources while ensuring that your app delivers the best
-          possible user experience.
-        </p>
-        <div class="select-category">
-          <h5>Select Category</h5>
-          <div class="categories col-lg-12 row">
-            <label class="col-lg-6">
-              Functionality Testing
-              <input type="checkbox" name="functionality-testing" />
-            </label>
-            <label class="col-lg-6">
-              Performance Tesitng
-              <input type="checkbox" name="performance-tesitng" />
-            </label>
-            <label class="col-lg-6">
-              Usability Testing
-              <input type="checkbox" name="usability-testing" />
-            </label>
-            <label class="col-lg-6">
-              Security Testing
-              <input type="checkbox" name="security-testing" />
-            </label>
-          </div>
-        </div>
-        <div class="select-duration">
-          <h5>Select Duration</h5>
-          <div class="duration col-lg-12 row">
-            <label class="col-lg-6">
-              6 Months (price $10,000)
-              <input type="radio" name="duration" value="6 Months" />
-            </label>
-            <label class="col-lg-6">
-              12 Months (price $15,000)
-              <input type="radio" name="duration" value="12 Months" />
-            </label>
-          </div>
-        </div>
-        <div class="ctas">
-          <div class="cta-buttons col-lg-12 row">
-            <button class="col-lg-6 btn1">Buy Now</button>
-            <button class="col-lg-6 btn2">Add to Cart</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    </form>
   </div>
 </section>
 
