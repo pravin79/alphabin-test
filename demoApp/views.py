@@ -151,7 +151,7 @@ def loginUser(request):
         else:
             return render(request, 'login.html', status=401)
     else:
-        return render(request, 'login.html', status=405
+        return render(request, 'login.html', status=405)
 
 @csrf_exempt
 def registerUser(request):
