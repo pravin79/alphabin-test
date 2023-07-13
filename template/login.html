@@ -3,7 +3,7 @@
   <link rel="stylesheet" href="static/assets/css/login.css" />
 </head>
 
-<section class="login-form">
+<!-- <section class="login-form">
   <div class="container login__container">
     <div class="row">
       <div class="col-lg-6">
@@ -21,13 +21,55 @@
             <span class="error-message" id="password-error"></span>
           </div>
           <button class="login-btn">Login</button>
-          <a class="create-account" href="registration.html">Create Account</a>
+          <a class="create-account" href="registration">Create Account</a>
         </form>
       </div>
       <div class="col-lg-6">
         <img src="static/assets/imgs/Contact us-rafiki.png" alt="" />
       </div>
+      {% if error %}
+      <script>
+        window.onload = function () {
+          alert("{{ error }}")
+        }
+      </script>
+      {% endif %}
     </div>
+  </div>
+</section> -->
+
+<section class="login-form">
+  <div class="child-div"></div>
+  <div class="container login__container">
+    <a href="home"><img class="logo" src="../static/assets/imgs/main-logo.png" alt="" /></a>
+    <form action="loginUser" method="POST">
+      {% csrf_token %}
+      <h2>Log In</h2>
+      <p>Get Started on your journey with us</p>
+      <div class="input_field">
+        <label for="username">Your Email</label>
+        <input name="username" type="text" />
+        <span class="error-message" id="username-error"></span>
+      </div>
+      <div class="input_field">
+        <label for="password">Your Password</label>
+        <input name="password" type="password" />
+        <span class="small-text">At least 12 characters</span>
+        <span class="error-message" id="password-error"></span>
+      </div>
+      <button class="login-btn">Log In</button>
+      <div class="account-link">
+        <a href="registration">Create an Account</a>
+        <a href="#">Forgot Password?</a>
+      </div>
+    </form>
+    {% if error %}
+    <script>
+      window.onload = function () {
+        alert("{{ error }}");
+      };
+    </script>
+    {% endif %}
   </div>
 </section>
 
@@ -47,8 +89,37 @@
       return;
     }
 
+    if (!/^\D*$/.test(usernameValue)) {
+      showError(usernameInput, "*Username should not contain numbers.");
+      return;
+    }
+
     if (passwordValue === "") {
       showError(passwordInput, "*Please enter your password.");
+      return;
+    }
+
+    if (passwordValue.length < 8) {
+      showError(
+        passwordInput,
+        "*Password should be at least 8 characters long."
+      );
+      return;
+    }
+
+    if (/^[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]*$/.test(usernameValue)) {
+      showError(
+        usernameInput,
+        "*Username should not contain only special characters."
+      );
+      return;
+    }
+
+    if (/^[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]*$/.test(passwordValue)) {
+      showError(
+        passwordInput,
+        "*Password should not contain only special characters."
+      );
       return;
     }
 

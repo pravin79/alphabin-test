@@ -16,17 +16,30 @@
     COLORS 
 */
 :root {
-  --first-color: #171332;
-  --second-color: #2a5d67;
+  --first-color: #1292ee;
+  --second-color: #253642;
   --third-color: #eeeeee;
-  --fourth-color: #4ae3b5;
+  --fourth-color: #253642;
+}
+
+/* 
+    FONTS
+*/
+@font-face {
+  font-family: 'Tenorite', sans-serif;
+  src: url('../fonts/tenorite-cufonfonts-regular-normal.ttf') format('ttf'),
+}
+
+@font-face {
+  font-family: 'Tenorite_bold', sans-serif;
+  src: url('../fonts/tenorite-cufonfonts-regular-bold.ttf') format('ttf'),
 }
 
 /* 
     TYPOGRAPHY 
 */
 :root {
-  --body-font: "Poppins", sans-serif;
+  --body-font: 'Tenorite', sans-serif;
   --big-font-size: 2rem;
   --h2-font-size: 1.25rem;
   --normal-font-size: 0.938rem;
@@ -70,8 +83,8 @@ html {
 body {
   font-family: var(--body-font);
   font-size: var(--normal-font-size);
-  color: #111;
-  background-color: #fff;
+  color: var(--second-color);
+  background-color: #eaf0ff;
 }
 
 h1,
@@ -119,9 +132,9 @@ header {
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 28px;
+  padding: 15px;
   z-index: 1000;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); */
   background-color: #fff;
 }
 
@@ -141,20 +154,19 @@ header .header__container .header__nav-links {
 
 header .header__container .header__nav-links .header__logo {
   margin-right: 4rem;
+  width: 160px;
 }
 
-header .header__container .header__nav-links .header__logo a {
-  font-size: 18px;
+/* header .header__container .header__nav-links .header__logo a {
   font-weight: bold;
-  /* text-transform: uppercase; */
   display: flex;
   justify-content: center;
   align-items: center;
   color: var(--first-color);
-}
+} */
 
 header .header__container .header__nav-links .header__logo a img {
-  width: 44px;
+  width: 100%;
   margin-right: 10px;
 }
 
@@ -168,25 +180,32 @@ header .header__container .header__nav-links ul {
 
 header .header__container .header__nav-links ul li {
   list-style: none;
-  margin-right: 20px;
+  margin-right: 30px;
 }
 
 header .header__container .header__nav-links ul li a {
-  color: var(--first-color);
+  color: var(--second-color);
 }
 
 header .header__container .header__account-links a {
   position: relative;
   font-weight: bold;
-  margin-left: 5px;
+  /* margin-left: 5px; */
   padding: 14px 30px;
-  border-radius: 50px;
-  color: var(--third-color);
-  background-color: var(--first-color);
+  border-radius: 6px;
 }
 
 header .header__container .header__account-links {
   display: flex;
+}
+
+.account-login-btn {
+  color: var(--second-color);
+}
+
+.account-sign-up-btn {
+  color: #fff;
+  background-color: var(--first-color);
 }
 
 #profile_img {
@@ -195,7 +214,6 @@ header .header__container .header__account-links {
   margin-right: 10px;
   width: 50px;
   height: 50px;
-  /* overflow: hidden; */
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -306,22 +324,31 @@ header .header__container .header__account-links {
 }
 
 .banner-content h1 {
-  margin-bottom: var(--mb-2);
+  margin-bottom: var(--mb-4);
   font-size: 3.2rem;
   font-weight: bold;
 }
 
 .banner-content p {
-  margin-bottom: var(--mb-4);
-  font-size: var(--normal-font-size);
+  margin-bottom: var(--mb-6);
+  font-size: var(--h2-font-size);
 }
 
 .cta-button {
-  font-weight: bold;
-  padding: 15px 20px;
-  border-radius: 50px;
+  /* font-weight: bold; */
+  padding: 20px 60px;
+  border-radius: 6px;
   color: #fff;
-  background-color: #171332;
+  background-color: var(--first-color);
+  margin-right: 30px;
+}
+
+.cta-button2 {
+  padding: 20px 60px;
+  border-radius: 6px;
+  color: var(--first-color);
+  /* background-color: var(--first-color); */
+  border: 1px solid;
 }
 
 @media (max-width: 768px) {
@@ -366,7 +393,7 @@ header .header__container .header__account-links {
   border-radius: 6px;
   background-color: #fff;
   transition: 0.1s linear;
-  border: 1px solid var(--fourth-color);
+  /* border: 1px solid var(--fourth-color); */
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -386,7 +413,7 @@ header .header__container .header__account-links {
 }
 
 .services__item h3 {
-  color: var(--first-color);
+  color: var(--second-color);
   font-weight: bold;
   font-size: 20px;
   margin-bottom: 20px;
@@ -433,7 +460,7 @@ header .header__container .header__account-links {
 */
 footer {
   padding: 100px 0 20px;
-  background-color: var(--first-color);
+  background-color: #171332;
   border-top-left-radius: 200px;
   border-top-right-radius: 200px;
   color: #fff;

@@ -1,66 +1,134 @@
 .registration-form {
-    padding: 50px 0;
-    height: 100vh;
-    /* margin-bottom: 10rem; */
+  padding: 50px 0;
+}
+
+.child-div {
+  position: absolute;
+  top: 0;
+  bottom: 40%;
+  left: 0;
+  right: 0;
+  background-color: #eaf0ff;
+  z-index: -10;
+}
+
+.registration-form .container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.logo {
+  margin-bottom: 30px;
+  width: 12rem;
 }
 
 form {
-    margin-top: 80px;
-    text-align: left;
-    padding: 100px;
-    border-radius: 6px;
-    box-shadow: 0px 5px 110px rgba(0, 0, 0, 0.1);
-  }
+  text-align: left;
+  padding: 50px;
+  width: 600px;
+  border-radius: 6px;
+  background-color: #fff;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
 
 form h2 {
-    margin-bottom: 1.5rem;
-    font-weight: bold;
-    color: #171332;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #253642;
+  font-size: 24px;
+}
+
+form p {
+  margin-bottom: 15px;
+  color: #253642;
+  font-size: 16px;
 }
 
 .input_field {
-    /* min-width: 300px; */
-    margin-bottom: 1.5rem;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .input_field label {
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-  }
-  
-  .input_field input {
-    /* width: 100%; */
-    padding: 12px 20px;
-    border: 0.5px solid #171332;
-    border-radius: 3px;
-  }
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-block {
+  display: flex;
+  justify-content: space-between;
+}
+
+.input-block .input_field {
+  width: 48%;
+  display: flex;
+}
+
+.input_field label {
+  margin-bottom: 0.5rem;
+  /* font-weight: bolder; */
+  font-size: 16px;
+  text-align: start;
+  font-family: "Tenorite_bold", sans-serif;
+}
+
+.small-text {
+  text-align: start;
+  margin-top: 5px;
+  font-size: 14px;
+  color: #253642;
+}
+
+.input_field input {
+  /* width: 100%; */
+  padding: 12px 20px;
+  border: 0.5px solid #171332;
+  border-radius: 3px;
+}
 
 .registration-btn {
-    padding: 12px 30px;
-    color: #fff;
-    border: none;
-    font-weight: bold;
-    text-transform: uppercase;
-    border-radius: 3px;
-    background-color: #171332;
+  margin-top: 10px;
+  padding: 12px 30px;
+  color: #fff;
+  width: 100%;
+  border: none;
+  border-radius: 3px;
+  background-color: #1292ee;
 }
 
 input.error {
-    border: 1px solid red;
+  border: 1px solid red;
 }
 
 .error-message {
-    font-size: 14px;
-    color: red;
+  font-size: 14px;
+  color: red;
 }
 
 .login-account {
-    margin-left: 100px;
-    display: inline-flex;
-    margin-top: 15px;
-    color: #171332;
-    font-size: 14px;
-    text-decoration: underline;
+  margin-left: 100px;
+  display: inline-flex;
+  margin-top: 15px;
+  color: #171332;
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.account-link {
+  margin-top: 25px;
+}
+
+@media (max-width: 768px) {
+  .registration-form {
+    padding: 0;
   }
+
+  .registration-form .container {
+    padding: 20px;
+  }
+
+  form {
+    width: 100%;
+    padding: 20px;
+  }
+}
