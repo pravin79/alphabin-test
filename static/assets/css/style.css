@@ -84,7 +84,7 @@ body {
   font-family: var(--body-font);
   font-size: var(--normal-font-size);
   color: var(--second-color);
-  background-color: #eaf0ff;
+  background-color: #fff;
 }
 
 h1,
@@ -219,6 +219,14 @@ header .header__container .header__account-links {
   align-items: center;
   justify-content: center;
   border: 1px solid var(--first-color);
+}
+
+#logout {
+  padding: 12px 30px;
+  border-radius: 6px;
+  color: #fff;
+  background-color: var(--first-color);
+  margin-right: 30px;
 }
 
 #profile_img i {
