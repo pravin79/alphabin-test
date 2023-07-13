@@ -146,12 +146,12 @@ def loginUser(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return render(request,'homepage.html')
+            return render(request,'homepage.html',status=200)
             
         else:
-            return render(request, 'login.html', {'error': 'Invalid credentials'})
+            return render(request, 'login.html', status=401)
     else:
-        return JsonResponse("Invalid Login Method",safe=False,status=405)
+        return render(request, 'login.html', status=405)
 
 @csrf_exempt
 def registerUser(request):
