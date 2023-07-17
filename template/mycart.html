@@ -23,105 +23,9 @@
 </style>
 </head>
 
-
-    <!-- <section class="container-fluid mycart">
-      <div class="container mycart__container">
-        <h3>My Cart</h3>
-        <div class="row">
-          <div class="col-lg-8">
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="row cart-header">
-                  <div class="col-lg-6">
-                    <p>Cart Item</p>
-                  </div>
-                  <div class="col-lg-2">
-                    <p>Price</p>
-                  </div>
-                  <div class="col-lg-2">
-                    <p>Quantity</p>
-                  </div>
-                  <div class="col-lg-2">
-                    <p>Subtotal</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="row">
-                  <div class="col-lg-6">
-                    <div class="item">
-                      <div class="img-bx" style="width: 150px">
-                        <img
-                          src="../assets/imgs/automation_testing.png"
-                          alt=""
-                        />
-                      </div>
-                      <div class="item_description">
-                        <h5>Item Name</h5>
-                        <p>
-                          Lorem, ipsum dolor sit amet consectetur adipisicing
-                          elit. Quasi, cum.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-2">
-                    <p>$100</p>
-                  </div>
-                  <div class="col-lg-2">
-                    <div class="quantity">
-                      <button class="decrement">-</button>
-                      <input
-                        class="quantityInput"
-                        type="number"
-                        min="1"
-                        max="10"
-                        value="1"
-                      />
-                      <button class="increment">+</button>
-                    </div>
-                  </div>
-                  <div class="col-lg-2">
-                    <p><b>$100</b></p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <h1>Hello</h1>
-          </div>
-        </div>
-      </div>
-    </section> -->
-
     <section class="container-fuild mycart">
       <div class="container">
         <div class="row" style="width: 100%; margin-bottom: 30px">
-          
-        <!-- <div class="row" style="width: 100%; margin-bottom: 30px">
-          <div class="col-lg-6">
-            <dic class="item">
-              <img src={{item.image}} alt="" />
-              <div class="details">
-                <h6>{{item.product}}</h6>
-                <p>Duration : {{item.duration}}</p>
-                <p>Category : {{item.category}}</p>
-                <p>Quantity : {{item.qty}}</p>
-              </div>
-            </dic>
-          </div>
-          <div class="col-lg-1">
-            <p>${{item.price}}</p>
-          </div>
-          <div class="col-lg-1">
-            <button class="delete-btn" onclick="deleteProduct()">
-              <i class="bi bi-trash3-fill"></i>
-            </button>
-          </div>
-        </div> -->
 
         <table id="tableMain">
           <th></th>
@@ -137,7 +41,6 @@
 
             <tr>
               <td><img src={{item.image}} alt="" /></td>
-              <!-- <br> -->
               <td id="product">{{item.product}}</td>
               <td id="duration">{{item.duration}}</td>
               <td id="category">{{item.category}}</td>
@@ -152,7 +55,7 @@
 
           </tbody>
         </table>
-        <div class="row" style="width: 100%; margin-bottom: 30px">
+        <!-- <div class="row" style="width: 100%; margin-bottom: 30px">
           <div
             class="col-lg-6"
             style="
@@ -169,26 +72,26 @@
           >
             <h5>${{total}}</h5>
           </div>
-        </div>
-        <div class="row" style="width: 100%; margin-bottom: 30px">
-          <div class="col-lg-5"></div>
+        </div> -->
+        <!-- <div class="row" style="width: 100%; margin-bottom: 30px">
+          <div class="col-lg-4"></div>
           <div class="col-lg-6">
+            <button class="continue-btn" onclick="home()">Continue to buy</button>
+            <button class="proceed-checkout" onclick="checkout()">Proceed to checkout</button>
+          </div>
+        </div> -->
+        <div class="amount">
+          <div class="total-amount">
+            <h5>Total</h5>
+            <strong><h5>${{total}}</h5></strong>
+          </div>
+          <div class="cta-btn">
             <button class="continue-btn" onclick="home()">Continue to buy</button>
             <button class="proceed-checkout" onclick="checkout()">Proceed to checkout</button>
           </div>
         </div>
       </div>
     </section>
-
-    <!-- <section class="container-fluid amount">
-      <div class="container">
-        <div class="total">
-          <h4>Subtotal</h4>
-          <p>$25,000</p>
-        </div>
-      </div>
-    </section> -->
-
     
     <script>
       $(document).ready(function() {

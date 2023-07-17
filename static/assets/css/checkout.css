@@ -10,7 +10,17 @@
     /* background-color: aquamarine; */
     /* padding: 30px; */
     margin-bottom: 50px;
+    /* margin-top: 20px; */
 
+}
+
+.billing h2 {
+    width: 100%;
+    background-color: #1292ee;
+    color: #fff;
+    padding: 10px;
+    font-size: 22px;
+    text-align: center;
 }
 
 .billing form {
@@ -35,7 +45,7 @@
 input {
     padding: 10px 20px;
     border-radius: 6px;
-    border: 1px solid;
+    border: 1px solid #C5CED6;
 }
 
 label {
@@ -71,6 +81,8 @@ button {
     display: flex;
     width: 100%;
     justify-content: space-between;
+    /* padding: 10px 20px; */
+    padding-right: 20px;
 }
 
 .btn {
@@ -78,4 +90,28 @@ button {
     display: flex;
     width: 100%;
     justify-content: center;
+}
+
+.btn button {
+    width: 100%;
+}
+
+button {
+    background-color: #1292ee;
+    padding: 10px 40px;
+}
+
+.details-bx {
+    /* padding: 10pxs; */
+}
+
+.billing {
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.details {
+    /* border: 1px solid; */
+    padding: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }

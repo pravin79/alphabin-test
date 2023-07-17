@@ -56,26 +56,22 @@
   .cta-buttons button {
     width: 48%;
     padding: 15px;
-    border-radius: 50px;
+    border-radius: 6px;
     transition: 0.2s linear;
+    border: 1px solid var(--first-color);
   }
   
   .btn1 {
-    background-color: #171332;
+    padding: 20px 30px;
+    border-radius: 6px;
     color: #fff;
-    border: 1px solid;
+    background-color: var(--first-color);
+    /* margin-right: 30px; */
   }
-  
-  .cta-buttons button:hover {
-    /* background-color: transparent; */
-    /* color: #4ae3b5; */
-    transform: scale(1.05);
-  }
-  
+
   .btn2 {
     background-color: transparent;
-    border: 1px solid #4ae3b5;
-    color: #4ae3b5;
+    color: var(--first-color);
   }
   
   .error-message {

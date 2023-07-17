@@ -185,6 +185,7 @@ header .header__container .header__nav-links ul li {
 
 header .header__container .header__nav-links ul li a {
   color: var(--second-color);
+  font-size: 16px;
 }
 
 header .header__container .header__account-links a {
@@ -290,10 +291,6 @@ header .header__container .header__account-links {
   border: 1px solid #1111111d;
   /* background-color: #2a5d671b; */
   margin-bottom: 5px;
-}
-
-.dropdown-content a:hover {
-    
 }
 
 .dropdown:hover .dropdown-content {
@@ -467,15 +464,21 @@ header .header__container .header__account-links {
   FOOTER
 */
 footer {
-  padding: 100px 0 20px;
+  padding: 60px 0 20px;
   background-color: #171332;
-  border-top-left-radius: 200px;
-  border-top-right-radius: 200px;
+  /* border-top-left-radius: 200px; */
+  /* border-top-right-radius: 200px; */
   color: #fff;
+  border-top: 10px solid #1292ee ;
 }
 
 footer a {
   text-decoration: none;
+}
+
+.footer__logo {
+  width: 54px;
+  margin-bottom: 15px;
 }
 
 footer .all-serv a {
@@ -489,12 +492,11 @@ footer .user-link a {
 footer .container .links {
   position: relative;
   display: flex;
-  /* flex-direction: column; */
 }
 
 footer .container .links a {
   margin: 8px 0;
-  margin-right: 10px;
+  margin-right: 20px;
 }
 
 footer .container .links i {

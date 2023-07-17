@@ -83,25 +83,54 @@ button {
 }
 
 .continue-btn {
-    padding: 10px 20px;
+    padding: 15px;
+    border-radius: 6px;
+    transition: 0.2s linear;
+    border: 1px solid #1292ee;
+    color: #1292ee;
     background-color: transparent;
-    border: 1px solid #4ae3b5;
-    color: #4ae3b5;
-    border-radius: 50px;
-    margin-right: 10px;
-    transition: .2s linear;
+    margin-right: 20px;
 }
 
 .proceed-checkout {
-    padding: 10px 20px;
-    background-color: #171332;
-    border-radius: 50px;
+    padding: 15px;
+    border-radius: 6px;
+    transition: 0.2s linear;
+    border: 1px solid #1292ee;
     color: #fff;
-    transition: .2s linear;
+    background-color: #1292ee;
 }
 
 .continue-btn:hover, .proceed-checkout:hover {
     /* background-color: transparent; */
     /* color: #4ae3b5; */
-    transform: scale(1.05);
+    /* transform: scale(1.05); */
+}
+
+.amount {
+    width: 100%;
+    text-align: center;
+}
+
+.amount {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 50px;
+}
+
+.total-amount {
+    border: 1px solid grey;
+    padding: 10px 20px;
+    width: 350px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cta-btn {
+    margin-top: 30px;
+    display: flex;
 }

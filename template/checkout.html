@@ -11,48 +11,49 @@
             <div class="billing">
               <h2>Billing Information</h2>
               <hr />
-              <form action="orderConfirmation" class="form">
+              <form action="orderConfirmation" class="form" id="checkout-form">
                 <div class="input-field col-lg-12">
                   <label for="full-name">Full Name</label>
                   <input name="full-name" type="text" />
+                  <span class="error-message" id="full-name-error"></span>
                 </div>
                 <div class="input-field col-lg-12">
                   <label for="email">Email</label>
                   <input name="email" type="email" />
+                  <span class="error-message" id="full-name-error"></span>
                 </div>
                 <div class="input-field2 col-lg-12 row">
                   <div class="input-field col-lg-6">
                     <label for="city">City</label>
                     <input name="city" type="text" />
+                    <span class="error-message" id="full-name-error"></span>
                   </div>
                   <div class="input-field col-lg-6">
                     <label for="state">State</label>
                     <input name="state" type="text" />
+                    <span class="error-message" id="full-name-error"></span>
                   </div>
                 </div>
                 <div class="input-field2 col-lg-12 row">
                   <div class="input-field col-lg-6">
                     <label for="country">Country</label>
                     <input name="country" type="text" />
+                    <span class="error-message" id="full-name-error"></span>
                   </div>
                   <div class="input-field col-lg-6">
                     <label for="zipcode">Zip Code</label>
                     <input name="zipcode" type="text" />
+                    <span class="error-message" id="full-name-error"></span>
                   </div>
                 </div>
-              <!-- </form> -->
             </div>
             <div class="billing">
               <h2>Payment Information</h2>
               <hr />
-              <!-- <form action="orderConfirmation" class="form"> -->
-                <!-- <div class="input-field col-lg-12">
-                                <label for="full-name">Full Name</label>
-                                <input name="full-name" type="text">
-                            </div> -->
                 <div class="input-field col-lg-12">
                   <label for="cardnumber">Card Number</label>
                   <input name="cardnumber" type="number" />
+                  <span class="error-message" id="full-name-error"></span>
                 </div>
                 <div
                   class="input-field2 col-lg-12 row"
@@ -62,30 +63,26 @@
                   <div class="input-field col-lg-4">
                     <label for="month">Month</label>
                     <input name="month" type="number" />
+                    <span class="error-message" id="full-name-error"></span>
                   </div>
                   <div class="input-field col-lg-4">
                     <label for="year">Year</label>
                     <input name="year" type="number" />
+                    <span class="error-message" id="full-name-error"></span>
                   </div>
                   <div class="input-field col-lg-4">
                     <label for="cvv">CVV</label>
                     <input name="cvv" type="number" />
+                    <span class="error-message" id="full-name-error"></span>
                   </div>
                 </div>
-                <!-- <div class="input-field2 col-lg-12 row">
-                                <div class="input-field col-lg-6">
-                                    <label for="country">Country</label>
-                                    <input name="country" type="text" >
-                                </div>
-                                <div class="input-field col-lg-6">
-                                    <label for="zipcode">Zip Code</label>
-                                    <input name="zipcode" type="text">
-                                </div>
-                            </div> -->
-                <h5 style="margin-bottom: 30px">Total: ${{total}}</h5>
+                <div class="total">
+                  <h5 style="margin-bottom: 30px">Total Amount</h5>
+                  <h5>${{total}}</h5>
+                </div>
                 <p style="margin-bottom: 30px">
                   <input style="margin-right: 10px" type="checkbox" />I aggre
-                  with the <a href="#">Privacy Policy</a>by Proceesing thie
+                  with the <a href="#">Privacy Policy</a> by Proceesing this
                   Payment.
                 </p>
                 <button>Pay Now</button>
@@ -93,6 +90,7 @@
             </div>
           </div>
           <div class="col-lg-4 details-bx">
+           <div class="details">
             {% for item in result %}
             <div class="items">
               <img style="height: 100px;width: 100px;" src={{item.image}} alt="" />
@@ -111,8 +109,9 @@
               <h5>${{total}}</h5>
             </div>
             <div class="btn">
-              <button onclick="mycart()">View Cart</button>
-            </div>
+              <button type="submit" onclick="mycart()">View Cart</button>
+            </div>  
+           </div>
           </div>
         </div>
       </div>
@@ -146,6 +145,85 @@
           quantityInput.value = ++currentValue;
         }
       });
+
+      // Validations
+
+      const form = document.querySelector("#checkout-form");
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const fullNameInput = form.elements["full-name"];
+    const emailInput = form.elements.email;
+    const cityInput = form.elements.city;
+    const stateInput = form.elements.state;
+    const countryInput = form.elements.country;
+    const zipcodeInput = form.elements.zipcode;
+
+    const fullNameValue = fullNameInput.value.trim();
+    const emailValue = emailInput.value.trim();
+    const cityValue = cityInput.value.trim();
+    const stateValue = stateInput.value.trim();
+    const countryValue = countryInput.value.trim();
+    const zipcodeValue = zipcodeInput.value.trim();
+
+    if (fullNameValue === "") {
+      showError(fullNameInput, "*Please enter your full name.");
+      return;
+    }
+
+    if (emailValue === "") {
+      showError(emailInput, "*Please enter your email.");
+      return;
+    }
+
+    if (!isValidEmail(emailValue)) {
+      showError(emailInput, "*Please enter a valid email.");
+      return;
+    }
+
+    if (cityValue === "") {
+      showError(cityInput, "*Please enter your city.");
+      return;
+    }
+
+    if (stateValue === "") {
+      showError(stateInput, "*Please enter your state.");
+      return;
+    }
+
+    if (countryValue === "") {
+      showError(countryInput, "*Please enter your country.");
+      return;
+    }
+
+    if (zipcodeValue === "") {
+      showError(zipcodeInput, "*Please enter your zipcode.");
+      return;
+    }
+
+    form.submit();
+  });
+
+  function showError(input, message) {
+    const errorSpan = document.querySelector(`#${input.name}-error`);
+    input.classList.add("error");
+    errorSpan.textContent = message;
+    errorSpan.style.display = "block";
+
+    input.addEventListener("input", () => {
+      if (input.classList.contains("error")) {
+        input.classList.remove("error");
+      }
+      errorSpan.style.display = "none";
+    });
+  }
+
+  function isValidEmail(email) {
+    // Simple email validation regex
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
     </script>
 
     {% endblock %}
