@@ -1,112 +1,164 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "base.html" %} {% block content %}
 
-    <section class="banner">
-      <div class="container">
-        <div class="banner-content">
-          <h1>Empowering Your Business with Our Proven QA Strategies</h1>
-          <p>
-            Delivering Quality Excellence with Our Comprehensive QA Solutions
-          </p>
-          <a class="cta-button" href="#">Try for free</a>
-          <a class="cta-button2" href="#">Get a Demo</a>
-        </div>
-        <div class="banner-image">
-          <img src="../static/assets/imgs/product-imgs/banner.png" alt="Banner Image" />
-        </div>
+<section id="banner" class="banner">
+  <div class="container">
+    <div class="banner-content">
+      <h1>Empowering Your Business with Our Proven QA Strategies</h1>
+      <p>Delivering Quality Excellence with Our Comprehensive QA Solutions</p>
+      <a id="tryForFreeButton" class="cta-button" href="#">Try for free</a>
+      <a id="getDemoButton" class="cta-button2" href="#">Get a Demo</a>
+    </div>
+    <div class="banner-image">
+      <img
+        src="../static/assets/imgs/product-imgs/banner.png"
+        alt="Banner Image"
+      />
+    </div>
+  </div>
+</section>
+
+<section id="tools" class="container-fluid tools">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-2 col-md-4 col-sm-6 img-bx">
+        <img
+          id="nodejsImage"
+          src="static/assets/imgs/tools-img/nodejs.png"
+          alt="Image 1"
+        />
       </div>
-    </section>
-
-    <section class="services">
-      <div class="container services__container">
-        <h2>Our Services</h2>
-        <div class="services__list">
-          <a href="product1" class="services__item">
-            <div class="item_img">
-              <img src="../static/assets/imgs/product-imgs/product-1.png" alt="">
-            </div>
-            <h3>AI/ML Model Testing</h3>
-            <p>
-              Ensure the accuracy, reliability, and performance of your AI/ML models with comprehensive testing solutions.
-            </p>
-            <!-- <div class="services__item-arrow">
-              <span>&#8594;</span>
-            </div> -->
-          </a>
-          <a href="product2" class="services__item">
-            <div class="item_img">
-              <img src="../static/assets/imgs/product-imgs/product-2.png" alt="">
-            </div>
-            <h3>UI Automation Testing (Web)</h3>
-            <p>
-              Save time and improve accuracy with automated testing of your web application's user interface.
-            </p>
-            <!-- <div class="services__item-arrow">
-              <span>&#8594;</span>
-            </div> -->
-          </a>
-          <a href="product3" class="services__item">
-            <div class="item_img">
-              <img src="../static/assets/imgs/product-imgs/product-3.png" alt="">
-            </div>
-            <h3>UI Automation Testing (Mobile)</h3>
-            <p>
-              Ensure a seamless user experience across multiple devices and platforms with automated mobile UI testing.
-            </p>
-            <!-- <div class="services__item-arrow">
-              <span>&#8594;</span>
-            </div> -->
-          </a>
-          <a href="product4" class="services__item">
-            <div class="item_img">
-              <img src="../static/assets/imgs/product-imgs/product-4.jpg" alt="">
-            </div>
-            <h3>API Automation Testing</h3>
-            <p>
-              Streamline your development process and improve the quality of your APIs with automated testing.
-            </p>
-            <!-- <div class="services__item-arrow">
-              <span>&#8594;</span>
-            </div> -->
-          </a>
-          <a href="product5" class="services__item">
-            <div class="item_img">
-              <img src="../static/assets/imgs/product-imgs/product-5.png" alt="">
-            </div>
-            <h3>Smart UI Automation Testing (Web)</h3>
-            <p>
-              Utilize AI-powered testing to optimize your web application's user interface and user experience.
-            </p>
-            <!-- <div class="services__item-arrow">
-              <span>&#8594;</span>
-            </div> -->
-          </a>
-          <a href="product6" class="services__item">
-            <div class="item_img">
-              <img src="../static/assets/imgs/product-imgs/product-6.png" alt="">
-            </div>
-            <h3>QA Performance & Capacity Planning</h3>
-            <p>
-              Ensure your application can handle high traffic loads and provide optimal performance for your users.
-            </p>
-            <!-- <div class="services__item-arrow">
-              <span>&#8594;</span>
-            </div> -->
-          </a>
-          <a href="product7" class="services__item">
-            <div class="item_img">
-              <img src="../static/assets/imgs/product-imgs/product-7.png" alt="">
-            </div>
-            <h3>Manual Functional Testing</h3>
-            <p>
-              Ensure that your software meets the functional requirements of your users with thorough manual testing.
-            </p>
-            <!-- <div class="services__item-arrow">
-              <span>&#8594;</span>
-            </div> -->
-          </a>
-        </div>
+      <div class="col-lg-2 col-md-4 col-sm-6 img-bx">
+        <img
+          id="seleniumImage"
+          src="static/assets/imgs/tools-img/selenium.png"
+          alt="Image 2"
+        />
       </div>
-    </section>
+      <div class="col-lg-2 col-md-4 col-sm-6 img-bx">
+        <img
+          id="cypressImage"
+          src="static/assets/imgs/tools-img/cypress.png"
+          alt="Image 3"
+        />
+      </div>
+      <div class="col-lg-2 col-md-4 col-sm-6 img-bx">
+        <img
+          id="appiumImage"
+          src="static/assets/imgs/tools-img/appium.png"
+          alt="Image 4"
+        />
+      </div>
+      <div class="col-lg-2 col-md-4 col-sm-6 img-bx">
+        <img
+          id="githubImage"
+          src="static/assets/imgs/tools-img/github.png"
+          alt="Image 5"
+        />
+      </div>
+    </div>
+  </div>
+</section>
 
-    {% endblock %}
+<section id="weProvide" class="container-fluid we-provide">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <h2><strong>We Provide</strong></h2>
+        <h3>SOPHISTICATED SERVICES</h3>
+      </div>
+      <div class="col-lg-6">
+        <p>
+          Our expert team will work closely with you to develop a tailored test
+          automation strategy that aligns with your specific testing needs and
+          goals. We analyze your existing QA processes, identify automation
+          opportunities, and create a roadmap for implementing test automation
+          effectively.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="container-fluid services">
+  <div class="container services__container">
+    <h2>Our Services</h2>
+    <div class="services__list">
+      <a href="product1" id="aiModelTesting" class="services__item">
+        <div class="item_img">
+          <img src="../static/assets/imgs/product-imgs/product-1.png" alt="" />
+        </div>
+        <h3>AI/ML Model Testing</h3>
+        <p>
+          Ensure the accuracy, reliability, and performance of your AI/ML models
+          with comprehensive testing solutions.
+        </p>
+      </a>
+      <a href="product2" id="uiAutomationWeb" class="services__item">
+        <div class="item_img">
+          <img src="../static/assets/imgs/product-imgs/product-2.png" alt="" />
+        </div>
+        <h3>UI Automation Testing (Web)</h3>
+        <p>
+          Save time and improve accuracy with automated testing of your web
+          application's user interface.
+        </p>
+      </a>
+      <a href="product3" id="uiAutomationMobile" class="services__item">
+        <div class="item_img">
+          <img src="../static/assets/imgs/product-imgs/product-3.png" alt="" />
+        </div>
+        <h3>UI Automation Testing (Mobile)</h3>
+        <p>
+          Ensure a seamless user experience across multiple devices and
+          platforms with automated mobile UI testing.
+        </p>
+      </a>
+      <a href="product4" id="apiAutomation" class="services__item">
+        <div class="item_img">
+          <img src="../static/assets/imgs/product-imgs/product-4.jpg" alt="" />
+        </div>
+        <h3>API Automation Testing</h3>
+        <p>
+          Streamline your development process and improve the quality of your
+          APIs with automated testing.
+        </p>
+      </a>
+      <a href="product5" id="smartUIAutomationWeb" class="services__item">
+        <div class="item_img">
+          <img src="../static/assets/imgs/product-imgs/product-5.png" alt="" />
+        </div>
+        <h3>Smart UI Automation Testing (Web)</h3>
+        <p>
+          Utilize AI-powered testing to optimize your web application's user
+          interface and user experience.
+        </p>
+      </a>
+      <a
+        href="product6"
+        id="performanceCapacityPlanning"
+        class="services__item"
+      >
+        <div class="item_img">
+          <img src="../static/assets/imgs/product-imgs/product-6.png" alt="" />
+        </div>
+        <h3>QA Performance & Capacity Planning</h3>
+        <p>
+          Ensure your application can handle high traffic loads and provide
+          optimal performance for your users.
+        </p>
+      </a>
+      <a href="product7" id="manualFunctionalTesting" class="services__item">
+        <div class="item_img">
+          <img src="../static/assets/imgs/product-imgs/product-7.png" alt="" />
+        </div>
+        <h3>Manual Functional Testing</h3>
+        <p>
+          Ensure that your software meets the functional requirements of your
+          users with thorough manual testing.
+        </p>
+      </a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

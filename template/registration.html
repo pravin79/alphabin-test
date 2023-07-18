@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="static/assets/css/registration.css" />
   </head>
   <body>
-    <section class="registration-form">
+    <section id="registrationFormSection" class="registration-form">
       <div class="child-div"></div>
       <div class="container registration__container">
         <a href="home"
@@ -37,26 +37,26 @@
           <div class="input-block">
             <div class="input_field">
               <label for="firstname">First Name</label>
-              <input name="username" type="text" />
+              <input id="firstNameInput" name="username" type="text" />
               <span class="error-message" id="firstname-error"></span>
             </div>
             <div class="input_field">
-              <label for="firstname">First Name</label>
-              <input name="username" type="text" />
-              <span class="error-message" id="firstname-error"></span>
+              <label for="lastname">Last Name</label>
+              <input id="lastNameInput" name="username" type="text" />
+              <span class="error-message" id="lastname-error"></span>
             </div>
           </div>
           <div class="input_field">
             <label for="email">Email</label>
-            <input name="email" type="email" />
+            <input id="emailInput" name="email" type="email" />
             <span class="error-message" id="email-error"></span>
           </div>
           <div class="input_field">
             <label for="password">Your Password</label>
-            <input name="password1" type="password" />
+            <input id="passwordInput" name="password1" type="password" />
             <span class="error-message" id="password-error"></span>
           </div>
-          <button class="registration-btn">Create Account</button>
+          <button id="createAccountButton" class="registration-btn">Create Account</button>
           <div class="account-link">
             <span>Already have an account? <a href="login">Log in</a></span>
           </div>

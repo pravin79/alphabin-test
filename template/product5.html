@@ -3,7 +3,7 @@
   <link rel="stylesheet" href="static/assets/css/product-details.css" />
 </head>
 
-<section class="container-fuild product-details">
+<section id="productDetailsSection" class="container-fuild product-details">
   <div class="container">
     <form action="addToCart" method="POST">
       {% csrf_token %}
@@ -12,7 +12,7 @@
           <img src="../static/assets/imgs/product-imgs/product-5.png" alt="" />
         </div>
         <div class="col-lg-6 cont-bx">
-          <h2>Smart UI Automation Testing (Web)</h2>
+          <h2 id="productName">Smart UI Automation Testing (Web)</h2>
           <p>
             Our smart UI automation testing services use the latest technologies,
             such as AI and machine learning, to automate your app's UI testing,
@@ -58,8 +58,8 @@
           </div>
           <div class="ctas">
             <div class="cta-buttons col-lg-12 row">
-              <button class="col-lg-6 btn1">Buy Now</button>
-              <button class="col-lg-6 btn2">Add to Cart</button>
+              <button id="buyNowButton" class="col-lg-6 btn1">Buy Now</button>
+              <button id="addToCartButton" class="col-lg-6 btn2">Add to Cart</button>
             </div>
           </div>
         </div>

@@ -1,157 +1,237 @@
-
-{% extends "home.html" %}
-{% block content %}
+{% extends "home.html" %} {% block content %}
 <head>
-<link rel="stylesheet" href="/static/assets/css/account.css" />
+  <link rel="stylesheet" href="/static/assets/css/account.css" />
 </head>
 
-    <!-- <section class="container-fluid account">
-        <div class="container">
-            <div class="account__box">
-                <div class="row">
-                    <div class="col-lg-5 profile_img-box"><img src="static/assets/imgs/profile_img.png" alt="profile_image"></div>
-                    <div class="col-lg-6">
-                        <h2>My Account</h2>
-                        <div class="account_information">
-                            <div class="firstname">
-                              <label for="">Username</label>
-                              <h5>{{user.username}}</h5>
-                            </div>
-                            <div class="email">
-                              <label for="">Email</label>
-                              <h5>{{user.email}}</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<section id="profileSection" class="container-fluid">
+  <div class="container profile">
+    <div class="sidebar">
+      <h2>Bhavin Gamit</h2>
+      <ul>
+        <li class="active" id="profileTabLink" onclick="showProfile()">
+          <i class="bi bi-person-fill"></i>Profile
+        </li>
+        <li id="ordersTabLink" onclick="showOrders()">
+          <i class="bi bi-cart-check-fill"></i>My Orders
+        </li>
+      </ul>
+    </div>
+    <div class="content">
+      <div id="profileTab">
+        <h3>Profile</h3>
+        <hr />
+        <form id="profileForm">
+          <div class="input-cont">
+            <label for="fname">First Name</label>
+            <input
+              value="Bhavin"
+              type="text"
+              id="fname"
+              name="fname"
+              required
+            /><br />
+          </div>
+          <div class="input-cont">
+            <label for="lname">Last Name</label>
+            <input
+              value="Gamit"
+              type="text"
+              id="lname"
+              name="lname"
+              required
+            /><br />
+          </div>
+          <div class="input-cont">
+            <label for="email">Email</label>
+            <input
+              value="test@test.com"
+              type="email"
+              id="email"
+              name="email"
+              required
+            /><br />
+          </div>
+          <div class="input-cont">
+            <label for="photo">Photo</label>
+            <input type="file" id="photo" name="photo" /><br />
+          </div>
+          <div class="input-cont">
+            <label for="password">Password:</label>
+            <a href="#" onclick="showChangePassword()">Change Your Password</a>
+          </div>
+          <div id="changePassword" style="display: none">
+            <div class="input-cont">
+              <label for="newPassword">New Password:</label>
+              <input
+                type="password"
+                id="newPassword"
+                name="newPassword"
+                required
+              /><br />
             </div>
-        </div>
-    </section> -->
-
-    <section class="container-fluid">
-        <div class="container profile">
-            <div class="sidebar">
-                <h2>Bhavin Gamit</h2>
-              <ul>
-                <li class="active" id="profileTabLink" onclick="showProfile()"><i class="bi bi-person-fill"></i>Profile</li>
-                <li id="ordersTabLink" onclick="showOrders()"><i class="bi bi-cart-check-fill"></i>My Orders</li>
-              </ul>
+            <div class="input-cont">
+              <label for="confirmPassword">Confirm Password:</label>
+              <input
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+                required
+              /><br />
             </div>
-            <div class="content">
+            <button class="save-btn">Save Password</button>
+            <button class="cancel-btn" onclick="cancelChangePassword()">
+              Cancel
+            </button>
+          </div>
+          <button class="save-btn">Save Changes</button>
+        </form>
+      </div>
 
-                <div id="profileTab">
-                    <h3>Profile</h3>
-                    <hr>
-                    <form>
-                      <div class="input-cont">
-                        <label for="fname">First Name</label>
-                        <input value="Bhavin" type="text" id="fname" name="fname" required><br>
-                      </div>
-                      <div class="input-cont">
-                        <label for="lname">Last Name</label>
-                        <input value="Gamit" type="text" id="lname" name="lname" required><br>
-                      </div>
-                      <div class="input-cont">
-                        <label for="email">Email</label>
-                        <input value="test@test.com" type="email" id="email" name="email" required><br>
-                      </div>
-                      <div class="input-cont">
-                        <label for="photo">Photo</label>
-                        <input type="file" id="photo" name="photo"><br>
-                      </div>
-                      <div class="input-cont">
-                        <label for="password">Password:</label>
-                        <a href="#" onclick="showChangePassword()">Change Your Password</a>
-                      </div>
-                      <div id="changePassword" style="display: none;">
-                        <div class="input-cont">
-                          <label for="newPassword">New Password:</label>
-                          <input type="password" id="newPassword" name="newPassword" required><br>
-                        </div>
-                        <div class="input-cont">
-                          <label for="confirmPassword">Confirm Password:</label>
-                          <input type="password" id="confirmPassword" name="confirmPassword" required><br>
-                        </div>
-                        <button class="save-btn">Save Password</button>
-                        <button class="cancel-btn" onclick="cancelChangePassword()">Cancel</button>
-                      </div>
-                      <button class="save-btn">Save Changes</button>
-                    </form>
-                  </div>
-                  
-                  
-              <div id="ordersTab" style="display: none;">
-                <h3>My Orders</h3>
-                <hr>
-                <div class="product-container">
-                    <div class="product">
-                      <div class="product-image">
-                        <img src="../static/assets/imgs/product-imgs/product-1.png" alt="">
-                      </div>
-                      <div class="produt-details">
-                        <h5>AI / ML Model Test</h5>
-                        <p>6 Months</p>
-                        <p><strong>$10</strong></p>
-                      </div>
-                    </div>
-                    <div class="product">
-                      <div class="product-image">
-                        <img src="../static/assets/imgs/product-imgs/product-1.png" alt="">
-                      </div>
-                      <div class="produt-details">
-                        <h5>AI / ML Model Test</h5>
-                        <p>6 Months</p>
-                        <p><strong>$10</strong></p>
-                      </div>
-                    </div>
-                    <div class="product">
-                      <div class="product-image">
-                        <img src="../static/assets/imgs/product-imgs/product-1.png" alt="">
-                      </div>
-                      <div class="produt-details">
-                        <h5>AI / ML Model Test</h5>
-                        <p>6 Months</p>
-                        <p><strong>$10</strong></p>
-                      </div>
-                    </div>
-                    <div class="product">
-                      <div class="product-image">
-                        <img src="../static/assets/imgs/product-imgs/product-1.png" alt="">
-                      </div>
-                      <div class="produt-details">
-                        <h5>AI / ML Model Test</h5>
-                        <p>6 Months</p>
-                        <p><strong>$10</strong></p>
-                      </div>
-                    </div>
-                  </div>
-              </div>
+      <div id="ordersTab" style="display: none">
+        <h3>My Orders</h3>
+        <hr />
+        <div class="product-container">
+          <div class="product">
+            <div class="product-image">
+              <img
+                src="../static/assets/imgs/product-imgs/product-1.png"
+                alt=""
+              />
+            </div>
+            <div class="produt-details">
+              <h5>AI / ML Model Test</h5>
+              <p>6 Months</p>
+              <p><strong>$10</strong></p>
             </div>
           </div>
-    </section>
+          <div class="product">
+            <div class="product-image">
+              <img
+                src="../static/assets/imgs/product-imgs/product-1.png"
+                alt=""
+              />
+            </div>
+            <div class="produt-details">
+              <h5>AI / ML Model Test</h5>
+              <p>6 Months</p>
+              <p><strong>$10</strong></p>
+            </div>
+          </div>
+          <div class="product">
+            <div class="product-image">
+              <img
+                src="../static/assets/imgs/product-imgs/product-1.png"
+                alt=""
+              />
+            </div>
+            <div class="produt-details">
+              <h5>AI / ML Model Test</h5>
+              <p>6 Months</p>
+              <p><strong>$10</strong></p>
+            </div>
+          </div>
+          <div class="product">
+            <div class="product-image">
+              <img
+                src="../static/assets/imgs/product-imgs/product-1.png"
+                alt=""
+              />
+            </div>
+            <div class="produt-details">
+              <h5>AI / ML Model Test</h5>
+              <p>6 Months</p>
+              <p><strong>$10</strong></p>
+            </div>
+          </div>
+          <div class="product">
+            <div class="product-image">
+              <img
+                src="../static/assets/imgs/product-imgs/product-1.png"
+                alt=""
+              />
+            </div>
+            <div class="produt-details">
+              <h5>AI / ML Model Test</h5>
+              <p>6 Months</p>
+              <p><strong>$10</strong></p>
+            </div>
+          </div>
+        </div>
+        <div class="pagination-container">
+          <a href="#" class="pagination-button previous"
+            ><i class="bi bi-arrow-left-square-fill"></i
+          ></a>
+          <span class="pagination-page">1</span>
+          <a href="#" class="pagination-button next"
+            ><i class="bi bi-arrow-right-square-fill"></i
+          ></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <script>
-        function showProfile() {
-            document.getElementById("profileTab").style.display = "block";
-            document.getElementById("ordersTab").style.display = "none";
-            document.getElementById("profileTabLink").classList.add("active");
-            document.getElementById("ordersTabLink").classList.remove("active");
-        }
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function () {
+    var productsPerPage = 4; // Number of products to display per page
+    var currentPage = 1; // Current page
 
-        function showOrders() {
-            document.getElementById("profileTab").style.display = "none";
-            document.getElementById("ordersTab").style.display = "block";
-            document.getElementById("profileTabLink").classList.remove("active");
-            document.getElementById("ordersTabLink").classList.add("active");
-        }
+    var products = $(".product-container .product");
+    var numPages = Math.ceil(products.length / productsPerPage);
 
-        function showChangePassword() {
-            document.getElementById("changePassword").style.display = "block";
-        }
+    // Show the products for the current page
+    function showPage(page) {
+      var startIndex = (page - 1) * productsPerPage;
+      var endIndex = startIndex + productsPerPage;
 
-        function cancelChangePassword() {
-            document.getElementById("changePassword").style.display = "none";
-        }
-      </script>
-      
+      products.hide().slice(startIndex, endIndex).show();
+      $(".pagination-page").text(page);
+    }
+
+    // Show the initial page
+    showPage(currentPage);
+
+    // Handle previous page button click
+    $(".pagination-button.previous").click(function (e) {
+      e.preventDefault();
+      if (currentPage > 1) {
+        currentPage--;
+        showPage(currentPage);
+      }
+    });
+
+    // Handle next page button click
+    $(".pagination-button.next").click(function (e) {
+      e.preventDefault();
+      if (currentPage < numPages) {
+        currentPage++;
+        showPage(currentPage);
+      }
+    });
+  });
+
+  function showProfile() {
+    document.getElementById("profileTab").style.display = "block";
+    document.getElementById("ordersTab").style.display = "none";
+    document.getElementById("profileTabLink").classList.add("active");
+    document.getElementById("ordersTabLink").classList.remove("active");
+  }
+
+  function showOrders() {
+    document.getElementById("profileTab").style.display = "none";
+    document.getElementById("ordersTab").style.display = "block";
+    document.getElementById("profileTabLink").classList.remove("active");
+    document.getElementById("ordersTabLink").classList.add("active");
+  }
+
+  function showChangePassword() {
+    document.getElementById("changePassword").style.display = "block";
+  }
+
+  function cancelChangePassword() {
+    document.getElementById("changePassword").style.display = "none";
+  }
+</script>
+
 {% endblock %}

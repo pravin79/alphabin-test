@@ -4,119 +4,118 @@
 <head>
 <link rel="stylesheet" href="static/assets/css/checkout.css" />
 </head>
-    <section class="container-fluid checkout">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8">
-            <div class="billing">
-              <h2>Billing Information</h2>
-              <hr />
-              <form action="orderConfirmation" class="form" id="checkout-form">
-                <div class="input-field col-lg-12">
-                  <label for="full-name">Full Name</label>
-                  <input name="full-name" type="text" />
-                  <span class="error-message" id="full-name-error"></span>
-                </div>
-                <div class="input-field col-lg-12">
-                  <label for="email">Email</label>
-                  <input name="email" type="email" />
-                  <span class="error-message" id="full-name-error"></span>
-                </div>
-                <div class="input-field2 col-lg-12 row">
-                  <div class="input-field col-lg-6">
-                    <label for="city">City</label>
-                    <input name="city" type="text" />
-                    <span class="error-message" id="full-name-error"></span>
-                  </div>
-                  <div class="input-field col-lg-6">
-                    <label for="state">State</label>
-                    <input name="state" type="text" />
-                    <span class="error-message" id="full-name-error"></span>
-                  </div>
-                </div>
-                <div class="input-field2 col-lg-12 row">
-                  <div class="input-field col-lg-6">
-                    <label for="country">Country</label>
-                    <input name="country" type="text" />
-                    <span class="error-message" id="full-name-error"></span>
-                  </div>
-                  <div class="input-field col-lg-6">
-                    <label for="zipcode">Zip Code</label>
-                    <input name="zipcode" type="text" />
-                    <span class="error-message" id="full-name-error"></span>
-                  </div>
-                </div>
+<section id="checkoutSection" class="container-fluid checkout">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="billing">
+          <h2>Billing Information</h2>
+          <hr />
+          <form action="orderConfirmation" class="form" id="checkout-form">
+            <div class="input-field col-lg-12">
+              <label for="full-name">Full Name</label>
+              <input name="full-name" type="text" />
+              <span class="error-message" id="full-name-error"></span>
             </div>
-            <div class="billing">
-              <h2>Payment Information</h2>
-              <hr />
-                <div class="input-field col-lg-12">
-                  <label for="cardnumber">Card Number</label>
-                  <input name="cardnumber" type="number" />
-                  <span class="error-message" id="full-name-error"></span>
-                </div>
-                <div
-                  class="input-field2 col-lg-12 row"
-                  style="margin-top: 20px"
-                >
-                  <h6>Expiry Date</h6>
-                  <div class="input-field col-lg-4">
-                    <label for="month">Month</label>
-                    <input name="month" type="number" />
-                    <span class="error-message" id="full-name-error"></span>
-                  </div>
-                  <div class="input-field col-lg-4">
-                    <label for="year">Year</label>
-                    <input name="year" type="number" />
-                    <span class="error-message" id="full-name-error"></span>
-                  </div>
-                  <div class="input-field col-lg-4">
-                    <label for="cvv">CVV</label>
-                    <input name="cvv" type="number" />
-                    <span class="error-message" id="full-name-error"></span>
-                  </div>
-                </div>
-                <div class="total">
-                  <h5 style="margin-bottom: 30px">Total Amount</h5>
-                  <h5>${{total}}</h5>
-                </div>
-                <p style="margin-bottom: 30px">
-                  <input style="margin-right: 10px" type="checkbox" />I aggre
-                  with the <a href="#">Privacy Policy</a> by Proceesing this
-                  Payment.
-                </p>
-                <button>Pay Now</button>
-              </form>
+            <div class="input-field col-lg-12">
+              <label for="email">Email</label>
+              <input name="email" type="email" />
+              <span class="error-message" id="email-error"></span>
             </div>
-          </div>
-          <div class="col-lg-4 details-bx">
-           <div class="details">
-            {% for item in result %}
-            <div class="items">
-              <img style="height: 100px;width: 100px;" src={{item.image}} alt="" />
-              <div class="details">
-                <p>{{item.product}}</p>
-                <p style="font-size: 12px">{{item.duration}}</p>
-                <p>{{item.category}}</p>
-                <p>{{item.qty}}</p>
-                <p style="margin-top: 10px">${{item.price}}</p>
+            <div class="input-field2 col-lg-12 row">
+              <div class="input-field col-lg-6">
+                <label for="city">City</label>
+                <input name="city" type="text" />
+                <span class="error-message" id="city-error"></span>
+              </div>
+              <div class="input-field col-lg-6">
+                <label for="state">State</label>
+                <input name="state" type="text" />
+                <span class="error-message" id="state-error"></span>
               </div>
             </div>
-            {% endfor %}
-            
+            <div class="input-field2 col-lg-12 row">
+              <div class="input-field col-lg-6">
+                <label for="country">Country</label>
+                <input name="country" type="text" />
+                <span class="error-message" id="country-error"></span>
+              </div>
+              <div class="input-field col-lg-6">
+                <label for="zipcode">Zip Code</label>
+                <input name="zipcode" type="text" />
+                <span class="error-message" id="zipcode-error"></span>
+              </div>
+            </div>
+        </div>
+        <div class="billing">
+          <h2>Payment Information</h2>
+          <hr />
+            <div class="input-field col-lg-12">
+              <label for="cardnumber">Card Number</label>
+              <input name="cardnumber" type="number" />
+              <span class="error-message" id="cardnumber-error"></span>
+            </div>
+            <div
+              class="input-field2 col-lg-12 row"
+              style="margin-top: 20px"
+            >
+              <h6>Expiry Date</h6>
+              <div class="input-field col-lg-4">
+                <label for="month">Month</label>
+                <input name="month" type="number" />
+                <span class="error-message" id="month-error"></span>
+              </div>
+              <div class="input-field col-lg-4">
+                <label for="year">Year</label>
+                <input name="year" type="number" />
+                <span class="error-message" id="year-error"></span>
+              </div>
+              <div class="input-field col-lg-4">
+                <label for="cvv">CVV</label>
+                <input name="cvv" type="number" />
+                <span class="error-message" id="cvv-error"></span>
+              </div>
+            </div>
             <div class="total">
-              <h5>Total</h5>
+              <h5 style="margin-bottom: 30px">Total Amount</h5>
               <h5>${{total}}</h5>
             </div>
-            <div class="btn">
-              <button type="submit" onclick="mycart()">View Cart</button>
-            </div>  
-           </div>
-          </div>
+            <p style="margin-bottom: 30px">
+              <input style="margin-right: 10px" type="checkbox" />I agree
+              with the <a href="#">Privacy Policy</a> by Processing this
+              Payment.
+            </p>
+            <button id="payNowButton">Pay Now</button>
+          </form>
         </div>
       </div>
-    </section>
-
+      <div class="col-lg-4 details-bx">
+       <div class="details-cont">
+        {% for item in result %}
+        <div class="items">
+          <img style="height: 100px;width: 100px;" src={{item.image}} alt="" />
+          <div class="details">
+            <p>{{item.product}}</p>
+            <p style="font-size: 12px">{{item.duration}}</p>
+            <p>{{item.category}}</p>
+            <p>{{item.qty}}</p>
+            <p style="margin-top: 10px">${{item.price}}</p>
+          </div>
+        </div>
+        {% endfor %}
+        
+        <div class="total">
+          <h5>Total</h5>
+          <h5>${{total}}</h5>
+        </div>
+        <div class="btn">
+          <button type="submit" onclick="mycart()">View Cart</button>
+        </div>  
+       </div>
+      </div>
+    </div>
+  </div>
+</section>
 
     <script>
       function mycart(){

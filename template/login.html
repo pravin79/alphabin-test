@@ -24,31 +24,29 @@
     <link rel="stylesheet" href="/static/assets/css/login.css" />
   </head>
   <body>
-    <section class="login-form">
+    <section id="loginFormSection" class="login-form">
       <div class="child-div"></div>
       <div class="container login__container">
-        <a href="home"
-          ><img class="logo" src="../static/assets/imgs/main-logo.png" alt=""
-        /></a>
+        <a href="home"><img id="loginLogo" class="logo" src="../static/assets/imgs/main-logo.png" alt="" /></a>
         <form action="loginUser" method="POST">
           {% csrf_token %}
           <h2>Log In</h2>
           <p>Get Started on your journey with us</p>
           <div class="input_field">
             <label for="username">Your Email</label>
-            <input name="username" type="text" />
+            <input id="usernameInput" name="username" type="text" />
             <span class="error-message" id="username-error"></span>
           </div>
           <div class="input_field">
             <label for="password">Your Password</label>
-            <input name="password" type="password" />
+            <input id="passwordInput" name="password" type="password" />
             <span class="small-text">At least 8 characters</span>
             <span class="error-message" id="password-error"></span>
           </div>
-          <button class="login-btn">Log In</button>
+          <button id="loginButton" class="login-btn">Log In</button>
           <div class="account-link">
-            <a href="registration">Create an Account</a>
-            <a href="#">Forgot Password?</a>
+            <a id="createAccountLink" href="registration">Create an Account</a>
+            <a id="forgotPasswordLink" href="#">Forgot Password?</a>
           </div>
         </form>
         {% if error %}
@@ -59,7 +57,7 @@
         </script>
         {% endif %}
       </div>
-    </section>
+    </section>    
 
     <script>
       const form = document.querySelector("form");

@@ -1,85 +1,85 @@
 .product-details {
-    padding-top: 150px;
-    padding-bottom: 150px;
-  }
-  
-  .cont-bx {
-    padding: 20px 30px;
-  }
-  
-  .cont-bx h2 {
-    margin-bottom: 15px;
-    color: #171332;
-  }
-  
-  .cont-bx p {
-    margin-bottom: 15px;
-    color: #444;
-  }
-  
-  .select-category,
-  .select-duration {
-    margin-top: 20px;
-    margin-bottom: 40px;
-  }
-  
-  .select-category h5,
-  .select-duration h5 {
-    margin-bottom: 15px;
-  }
-  
-  .categories label {
-    padding: 20px 30px;
-    background-color: #9a9a9a20;
-    margin: 5px;
-    width: 48%;
-    border-radius: 6px;
-  }
-  
-  .duration label {
-    padding: 15px 10px;
-    background-color: #9a9a9a20;
-    margin: 5px;
-    width: 48%;
-    border-radius: 6px;
-  }
-  
-  .categories label input,
-  .duration label input {
-    float: right;
-  }
-  
-  .cta-buttons {
-    justify-content: space-around;
-  }
-  
-  .cta-buttons button {
-    width: 48%;
-    padding: 15px;
-    border-radius: 6px;
-    transition: 0.2s linear;
-    border: 1px solid var(--first-color);
-  }
-  
-  .btn1 {
-    padding: 20px 30px;
-    border-radius: 6px;
-    color: #fff;
-    background-color: var(--first-color);
-    /* margin-right: 30px; */
-  }
+  padding-top: 150px;
+  padding-bottom: 150px;
+}
 
-  .btn2 {
-    background-color: transparent;
-    color: var(--first-color);
-  }
-  
-  .error-message {
-    font-size: 14px;
-    color: red;
-  }
-  
-  .img-bx {
-    border: 1px solid;
-    border-radius: 10px;
-  }
+.cont-bx {
+  padding: 20px 30px;
+}
+
+.cont-bx h2 {
+  margin-bottom: 15px;
+  color: #171332;
+}
+
+.cont-bx p {
+  margin-bottom: 15px;
+  color: #444;
+}
+
+.select-category,
+.select-duration {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.select-category h5,
+.select-duration h5 {
+  margin-bottom: 15px;
+}
+
+.categories label {
+  padding: 20px 30px;
+  background-color: #9a9a9a20;
+  margin: 5px;
+  width: 48%;
+  border-radius: 6px;
+}
+
+.duration label {
+  padding: 15px 10px;
+  background-color: #9a9a9a20;
+  margin: 5px;
+  width: 48%;
+  border-radius: 6px;
+}
+
+.categories label input,
+.duration label input {
+  float: right;
+}
+
+.cta-buttons {
+  justify-content: space-around;
+}
+
+.cta-buttons button {
+  width: 48%;
+  padding: 15px;
+  border-radius: 6px;
+  transition: 0.2s linear;
+  border: 1px solid var(--first-color);
+}
+
+.btn1 {
+  padding: 20px 30px;
+  border-radius: 6px;
+  color: #fff;
+  background-color: var(--first-color);
+  /* margin-right: 30px; */
+}
+
+.btn2 {
+  background-color: transparent;
+  color: var(--first-color);
+}
+
+.error-message {
+  font-size: 14px;
+  color: red;
+}
+
+.img-bx {
+  border: 1px solid;
+  border-radius: 10px;
+}

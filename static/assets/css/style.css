@@ -26,20 +26,20 @@
     FONTS
 */
 @font-face {
-  font-family: 'Tenorite', sans-serif;
-  src: url('../fonts/tenorite-cufonfonts-regular-normal.ttf') format('ttf'),
+  font-family: "Tenorite", sans-serif;
+  src: url("../fonts/tenorite-cufonfonts-regular-normal.ttf") format("ttf");
 }
 
 @font-face {
-  font-family: 'Tenorite_bold', sans-serif;
-  src: url('../fonts/tenorite-cufonfonts-regular-bold.ttf') format('ttf'),
+  font-family: "Tenorite_bold", sans-serif;
+  src: url("../fonts/tenorite-cufonfonts-regular-bold.ttf") format("ttf");
 }
 
 /* 
     TYPOGRAPHY 
 */
 :root {
-  --body-font: 'Tenorite', sans-serif;
+  --body-font: "Tenorite", sans-serif;
   --big-font-size: 2rem;
   --h2-font-size: 1.25rem;
   --normal-font-size: 0.938rem;
@@ -370,6 +370,41 @@ header .header__container .header__account-links {
 }
 
 /* 
+  TOOLS
+*/
+.tools img {
+  width: 100%;
+}
+
+.tools .row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tools .img-bx {
+  /* width: 300px; */
+}
+
+.tools .img-bx img {
+  width: 70%;
+}
+
+@media (max-width: 767px) {
+  .tools .row > div:nth-child(odd) {
+    clear: both;
+  }
+}
+
+.we-provide {
+  margin-top: 100px;
+}
+
+.we-provide .row {
+  justify-content: center;
+}
+
+/* 
     SERVICE
 */
 .services {
@@ -469,7 +504,7 @@ footer {
   /* border-top-left-radius: 200px; */
   /* border-top-right-radius: 200px; */
   color: #fff;
-  border-top: 10px solid #1292ee ;
+  border-top: 10px solid #1292ee;
 }
 
 footer a {

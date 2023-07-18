@@ -23,174 +23,306 @@
     <link rel="stylesheet" href="/static/assets/css/style.css" />
   </head>
   <body>
-    <header class="container-fuild header">
+    <header id="header" class="container-fuild header">
       <div class="container header__container">
         <div class="header__nav-links">
-          <div class="header__logo">
+          <div id="logo" class="header__logo">
             <a href="home">
-              <img
-                src="../static/assets/imgs/main-logo.png"
-                alt=""/>
-              </a>
+              <img src="../static/assets/imgs/main-logo.png" alt="" />
+            </a>
           </div>
           <ul>
             <li><a href="home">Home</a></li>
-            <li class="dropdown"><a class="dropbtn" href="#">Services</a>
+            <li class="dropdown">
+              <a class="dropbtn" href="#">Services</a>
               <div class="dropdown-content">
-                <a href="product1"><p>AI/ML Model Testing</p></a>
-                <a href="product2"><p>UI Automation Testing (Web)</p></a>
-                <a href="product3"><p>UI Automation Testing (Mobile)</p></a>
-                <a href="product4"><p>API Automation Testing</p></a>
-                <a href="product5"><p>Smart UI Automation Testing (Web)</p></a>
-                <a href="product6"><p>QA Performance & Capacity Planning</p></a>
-                <a href="product7"><p>Manual Functional Testing</p></a>
+                <a href="product1" id="aiModelTestingLink"
+                  ><p>AI/ML Model Testing</p></a
+                >
+                <a href="product2" id="uiAutomationWebLink"
+                  ><p>UI Automation Testing (Web)</p></a
+                >
+                <a href="product3" id="uiAutomationMobileLink"
+                  ><p>UI Automation Testing (Mobile)</p></a
+                >
+                <a href="product4" id="apiAutomationLink"
+                  ><p>API Automation Testing</p></a
+                >
+                <a href="product5" id="smartUIAutomationWebLink"
+                  ><p>Smart UI Automation Testing (Web)</p></a
+                >
+                <a href="product6" id="performanceCapacityPlanningLink"
+                  ><p>QA Performance & Capacity Planning</p></a
+                >
+                <a href="product7" id="manualFunctionalTestingLink"
+                  ><p>Manual Functional Testing</p></a
+                >
               </div>
             </li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Contact us</a></li>
+            <li>
+              <a href="https://alphabin.co/aboutPage.html" id="aboutUsLink"
+                >About us</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://alphabin.co/contactUsPage.html"
+                id="contactUsLink"
+                >Contact us</a
+              >
+            </li>
             <!-- <li><a href="orderHistory">My orders</a></li> -->
           </ul>
         </div>
         <div class="header__account-links">
-          <a href="account" id="profile_img"><i class="bi bi-person-fill"></i></a>
+          <a href="account" id="profile_img"
+            ><i class="bi bi-person-fill"></i
+          ></a>
           <a href="mycart" id="cart"><i class="bi bi-cart-check-fill"></i></a>
           <a id="logout" href="logout">Logout</a>
         </div>
       </div>
     </header>
 
-    <section class="banner">
+    <section id="banner" class="banner">
       <div class="container">
         <div class="banner-content">
           <h1>Empowering Your Business with Our Proven QA Strategies</h1>
           <p>
             Delivering Quality Excellence with Our Comprehensive QA Solutions
           </p>
-          <a class="cta-button" href="#">Try for free</a>
-          <a class="cta-button2" href="#">Get a Demo</a>
+          <a id="tryForFreeButton" class="cta-button" href="#">Try for free</a>
+          <a id="getDemoButton" class="cta-button2" href="#">Get a Demo</a>
         </div>
         <div class="banner-image">
-          <img src="../static/assets/imgs/product-imgs/banner.png" alt="Banner Image" />
+          <img
+            src="../static/assets/imgs/product-imgs/banner.png"
+            alt="Banner Image"
+          />
         </div>
       </div>
     </section>
 
-    <section class="services">
+    <section id="tools" class="container-fluid tools">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-2 col-md-4 col-sm-6 img-bx">
+            <img
+              id="nodejsImage"
+              src="static/assets/imgs/tools-img/nodejs.png"
+              alt="Image 1"
+            />
+          </div>
+          <div class="col-lg-2 col-md-4 col-sm-6 img-bx">
+            <img
+              id="seleniumImage"
+              src="static/assets/imgs/tools-img/selenium.png"
+              alt="Image 2"
+            />
+          </div>
+          <div class="col-lg-2 col-md-4 col-sm-6 img-bx">
+            <img
+              id="cypressImage"
+              src="static/assets/imgs/tools-img/cypress.png"
+              alt="Image 3"
+            />
+          </div>
+          <div class="col-lg-2 col-md-4 col-sm-6 img-bx">
+            <img
+              id="appiumImage"
+              src="static/assets/imgs/tools-img/appium.png"
+              alt="Image 4"
+            />
+          </div>
+          <div class="col-lg-2 col-md-4 col-sm-6 img-bx">
+            <img
+              id="githubImage"
+              src="static/assets/imgs/tools-img/github.png"
+              alt="Image 5"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="weProvide" class="container-fluid we-provide">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4">
+            <h2><strong>We Provide</strong></h2>
+            <h3>SOPHISTICATED SERVICES</h3>
+          </div>
+          <div class="col-lg-6">
+            <p>
+              Our expert team will work closely with you to develop a tailored
+              test automation strategy that aligns with your specific testing
+              needs and goals. We analyze your existing QA processes, identify
+              automation opportunities, and create a roadmap for implementing
+              test automation effectively.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="container-fluid services">
       <div class="container services__container">
         <h2>Our Services</h2>
         <div class="services__list">
-          <a href="product1" class="services__item">
+          <a href="product1" id="aiModelTesting" class="services__item">
             <div class="item_img">
-              <img src="../static/assets/imgs/product-imgs/product-1.png" alt="">
+              <img
+                src="../static/assets/imgs/product-imgs/product-1.png"
+                alt=""
+              />
             </div>
             <h3>AI/ML Model Testing</h3>
             <p>
-              Ensure the accuracy, reliability, and performance of your AI/ML models with comprehensive testing solutions.
+              Ensure the accuracy, reliability, and performance of your AI/ML
+              models with comprehensive testing solutions.
             </p>
-            <div class="services__item-arrow">
-              <span>&#8594;</span>
-            </div>
           </a>
-          <a href="product2" class="services__item">
+          <a href="product2" id="uiAutomationWeb" class="services__item">
             <div class="item_img">
-              <img src="../static/assets/imgs/product-imgs/product-2.png" alt="">
+              <img
+                src="../static/assets/imgs/product-imgs/product-2.png"
+                alt=""
+              />
             </div>
             <h3>UI Automation Testing (Web)</h3>
             <p>
-              Save time and improve accuracy with automated testing of your web application's user interface.
+              Save time and improve accuracy with automated testing of your web
+              application's user interface.
             </p>
-            <div class="services__item-arrow">
-              <span>&#8594;</span>
-            </div>
           </a>
-          <a href="product3" class="services__item">
+          <a href="product3" id="uiAutomationMobile" class="services__item">
             <div class="item_img">
-              <img src="../static/assets/imgs/product-imgs/product-3.png" alt="">
+              <img
+                src="../static/assets/imgs/product-imgs/product-3.png"
+                alt=""
+              />
             </div>
             <h3>UI Automation Testing (Mobile)</h3>
             <p>
-              Ensure a seamless user experience across multiple devices and platforms with automated mobile UI testing.
+              Ensure a seamless user experience across multiple devices and
+              platforms with automated mobile UI testing.
             </p>
-            <div class="services__item-arrow">
-              <span>&#8594;</span>
-            </div>
           </a>
-          <a href="product4" class="services__item">
+          <a href="product4" id="apiAutomation" class="services__item">
             <div class="item_img">
-              <img src="../static/assets/imgs/product-imgs/product-4.jpg" alt="">
+              <img
+                src="../static/assets/imgs/product-imgs/product-4.jpg"
+                alt=""
+              />
             </div>
             <h3>API Automation Testing</h3>
             <p>
-              Streamline your development process and improve the quality of your APIs with automated testing.
+              Streamline your development process and improve the quality of
+              your APIs with automated testing.
             </p>
-            <div class="services__item-arrow">
-              <span>&#8594;</span>
-            </div>
           </a>
-          <a href="product5" class="services__item">
+          <a href="product5" id="smartUIAutomationWeb" class="services__item">
             <div class="item_img">
-              <img src="../static/assets/imgs/product-imgs/product-5.png" alt="">
+              <img
+                src="../static/assets/imgs/product-imgs/product-5.png"
+                alt=""
+              />
             </div>
             <h3>Smart UI Automation Testing (Web)</h3>
             <p>
-              Utilize AI-powered testing to optimize your web application's user interface and user experience.
+              Utilize AI-powered testing to optimize your web application's user
+              interface and user experience.
             </p>
-            <div class="services__item-arrow">
-              <span>&#8594;</span>
-            </div>
           </a>
-          <a href="product6" class="services__item">
+          <a
+            href="product6"
+            id="performanceCapacityPlanning"
+            class="services__item"
+          >
             <div class="item_img">
-              <img src="../static/assets/imgs/product-imgs/product-6.png" alt="">
+              <img
+                src="../static/assets/imgs/product-imgs/product-6.png"
+                alt=""
+              />
             </div>
             <h3>QA Performance & Capacity Planning</h3>
             <p>
-              Ensure your application can handle high traffic loads and provide optimal performance for your users.
+              Ensure your application can handle high traffic loads and provide
+              optimal performance for your users.
             </p>
-            <div class="services__item-arrow">
-              <span>&#8594;</span>
-            </div>
           </a>
-          <a href="product7" class="services__item">
+          <a
+            href="product7"
+            id="manualFunctionalTesting"
+            class="services__item"
+          >
             <div class="item_img">
-              <img src="../static/assets/imgs/product-imgs/product-7.png" alt="">
+              <img
+                src="../static/assets/imgs/product-imgs/product-7.png"
+                alt=""
+              />
             </div>
             <h3>Manual Functional Testing</h3>
             <p>
-              Ensure that your software meets the functional requirements of your users with thorough manual testing.
+              Ensure that your software meets the functional requirements of
+              your users with thorough manual testing.
             </p>
-            <div class="services__item-arrow">
-              <span>&#8594;</span>
-            </div>
           </a>
         </div>
       </div>
     </section>
-    
-    <footer class="container-fluid">
+
+    <footer id="footer" class="container-fluid">
       <div class="container">
         <div class="row">
           <div class="col-lg-6">
             <div class="footer__logo">
               <a href="home">
-                <img
-                  src="../static/assets/imgs/company_logo.png"
-                  alt=""/>
-                </a>
+                <img src="../static/assets/imgs/company_logo.png" alt="" />
+              </a>
             </div>
-            <p style="margin-right: 60px;">
-              Alphabin tech consulting is a trusted provider of comprehensive Quality Assurance (QA) testing services. We specialize in ensuring the high quality and reliability of software applications across various industries.
+            <p style="margin-right: 60px">
+              Alphabin tech consulting is a trusted provider of comprehensive
+              Quality Assurance (QA) testing services. We specialize in ensuring
+              the high quality and reliability of software applications across
+              various industries.
             </p>
           </div>
           <div class="col-lg-3 all-serv">
             <h5>All Services</h5>
-            <p><a href="product1">AI/ML Model Testing</a></p>
-            <p><a href="product2">UI Automation Testing (Web)</a></p>
-            <p><a href="product3">UI Automation Testing (Mobile)</a></p>
-            <p><a href="product4">API Automation Testing</a></p>
-            <p><a href="product5">Smart UI Automation Testing (Web)</a></p>
-            <p><a href="product6">QA Performance & Capacity Planning</a></p>
-            <p><a href="product7">Manual Functional Testing</a></p>
+            <p>
+              <a href="product1" id="aiModelTestingLink">AI/ML Model Testing</a>
+            </p>
+            <p>
+              <a href="product2" id="uiAutomationWebLink"
+                >UI Automation Testing (Web)</a
+              >
+            </p>
+            <p>
+              <a href="product3" id="uiAutomationMobileLink"
+                >UI Automation Testing (Mobile)</a
+              >
+            </p>
+            <p>
+              <a href="product4" id="apiAutomationLink"
+                >API Automation Testing</a
+              >
+            </p>
+            <p>
+              <a href="product5" id="smartUIAutomationWebLink"
+                >Smart UI Automation Testing (Web)</a
+              >
+            </p>
+            <p>
+              <a href="product6" id="performanceCapacityPlanningLink"
+                >QA Performance & Capacity Planning</a
+              >
+            </p>
+            <p>
+              <a href="product7" id="manualFunctionalTestingLink"
+                >Manual Functional Testing</a
+              >
+            </p>
           </div>
           <!-- <div class="col-lg-2 user-link">
             <h5>Userful Links</h5>
@@ -201,17 +333,21 @@
           <div class="col-lg-3">
             <h5>Social</h5>
             <div class="links">
-              <a href="#" target="_blank"><i class="bi bi-linkedin"></i></a>
-              <a href=""><i class="bi bi-skype"></i></a>
-              <a href=""><i class="bi bi-instagram icon"></i></a>
-              <a href="#" target="_blank"
+              <a href="#" target="_blank" id="linkedinLink"
+                ><i class="bi bi-linkedin"></i
+              ></a>
+              <a href="" id="skypeLink"><i class="bi bi-skype"></i></a>
+              <a href="" id="instagramLink"
+                ><i class="bi bi-instagram icon"></i
+              ></a>
+              <a href="#" target="_blank" id="facebookLink"
                 ><i class="bi bi-facebook icon"></i
               ></a>
-              <a href=""><i class="bi bi-twitter icon"></i></a>
+              <a href="" id="twitterLink"><i class="bi bi-twitter icon"></i></a>
             </div>
           </div>
         </div>
-        <hr class="hr"/>
+        <hr class="hr" />
         <div class="row term-condition">
           <div class="col-lg-9">
             <h6>Privacy</h6>
