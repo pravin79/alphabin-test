@@ -59,6 +59,20 @@ def addToCart(request):
             if cart.is_valid():
                 cart.save()
         if request.POST.getlist('button1')[0]=='2':
+            if request.POST.getlist('product')[0]=='1':
+                return render(request,'home_product1.html',{'message':'Product added to cart successfully!'}, status=201)
+            elif request.POST.getlist('product')[0]=='2':
+                return render(request,'home_product2.html',{'message':'Product added to cart successfully!'}, status=201)
+            elif request.POST.getlist('product')[0]=='3':
+                return render(request,'home_product3.html',{'message':'Product added to cart successfully!'}, status=201)
+            elif request.POST.getlist('product')[0]=='4':
+                return render(request,'home_product4.html',{'message':'Product added to cart successfully!'}, status=201)
+            elif request.POST.getlist('product')[0]=='5':
+                return render(request,'home_product5.html',{'message':'Product added to cart successfully!'}, status=201)
+            elif request.POST.getlist('product')[0]=='6':
+                return render(request,'home_product6.html',{'message':'Product added to cart successfully!'}, status=201)
+            elif request.POST.getlist('product')[0]=='7':
+                return render(request,'home_product7.html',{'message':'Product added to cart successfully!'}, status=201)
             return JsonResponse("Product added to cart successfully.", safe=False,status=200)
         else:
             return redirect('mycart')
