@@ -193,12 +193,14 @@ def logoutHtml(request):
 def myCart(request):
     return render(request,'mycart.html')
 
+@csrf_exempt
 def forgotPass(request):
     if (User.objects.filter(email=request.POST['email']).exists()):
         return render(request,'newPassword.html',{'email':str(request.POST['email'])})
     else:
         return render(request,'forgotPassword.html',{'error':'Email id does not exist!'})
 
+@csrf_exempt
 def setNewPassword(request):
     email = request.POST['email']
     user = User.objects.get(email=email)

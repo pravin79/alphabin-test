@@ -125,6 +125,6 @@ def account(request):
     
     return render(request,'account.html')
 
-
+@csrf_exempt
 def forgotPassGuest(request):
     return render(request,'forgotPassword.html')
