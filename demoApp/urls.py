@@ -28,6 +28,8 @@ urlpatterns = [
     path('forgotPassGuest',apiViews.forgotPassGuest,name='forgotPassGuest'),
     path('forgotPass',views.forgotPass,name='forgotPass'),
     path('setNewPassword',views.setNewPassword,name='setNewPassword'),
+    path('updateAccount',apiViews.updateAccount,name='updateAccount'),
+    
     
 
 ]

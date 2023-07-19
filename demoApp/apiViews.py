@@ -128,3 +128,12 @@ def account(request):
 @csrf_exempt
 def forgotPassGuest(request):
     return render(request,'forgotPassword.html')
+
+@csrf_exempt
+def updateAccount(request):
+    user = User.objects.get(username=request.user)
+    user.first_name = request.POST['fname']
+    user.last_name = request.POST['lname']    
+    user.email = request.POST['email']
+    user.save()
+    return render(request,'account.html',{'message':'User data updated successfully!'})
