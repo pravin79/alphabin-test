@@ -142,7 +142,8 @@ def product7(request):
 @csrf_exempt
 def loginUser(request):
     if request.method == 'POST':
-        username = request.POST['username']
+        email = request.POST['email']
+        username = User.objects.get(email=email)
         password = request.POST['password']
         user = authenticate(request, username=username, password=password)
         if user is not None:
@@ -157,15 +158,26 @@ def loginUser(request):
 @csrf_exempt
 def registerUser(request):
     if request.method == 'POST':
-        form = CustomUserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return render(request,'login.html')  # Replace 'login' with your desired redirect URL
+        if not (User.objects.filter(email=request.POST['email']).exists()):
+            rest={
+            }
+            rest['csrfmiddlewaretoken']=request.POST['csrfmiddlewaretoken']
+            rest['first_name']=request.POST['first_name']
+            rest['last_name']=request.POST['last_name']
+            rest['password1']=request.POST['password1']
+            rest['password2']=request.POST['password2']
+            rest['email']=request.POST['email']
+            rest['username']=str(request.POST['email'])
+            form = CustomUserCreationForm(rest)
+            if form.is_valid():
+                form.save()
+                return render(request,'login.html')  # Replace 'login' with your desired redirect URL
+            else:
+                # Data is invalid, handle the error
+                # For example, display error messages to the user
+                errors = form.errors
         else:
-            # Data is invalid, handle the error
-            # For example, display error messages to the user
-            errors = form.errors
-            print(errors)
+            return render(request, 'registration.html', {'error': 'Email id already exist!'})        
     else:
         form = UserCreationForm()
     return render(request, 'registration.html', {'error': errors})
@@ -181,3 +193,15 @@ def logoutHtml(request):
 def myCart(request):
     return render(request,'mycart.html')
 
+def forgotPass(request):
+    if (User.objects.filter(email=request.POST['email']).exists()):
+        return render(request,'newPassword.html',{'email':str(request.POST['email'])})
+    else:
+        return render(request,'forgotPassword.html',{'error':'Email id does not exist!'})
+
+def setNewPassword(request):
+    email = request.POST['email']
+    user = User.objects.get(email=email)
+    user.set_password(request.POST['confirmPassword'])
+    user.save()
+    return render(request,'login.html')

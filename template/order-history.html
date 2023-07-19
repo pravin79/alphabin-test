@@ -1,0 +1,118 @@
+{% extends "home.html" %} {% block content %}
+<head>
+  <link rel="stylesheet" href="/static/assets/css/account.css" />
+</head>
+
+<section id="profileSection" class="container-fluid">
+  <div class="container profile">
+    <div class="sidebar">
+      <h2>{{users.first_name}} {{users.last_name}}</h2>
+      <ul>
+        <li id="profileTabLink" onclick="showProfile()">
+          <i class="bi bi-person-fill"></i>Profile
+        </li>
+        <li class="active" id="ordersTabLink" onclick="showOrders()">
+          <i class="bi bi-cart-check-fill"></i>My Orders
+        </li>
+      </ul>
+    </div>
+    <div class="content">
+      <div id="ordersTab" style="display: block">
+        <h3>My Orders</h3>
+        <hr />
+        <div class="product-container">
+          {% for item in result %}
+
+          <div class="product">
+            <div class="product-image">
+              <img src="{{item.image}}" alt="" />
+            </div>
+            <div class="produt-details">
+              <h5>{{item.product}}</h5>
+              <p>{{item.duration}}</p>
+              <p>{{item.qty}}</p>
+              <p><strong>${{item.price}}</strong></p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="pagination-container">
+          <a href="#" class="pagination-button previous"
+            ><i class="bi bi-arrow-left-square-fill"></i
+          ></a>
+          <span class="pagination-page">1</span>
+          <a href="#" class="pagination-button next"
+            ><i class="bi bi-arrow-right-square-fill"></i
+          ></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function () {
+    var productsPerPage = 4; // Number of products to display per page
+    var currentPage = 1; // Current page
+
+    var products = $(".product-container .product");
+    var numPages = Math.ceil(products.length / productsPerPage);
+
+    // Show the products for the current page
+    function showPage(page) {
+      var startIndex = (page - 1) * productsPerPage;
+      var endIndex = startIndex + productsPerPage;
+
+      products.hide().slice(startIndex, endIndex).show();
+      $(".pagination-page").text(page);
+    }
+
+    // Show the initial page
+    showPage(currentPage);
+
+    // Handle previous page button click
+    $(".pagination-button.previous").click(function (e) {
+      e.preventDefault();
+      if (currentPage > 1) {
+        currentPage--;
+        showPage(currentPage);
+      }
+    });
+
+    // Handle next page button click
+    $(".pagination-button.next").click(function (e) {
+      e.preventDefault();
+      if (currentPage < numPages) {
+        currentPage++;
+        showPage(currentPage);
+      }
+    });
+  });
+
+  function showProfile() {
+    // document.getElementById("profileTab").style.display = "block";
+    // document.getElementById("ordersTab").style.display = "none";
+    // document.getElementById("profileTabLink").classList.add("active");
+    // document.getElementById("ordersTabLink").classList.remove("active");
+    window.open("account", "_self");
+  }
+
+  function showOrders() {
+    // document.getElementById("profileTab").style.display = "none";
+    // document.getElementById("ordersTab").style.display = "block";
+    // document.getElementById("profileTabLink").classList.remove("active");
+    // document.getElementById("ordersTabLink").classList.add("active");
+    window.open("orderHistory", "_self");
+  }
+
+  function showChangePassword() {
+    document.getElementById("changePassword").style.display = "block";
+  }
+
+  function cancelChangePassword() {
+    document.getElementById("changePassword").style.display = "none";
+  }
+</script>
+
+{% endblock %}

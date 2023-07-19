@@ -20,7 +20,7 @@ class CustomUserCreationForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'password1', 'password2')
+        fields = ('username','first_name','last_name', 'email', 'password1', 'password2')
 
 class Product(models.Model):
     name = models.CharField(max_length=255,blank=False,null=False);

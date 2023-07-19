@@ -24,7 +24,10 @@ urlpatterns = [
     path('logout',views.logoutHtml,name='logout'),   
     path('addToCart',apiViews.addToCart,name='addToCart'),  
     path('deleteProduct',apiViews.deleteProduct,name='deleteProduct'),
-    path('orderHistory',apiViews.order_history,name='orderHistory')
-     
+    path('orderHistory',apiViews.order_history,name='orderHistory'),
+    path('forgotPassGuest',apiViews.forgotPassGuest,name='forgotPassGuest'),
+    path('forgotPass',views.forgotPass,name='forgotPass'),
+    path('setNewPassword',views.setNewPassword,name='setNewPassword'),
+    
 
 ]

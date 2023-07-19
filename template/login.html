@@ -27,15 +27,21 @@
     <section id="loginFormSection" class="login-form">
       <div class="child-div"></div>
       <div class="container login__container">
-        <a href="home"><img id="loginLogo" class="logo" src="../static/assets/imgs/main-logo.png" alt="" /></a>
+        <a href="home"
+          ><img
+            id="loginLogo"
+            class="logo"
+            src="../static/assets/imgs/main-logo.png"
+            alt=""
+        /></a>
         <form action="loginUser" method="POST">
           {% csrf_token %}
           <h2>Log In</h2>
           <p>Get Started on your journey with us</p>
           <div class="input_field">
-            <label for="username">Your Email</label>
-            <input id="usernameInput" name="username" type="text" />
-            <span class="error-message" id="username-error"></span>
+            <label for="email">Your Email</label>
+            <input id="emailInput" name="email" type="text" />
+            <span class="error-message" id="email-error"></span>
           </div>
           <div class="input_field">
             <label for="password">Your Password</label>
@@ -43,10 +49,14 @@
             <span class="small-text">At least 8 characters</span>
             <span class="error-message" id="password-error"></span>
           </div>
-          <button id="loginButton" class="login-btn">Log In</button>
+          <button id="loginButton" type="submit" class="login-btn">
+            Log In
+          </button>
           <div class="account-link">
             <a id="createAccountLink" href="registration">Create an Account</a>
-            <a id="forgotPasswordLink" href="#">Forgot Password?</a>
+            <a id="forgotPasswordLink" href="forgotPassGuest"
+              >Forgot Password?</a
+            >
           </div>
         </form>
         {% if error %}
@@ -57,74 +67,74 @@
         </script>
         {% endif %}
       </div>
-    </section>    
+    </section>
 
     <script>
-      const form = document.querySelector("form");
+      // const form = document.querySelector("form");
 
-      form.addEventListener("submit", (event) => {
-        event.preventDefault();
+      // form.addEventListener("submit", (event) => {
+      //   event.preventDefault();
 
-        const usernameInput = form.elements.username;
-        const passwordInput = form.elements.password;
-        const usernameValue = usernameInput.value.trim();
-        const passwordValue = passwordInput.value.trim();
+      //   const usernameInput = form.elements.username;
+      //   const passwordInput = form.elements.password;
+      //   const usernameValue = usernameInput.value.trim();
+      //   const passwordValue = passwordInput.value.trim();
 
-        if (usernameValue === "") {
-          showError(usernameInput, "*Please enter your username.");
-          return;
-        }
+      //   if (usernameValue === "") {
+      //     showError(usernameInput, "*Please enter your username.");
+      //     return;
+      //   }
 
-        if (!/^\D*$/.test(usernameValue)) {
-          showError(usernameInput, "*Username should not contain numbers.");
-          return;
-        }
+      //   if (!/^\D*$/.test(usernameValue)) {
+      //     showError(usernameInput, "*Username should not contain numbers.");
+      //     return;
+      //   }
 
-        if (passwordValue === "") {
-          showError(passwordInput, "*Please enter your password.");
-          return;
-        }
+      //   if (passwordValue === "") {
+      //     showError(passwordInput, "*Please enter your password.");
+      //     return;
+      //   }
 
-        if (passwordValue.length < 8) {
-          showError(
-            passwordInput,
-            "*Password should be at least 8 characters long."
-          );
-          return;
-        }
+      //   if (passwordValue.length < 8) {
+      //     showError(
+      //       passwordInput,
+      //       "*Password should be at least 8 characters long."
+      //     );
+      //     return;
+      //   }
 
-        if (/^[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]*$/.test(usernameValue)) {
-          showError(
-            usernameInput,
-            "*Username should not contain only special characters."
-          );
-          return;
-        }
+      //   if (/^[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]*$/.test(usernameValue)) {
+      //     showError(
+      //       usernameInput,
+      //       "*Username should not contain only special characters."
+      //     );
+      //     return;
+      //   }
 
-        if (/^[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]*$/.test(passwordValue)) {
-          showError(
-            passwordInput,
-            "*Password should not contain only special characters."
-          );
-          return;
-        }
+      //   if (/^[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]*$/.test(passwordValue)) {
+      //     showError(
+      //       passwordInput,
+      //       "*Password should not contain only special characters."
+      //     );
+      //     return;
+      //   }
 
-        form.submit();
-      });
+      //   form.submit();
+      // });
 
-      function showError(input, message) {
-        const errorSpan = document.querySelector(`#${input.name}-error`);
-        input.classList.add("error");
-        errorSpan.textContent = message;
-        errorSpan.style.display = "block";
+      // function showError(input, message) {
+      //   const errorSpan = document.querySelector(`#${input.name}-error`);
+      //   input.classList.add("error");
+      //   errorSpan.textContent = message;
+      //   errorSpan.style.display = "block";
 
-        input.addEventListener("input", () => {
-          if (input.classList.contains("error")) {
-            input.classList.remove("error");
-          }
-          errorSpan.style.display = "none";
-        });
-      }
+      //   input.addEventListener("input", () => {
+      //     if (input.classList.contains("error")) {
+      //       input.classList.remove("error");
+      //     }
+      //     errorSpan.style.display = "none";
+      //   });
+      // }
     </script>
   </body>
 </html>

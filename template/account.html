@@ -6,7 +6,7 @@
 <section id="profileSection" class="container-fluid">
   <div class="container profile">
     <div class="sidebar">
-      <h2>Bhavin Gamit</h2>
+      <h2>{{users.first_name}} {{users.last_name}}</h2>
       <ul>
         <li class="active" id="profileTabLink" onclick="showProfile()">
           <i class="bi bi-person-fill"></i>Profile
@@ -20,11 +20,12 @@
       <div id="profileTab">
         <h3>Profile</h3>
         <hr />
-        <form id="profileForm">
+        <form id="profileForm" action="setNewPasswordtest" method="POST">
+          {% csrf_token %}
           <div class="input-cont">
             <label for="fname">First Name</label>
             <input
-              value="Bhavin"
+              value="{{ user.first_name }}"
               type="text"
               id="fname"
               name="fname"
@@ -34,7 +35,7 @@
           <div class="input-cont">
             <label for="lname">Last Name</label>
             <input
-              value="Gamit"
+              value="{{user.last_name}}"
               type="text"
               id="lname"
               name="lname"
@@ -44,23 +45,36 @@
           <div class="input-cont">
             <label for="email">Email</label>
             <input
-              value="test@test.com"
+              value="{{user.email}}"
               type="email"
               id="email"
               name="email"
               required
             /><br />
           </div>
-          <div class="input-cont">
+          <!-- <div class="input-cont">
             <label for="photo">Photo</label>
             <input type="file" id="photo" name="photo" /><br />
+          </div> -->
+          
           </div>
+          <button class="save-btn">Save Changes</button>
+        </form>
+        <form action="setNewPassword" id="new-pass" method="post">
+          {% csrf_token %}
           <div class="input-cont">
             <label for="password">Password:</label>
             <a href="#" onclick="showChangePassword()">Change Your Password</a>
           </div>
           <div id="changePassword" style="display: none">
             <div class="input-cont">
+              <input style="display: none;"
+              value="{{user.email}}"
+              type="email"
+              id="email"
+              name="email"
+              required
+            />
               <label for="newPassword">New Password:</label>
               <input
                 type="password"
@@ -78,13 +92,11 @@
                 required
               /><br />
             </div>
-            <button class="save-btn">Save Password</button>
+            <button class="save-btn" type="submit" form="new-pass">Save Password</button>
             <button class="cancel-btn" onclick="cancelChangePassword()">
               Cancel
             </button>
-          </div>
-          <button class="save-btn">Save Changes</button>
-        </form>
+          </form>
       </div>
 
       <div id="ordersTab" style="display: none">
@@ -212,17 +224,19 @@
   });
 
   function showProfile() {
-    document.getElementById("profileTab").style.display = "block";
-    document.getElementById("ordersTab").style.display = "none";
-    document.getElementById("profileTabLink").classList.add("active");
-    document.getElementById("ordersTabLink").classList.remove("active");
+    // document.getElementById("profileTab").style.display = "block";
+    // document.getElementById("ordersTab").style.display = "none";
+    // document.getElementById("profileTabLink").classList.add("active");
+    // document.getElementById("ordersTabLink").classList.remove("active");
+    window.open('account','_self');
   }
 
   function showOrders() {
-    document.getElementById("profileTab").style.display = "none";
-    document.getElementById("ordersTab").style.display = "block";
-    document.getElementById("profileTabLink").classList.remove("active");
-    document.getElementById("ordersTabLink").classList.add("active");
+    // document.getElementById("profileTab").style.display = "none";
+    // document.getElementById("ordersTab").style.display = "block";
+    // document.getElementById("profileTabLink").classList.remove("active");
+    // document.getElementById("ordersTabLink").classList.add("active");
+    window.open('orderHistory','_self');
   }
 
   function showChangePassword() {

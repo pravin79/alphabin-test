@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'alphaDemo.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mysql',
+        'NAME': 'test',
         'USER': 'root',
         'PASSWORD': '1234',
         'HOST': 'localhost',

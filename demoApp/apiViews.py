@@ -21,7 +21,6 @@ def deleteProduct(request):
 @login_required
 def addToCart(request):
     if request.method == 'POST':
-        print('BY nOW',request.user)
         users = User.objects.filter(username = request.user).values()
         user_id = users[0]['id']
         data={
@@ -95,8 +94,7 @@ def order_history(request):
         total = total + float(i.price)*float(i.qty)
         result_list.append(result)
         result={}
-    print(result_list)
-    return render(request,'orderHistory.html',{'result':result_list,'total':total})
+    return render(request,'order-history.html',{'result':result_list,'total':total})
 
 @csrf_exempt
 @login_required 
@@ -106,11 +104,10 @@ def getUser(request):
 @csrf_exempt
 @login_required
 def mycart(request):
-    print(request.user)
     total=0
     result={}
     result_list=[]
-    data = Cart.objects.raw("SELECT 1 as id,demoApp_product.name as product,demoApp_product.image as image,demoApp_duration.name as duration,demoApp_category.name as category,demoApp_duration.price as price ,count(*) as qty FROM  demoApp_cart Join	auth_user on demoApp_cart.user_id=auth_user.id  Join	demoApp_category on demoApp_cart.category_id=demoApp_category.id  Join	demoApp_product on demoApp_cart.product_id=demoApp_product.id  Join	demoApp_duration on demoApp_cart.duration_id=demoApp_duration.id where auth_user.username='"+str(request.user)+"' Group by  demoApp_product.name,demoApp_product.image,demoApp_duration.name,demoApp_category.name,demoApp_duration.price")
+    data = Cart.objects.raw("SELECT 1 as id,demoApp_product.name as product,demoApp_product.image as image,demoApp_duration.name as duration,demoApp_category.name as category,demoApp_duration.price as price ,count(*) as qty FROM  demoApp_cart Join	auth_user on demoApp_cart.user_id=auth_user.id  Join	demoApp_category on demoApp_cart.category_id=demoApp_category.id  Join	demoApp_product on demoApp_cart.product_id=demoApp_product.id  Join	demoApp_duration on demoApp_cart.duration_id=demoApp_duration.id where auth_user.email='"+str(request.user)+"' Group by  demoApp_product.name,demoApp_product.image,demoApp_duration.name,demoApp_category.name,demoApp_duration.price")
     for i in data:
         result['product']=i.product
         result['image']=i.image
@@ -121,10 +118,13 @@ def mycart(request):
         total = total + float(i.price)*float(i.qty)
         result_list.append(result)
         result={}
-    # print(result_list)
     return render(request,'mycart.html',{'result':result_list,'total':total})
 @csrf_exempt
 @login_required
 def account(request):
     
     return render(request,'account.html')
+
+
+def forgotPassGuest(request):
+    return render(request,'forgotPassword.html')
