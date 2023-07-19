@@ -136,4 +136,4 @@ def updateAccount(request):
     user.last_name = request.POST['lname']    
     user.email = request.POST['email']
     user.save()
-    return render(request,'account.html',{'message':'User data updated successfully!'})
+    return redirect('account')
