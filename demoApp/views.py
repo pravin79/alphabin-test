@@ -142,16 +142,19 @@ def product7(request):
 @csrf_exempt
 def loginUser(request):
     if request.method == 'POST':
-        email = request.POST['email']
-        username = User.objects.get(email=email)
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return render(request,'homepage.html',status=200)
-            
+        if (User.objects.filter(email=request.POST['email']).exists()):
+            email = request.POST['email']
+            username = User.objects.get(email=email)
+            password = request.POST['password']
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return render(request,'homepage.html',status=200)
+                
+            else:
+                return render(request, 'login.html', status=401)
         else:
-            return render(request, 'login.html', status=401)
+            return render(request, 'login.html',{'error':'user does not exist'}, status=404)
     else:
         return render(request, 'login.html', status=405)
 
