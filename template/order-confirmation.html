@@ -1,8 +1,6 @@
-
-{% extends "home.html" %}
-{% block content %}
+{% extends "home.html" %} {% block content %}
 <head>
-<link rel="stylesheet" href="static/assets/css/order-confirmation.css" />
+  <link rel="stylesheet" href="static/assets/css/order-confirmation.css" />
 </head>
 
 <section id="orderConfirmationSection" class="container-fluid">
@@ -20,12 +18,14 @@
         </div>
       </div>
     </div>
-    <div style="display: flex; ">
+    <div style="display: flex">
       <div class="shipping-info">
         <h3>Shipping Information</h3>
         <p id="fullname">{{userdata.fullname}}</p>
         <p id="city">{{userdata.city}}</p>
-        <p id="state">{{userdata.state}}, {{userdata.country}}-{{userdata.zipcode}}</p>
+        <p id="state">
+          {{userdata.state}}, {{userdata.country}}-{{userdata.zipcode}}
+        </p>
         <p>Email: {{userdata.email}}</p>
       </div>
       <div class="payment-info">
@@ -34,55 +34,62 @@
         <p>Expiration Date: {{userdata.month}}-{{userdata.year}}</p>
         <p>Billing Address</p>
         <p id="billingCity">{{userdata.city}}</p>
-        <p id="billingState">{{userdata.state}}, {{userdata.country}}-{{userdata.zipcode}}</p>
+        <p id="billingState">
+          {{userdata.state}}, {{userdata.country}}-{{userdata.zipcode}}
+        </p>
       </div>
     </div>
     <div class="confirmation-message">
       <p>Thank you for your order!</p>
-      <p id="order-id"></p>gbhdfhfdg
+      <p id="order-id"></p>
     </div>
   </div>
 </section>
 
-    <script>
-      const decrementBtn = document.querySelector(".decrement");
-      const incrementBtn = document.querySelector(".increment");
-      const quantityInput = document.querySelector('input[type="number"]');
+<script>
+  const decrementBtn = document.querySelector(".decrement");
+  const incrementBtn = document.querySelector(".increment");
+  const quantityInput = document.querySelector('input[type="number"]');
 
-      decrementBtn.addEventListener("click", () => {
-        let currentValue = parseInt(quantityInput.value);
-        if (currentValue > 1) {
-          quantityInput.value = --currentValue;
-        }
-      });
+  decrementBtn.addEventListener("click", () => {
+    let currentValue = parseInt(quantityInput.value);
+    if (currentValue > 1) {
+      quantityInput.value = --currentValue;
+    }
+  });
 
-      incrementBtn.addEventListener("click", () => {
-        let currentValue = parseInt(quantityInput.value);
-        if (currentValue < parseInt(quantityInput.getAttribute("max"))) {
-          quantityInput.value = ++currentValue;
-        }
-      });
+  incrementBtn.addEventListener("click", () => {
+    let currentValue = parseInt(quantityInput.value);
+    if (currentValue < parseInt(quantityInput.getAttribute("max"))) {
+      quantityInput.value = ++currentValue;
+    }
+  });
 
-        function generateRandomOrderId(length) {
-          const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-          let orderId = "";
+  const fs = require("fs");
+  const path = require("path");
 
-          for (let i = 0; i < length; i++) {
-            const randomIndex = Math.floor(Math.random() * characters.length);
-            orderId += characters.charAt(randomIndex);
-          }
+  function generateUniqueOrderId(filePath) {
+    try {
+      const lastOrderId = parseInt(fs.readFileSync(filePath, "utf8").trim());
 
-          return orderId;
-        }
+      const newOrderId = lastOrderId + 1;
 
-        const confirmationMessage = document.querySelector(".confirmation-message");
-ers
-        const randomOrderId = generateRandomOrderId(8);
+      fs.writeFileSync(filePath, newOrderId.toString());
 
-        const orderIdElement = document.createElement("p");
-        orderIdElement.textContent = `Order ID: ${randomOrderId}`;
+      return newOrderId;
+    } catch (err) {
+      const initialOrderId = 1000;
+      fs.writeFileSync(filePath, initialOrderId.toString());
+      return initialOrderId;
+    }
+  }
 
-        confirmationMessage.appendChild(orderIdElement);
-    </script>
+  const filePath = path.join(__dirname, "lastOrderId.txt");
+
+  const orderId = generateUniqueOrderId(filePath);
+
+  const orderIdElement = document.getElementById("order-id");
+  orderIdElement.textContent = `Order ID: #GF${orderId}`;
+</script>
 
 {% endblock %}
