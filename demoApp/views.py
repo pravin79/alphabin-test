@@ -152,11 +152,11 @@ def loginUser(request):
                 return render(request,'homepage.html',status=200)
                 
             else:
-                return render(request, 'login.html', status=401)
+                return render(request, 'login.html', {'error':'Invalid password!'}, status=401)
         else:
-            return render(request, 'login.html',{'error':'user does not exist'}, status=404)
+            return render(request, 'login.html',{'error':'User does not exist!'}, status=404)
     else:
-        return render(request, 'login.html', status=405)
+        return render(request, 'login.html',{'error':'Invalid request method!'}, status=405)
 
 @csrf_exempt
 def registerUser(request):

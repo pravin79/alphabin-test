@@ -36,9 +36,10 @@
           <p>Get Started on your journey with us</p>
           <div class="input-block">
             <div class="input_field">
+              <span class="error-message" id="firstname-error"></span>
               <label for="firstname">First Name</label>
               <input id="firstNameInput" name="first_name" type="text" />
-              <span class="error-message" id="firstname-error"></span>
+              <!-- <span class="error-message" id="firstname-error"></span> -->
             </div>
             <div class="input_field">
               <label for="lastname">Last Name</label>
@@ -57,11 +58,17 @@
             <span class="error-message" id="password-error"></span>
           </div>
           <div class="input_field">
-            <label for="confirm-password">Your Password</label>
-            <input id="confirm-passwordInput" name="password2" type="password" />
+            <label for="confirm-password">Confirm Password</label>
+            <input
+              id="confirm-passwordInput"
+              name="password2"
+              type="password"
+            />
             <span class="error-message" id="password-error"></span>
           </div>
-          <button id="createAccountButton" class="registration-btn">Create Account</button>
+          <button id="createAccountButton" class="registration-btn">
+            Create Account
+          </button>
           <div class="account-link">
             <span>Already have an account? <a href="login">Log in</a></span>
           </div>
@@ -77,76 +84,98 @@
     </section>
 
     <script>
-      // const form = document.querySelector("form");
+      const form = document.querySelector("form");
 
-      // form.addEventListener("submit", (event) => {
-      //   event.preventDefault();
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
 
-      //   const firstNameInput = form.elements.firstname;
-      //   const lastNameInput = form.elements.lastname;
-      //   const emailInput = form.elements.email;
-      //   const passwordInput = form.elements.password;
-      //   const confirmPasswordInput = form.elements["confirm-password"];
+        const firstNameInput = form.elements.first_name;
+        const lastNameInput = form.elements.last_name;
+        const emailInput = form.elements.email;
+        const passwordInput = form.elements.password1;
+        const confirmPasswordInput = form.elements.password2;
 
-      //   const firstNameValue = firstNameInput.value.trim();
-      //   const lastNameValue = lastNameInput.value.trim();
-      //   const emailValue = emailInput.value.trim();
-      //   const passwordValue = passwordInput.value.trim();
-      //   const confirmPasswordValue = confirmPasswordInput.value.trim();
+        const firstNameValue = firstNameInput.value.trim();
+        const lastNameValue = lastNameInput.value.trim();
+        const emailValue = emailInput.value.trim();
+        const passwordValue = passwordInput.value.trim();
+        const confirmPasswordValue = confirmPasswordInput.value.trim();
 
-      //   if (firstNameValue === "") {
-      //     showError(firstNameInput, "Please enter your first name.");
-      //     return;
-      //   }
+        if (firstNameValue === "") {
+          showError(firstNameInput, "*Please enter your first name.");
+          return;
+        }
 
-      //   if (lastNameValue === "") {
-      //     showError(lastNameInput, "Please enter your last name.");
-      //     return;
-      //   }
+        if (!/^\D*$/.test(firstNameValue)) {
+          showError(firstNameInput, "*First name should not contain numbers.");
+          return;
+        }
 
-      //   if (emailValue === "") {
-      //     showError(emailInput, "Please enter your email address.");
-      //     return;
-      //   } else if (!isValidEmail(emailValue)) {
-      //     showError(emailInput, "Please enter a valid email address.");
-      //     return;
-      //   }
+        if (lastNameValue === "") {
+          showError(lastNameInput, "*Please enter your last name.");
+          return;
+        }
 
-      //   if (passwordValue === "") {
-      //     showError(passwordInput, "Please enter a password.");
-      //     return;
-      //   } else if (passwordValue.length < 6) {
-      //     showError(
-      //       passwordInput,
-      //       "Password must be at least 6 characters long."
-      //     );
-      //     return;
-      //   }
+        if (!/^\D*$/.test(lastNameValue)) {
+          showError(lastNameInput, "*Last name should not contain numbers.");
+          return;
+        }
 
-      //   if (confirmPasswordValue === "") {
-      //     showError(confirmPasswordInput, "Please confirm your password.");
-      //     return;
-      //   } else if (passwordValue !== confirmPasswordValue) {
-      //     showError(confirmPasswordInput, "Passwords do not match.");
-      //     return;
-      //   }
+        if (emailValue === "") {
+          showError(emailInput, "*Please enter your email.");
+          return;
+        }
 
-      //   form.submit();
-      // });
+        if (!validateEmail(emailValue)) {
+          showError(emailInput, "*Please enter a valid email address.");
+          return;
+        }
 
-      // function showError(input, message) {
-      //   const errorSpan = document.querySelector(`#${input.name}-error`);
-      //   input.classList.add("error");
-      //   errorSpan.textContent = message;
-      //   errorSpan.style.display = "block";
+        if (passwordValue === "") {
+          showError(passwordInput, "*Please enter your password.");
+          return;
+        }
 
-      //   input.addEventListener("input", () => {
-      //     if (input.classList.contains("error")) {
-      //       input.classList.remove("error");
-      //     }
-      //     errorSpan.style.display = "none";
-      //   });
-      // }
+        if (passwordValue.length < 8) {
+          showError(
+            passwordInput,
+            "*Password should be at least 8 characters long."
+          );
+          return;
+        }
+
+        if (confirmPasswordValue === "") {
+          showError(confirmPasswordInput, "*Please confirm your password.");
+          return;
+        }
+
+        if (passwordValue !== confirmPasswordValue) {
+          showError(confirmPasswordInput, "*Passwords do not match.");
+          return;
+        }
+
+        form.submit();
+      });
+
+      function showError(input, message) {
+        const errorSpan = document.querySelector(`#${input.name}-error`);
+        input.classList.add("error");
+        errorSpan.textContent = message;
+        errorSpan.style.display = "block";
+
+        input.addEventListener("input", () => {
+          if (input.classList.contains("error")) {
+            input.classList.remove("error");
+          }
+          errorSpan.style.display = "none";
+        });
+      }
+
+      function validateEmail(email) {
+        // Basic email validation regex
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+      }
     </script>
   </body>
 </html>

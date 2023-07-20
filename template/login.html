@@ -70,71 +70,61 @@
     </section>
 
     <script>
-      // const form = document.querySelector("form");
+      const form = document.querySelector("form");
 
-      // form.addEventListener("submit", (event) => {
-      //   event.preventDefault();
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
 
-      //   const usernameInput = form.elements.username;
-      //   const passwordInput = form.elements.password;
-      //   const usernameValue = usernameInput.value.trim();
-      //   const passwordValue = passwordInput.value.trim();
+        const emailInput = form.elements.email;
+        const passwordInput = form.elements.password;
+        const emailValue = emailInput.value.trim();
+        const passwordValue = passwordInput.value.trim();
 
-      //   if (usernameValue === "") {
-      //     showError(usernameInput, "*Please enter your username.");
-      //     return;
-      //   }
+        if (emailValue === "") {
+          showError(emailInput, "*Please enter your email.");
+          return;
+        }
 
-      //   if (!/^\D*$/.test(usernameValue)) {
-      //     showError(usernameInput, "*Username should not contain numbers.");
-      //     return;
-      //   }
+        if (!validateEmail(emailValue)) {
+          showError(emailInput, "*Please enter a valid email address.");
+          return;
+        }
 
-      //   if (passwordValue === "") {
-      //     showError(passwordInput, "*Please enter your password.");
-      //     return;
-      //   }
+        if (passwordValue === "") {
+          showError(passwordInput, "*Please enter your password.");
+          return;
+        }
 
-      //   if (passwordValue.length < 8) {
-      //     showError(
-      //       passwordInput,
-      //       "*Password should be at least 8 characters long."
-      //     );
-      //     return;
-      //   }
+        if (passwordValue.length < 8) {
+          showError(
+            passwordInput,
+            "*Password should be at least 8 characters long."
+          );
+          return;
+        }
 
-      //   if (/^[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]*$/.test(usernameValue)) {
-      //     showError(
-      //       usernameInput,
-      //       "*Username should not contain only special characters."
-      //     );
-      //     return;
-      //   }
+        form.submit();
+      });
 
-      //   if (/^[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]*$/.test(passwordValue)) {
-      //     showError(
-      //       passwordInput,
-      //       "*Password should not contain only special characters."
-      //     );
-      //     return;
-      //   }
+      function showError(input, message) {
+        const errorSpan = document.querySelector(`#${input.name}-error`);
+        input.classList.add("error");
+        errorSpan.textContent = message;
+        errorSpan.style.display = "block";
 
-      //   form.submit();
-      // });
+        input.addEventListener("input", () => {
+          if (input.classList.contains("error")) {
+            input.classList.remove("error");
+          }
+          errorSpan.style.display = "none";
+        });
+      }
 
-      // function showError(input, message) {
-      //   const errorSpan = document.querySelector(`#${input.name}-error`);
-      //   input.classList.add("error");
-      //   errorSpan.textContent = message;
-      //   errorSpan.style.display = "block";
-
-      //   input.addEventListener("input", () => {
-      //     if (input.classList.contains("error")) {
-      //       input.classList.remove("error");
-      //     }
-      //     errorSpan.style.display = "none";
-      //   });
-      // }
+      function validateEmail(email) {
+        // Basic email validation regex
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+      }
     </script>
   </body>
 </html>

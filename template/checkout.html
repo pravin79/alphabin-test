@@ -147,82 +147,113 @@
 
       // Validations
 
-      const form = document.querySelector("#checkout-form");
+      const form = document.getElementById("checkout-form");
 
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
 
-    const fullNameInput = form.elements["full-name"];
-    const emailInput = form.elements.email;
-    const cityInput = form.elements.city;
-    const stateInput = form.elements.state;
-    const countryInput = form.elements.country;
-    const zipcodeInput = form.elements.zipcode;
+        alert('WORKING')
 
-    const fullNameValue = fullNameInput.value.trim();
-    const emailValue = emailInput.value.trim();
-    const cityValue = cityInput.value.trim();
-    const stateValue = stateInput.value.trim();
-    const countryValue = countryInput.value.trim();
-    const zipcodeValue = zipcodeInput.value.trim();
+        const fullNameInput = form.elements["full-name"];
+        const emailInput = form.elements["email"];
+        const cityInput = form.elements["city"];
+        const stateInput = form.elements["state"];
+        const countryInput = form.elements["country"];
+        const zipcodeInput = form.elements["zipcode"];
+        const cardNumberInput = form.elements["cardnumber"];
+        const monthInput = form.elements["month"];
+        const yearInput = form.elements["year"];
+        const cvvInput = form.elements["cvv"];
 
-    if (fullNameValue === "") {
-      showError(fullNameInput, "*Please enter your full name.");
-      return;
-    }
+        const fullNameValue = fullNameInput.value.trim();
+        const emailValue = emailInput.value.trim();
+        const cityValue = cityInput.value.trim();
+        const stateValue = stateInput.value.trim();
+        const countryValue = countryInput.value.trim();
+        const zipcodeValue = zipcodeInput.value.trim();
+        const cardNumberValue = cardNumberInput.value.trim();
+        const monthValue = monthInput.value.trim();
+        const yearValue = yearInput.value.trim();
+        const cvvValue = cvvInput.value.trim();
 
-    if (emailValue === "") {
-      showError(emailInput, "*Please enter your email.");
-      return;
-    }
+        if (fullNameValue === "") {
+          showError(fullNameInput, "*Please enter your full name.");
+          return;
+        }
 
-    if (!isValidEmail(emailValue)) {
-      showError(emailInput, "*Please enter a valid email.");
-      return;
-    }
+        if (emailValue === "") {
+          showError(emailInput, "*Please enter your email.");
+          return;
+        }
 
-    if (cityValue === "") {
-      showError(cityInput, "*Please enter your city.");
-      return;
-    }
+        if (!validateEmail(emailValue)) {
+          showError(emailInput, "*Please enter a valid email address.");
+          return;
+        }
 
-    if (stateValue === "") {
-      showError(stateInput, "*Please enter your state.");
-      return;
-    }
+        if (cityValue === "") {
+          showError(cityInput, "*Please enter your city.");
+          return;
+        }
 
-    if (countryValue === "") {
-      showError(countryInput, "*Please enter your country.");
-      return;
-    }
+        if (stateValue === "") {
+          showError(stateInput, "*Please enter your state.");
+          return;
+        }
 
-    if (zipcodeValue === "") {
-      showError(zipcodeInput, "*Please enter your zipcode.");
-      return;
-    }
+        if (countryValue === "") {
+          showError(countryInput, "*Please enter your country.");
+          return;
+        }
 
-    form.submit();
-  });
+        if (zipcodeValue === "") {
+          showError(zipcodeInput, "*Please enter your zipcode.");
+          return;
+        }
 
-  function showError(input, message) {
-    const errorSpan = document.querySelector(`#${input.name}-error`);
-    input.classList.add("error");
-    errorSpan.textContent = message;
-    errorSpan.style.display = "block";
+        if (cardNumberValue === "") {
+          showError(cardNumberInput, "*Please enter your card number.");
+          return;
+        }
 
-    input.addEventListener("input", () => {
-      if (input.classList.contains("error")) {
-        input.classList.remove("error");
+        if (monthValue === "") {
+          showError(monthInput, "*Please enter the expiry month.");
+          return;
+        }
+
+        if (yearValue === "") {
+          showError(yearInput, "*Please enter the expiry year.");
+          return;
+        }
+
+        if (cvvValue === "") {
+          showError(cvvInput, "*Please enter the CVV.");
+          return;
+        }
+
+        form.submit();
+      });
+
+      function showError(input, message) {
+        const errorSpan = document.querySelector(`#${input.name}-error`);
+        input.classList.add("error");
+        errorSpan.textContent = message;
+        errorSpan.style.display = "block";
+
+        input.addEventListener("input", () => {
+          if (input.classList.contains("error")) {
+            input.classList.remove("error");
+          }
+          errorSpan.style.display = "none";
+        });
       }
-      errorSpan.style.display = "none";
-    });
-  }
 
-  function isValidEmail(email) {
-    // Simple email validation regex
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  }
+      function validateEmail(email) {
+        // Basic email validation regex
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+      }
+
     </script>
 
     {% endblock %}

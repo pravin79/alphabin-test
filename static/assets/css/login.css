@@ -91,6 +91,7 @@ input.error {
 }
 
 .error-message {
+  text-align: start;
   font-size: 14px;
   color: red;
 }

@@ -155,6 +155,12 @@
     durationError.textContent = "";
     durationError.style.display = "none";
   }
+
+  const addToCartButton = document.getElementById("addToCartButton");
+
+  addToCartButton.addEventListener("click", () => {
+    alert("Product added to cart!");
+  });
 </script>
 
 {% endblock %}
