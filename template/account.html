@@ -31,6 +31,7 @@
               name="fname"
               required
             /><br />
+            <span class="error-message" id="fname-error"></span>
           </div>
           <div class="input-cont">
             <label for="lname">Last Name</label>
@@ -41,6 +42,7 @@
               name="lname"
               required
             /><br />
+            <span class="error-message" id="lname-error"></span>
           </div>
           <div class="input-cont">
             <label for="email">Email</label>
@@ -51,6 +53,7 @@
               name="email"
               required
             /><br />
+            <span class="error-message" id="email-error"></span>
           </div>
           <!-- <div class="input-cont">
             <label for="photo">Photo</label>
@@ -82,6 +85,7 @@
                 name="newPassword"
                 required
               /><br />
+            <span class="error-message" id="newPassword-error"></span>
             </div>
             <div class="input-cont">
               <label for="confirmPassword">Confirm Password:</label>
@@ -91,6 +95,7 @@
                 name="confirmPassword"
                 required
               /><br />
+            <span class="error-message" id="confirmPassword-error"></span>
             </div>
             <button class="save-btn" type="submit" form="new-pass">Save Password</button>
             <button class="cancel-btn" onclick="cancelChangePassword()">
@@ -246,6 +251,110 @@
   function cancelChangePassword() {
     document.getElementById("changePassword").style.display = "none";
   }
+
+  const form = document.getElementById("profileForm");
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const firstNameInput = form.elements.fname;
+  const lastNameInput = form.elements.lname;
+  const emailInput = form.elements.email;
+
+  const firstNameValue = firstNameInput.value.trim();
+  const lastNameValue = lastNameInput.value.trim();
+  const emailValue = emailInput.value.trim();
+
+  if (firstNameValue === "") {
+    showError(firstNameInput, "*Please enter your first name.");
+    return;
+  }
+
+  if (!/^[a-zA-Z]+$/.test(firstNameValue)) {
+    showError(firstNameInput, "*First name should only contain letters.");
+    return;
+  }
+
+  if (lastNameValue === "") {
+    showError(lastNameInput, "*Please enter your last name.");
+    return;
+  }
+
+  if (!/^[a-zA-Z]+$/.test(lastNameValue)) {
+    showError(lastNameInput, "*Last name should only contain letters.");
+    return;
+  }
+
+  if (emailValue === "") {
+    showError(emailInput, "*Please enter your email.");
+    return;
+  }
+
+  if (!validateEmail(emailValue)) {
+    showError(emailInput, "*Please enter a valid email address.");
+    return;
+  }
+
+  form.submit();
+});
+
+function validateEmail(email) {
+  // Basic email validation regex
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+
+const form1 = document.getElementById("new-pass");
+
+form1.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const newPasswordInput = form1.elements.newPassword;
+  const confirmPasswordInput = form1.elements.confirmPassword;
+
+  const newPasswordValue = newPasswordInput.value.trim();
+  const confirmPasswordValue = confirmPasswordInput.value.trim();
+
+  if (newPasswordValue === "") {
+    showError(newPasswordInput, "*Please enter your new password.");
+    return;
+  }
+
+  if (newPasswordValue.length < 8) {
+    showError(
+      newPasswordInput,
+      "*Password should be at least 8 characters long."
+    );
+    return;
+  }
+
+  if (confirmPasswordValue === "") {
+    showError(confirmPasswordInput, "*Please confirm your password.");
+    return;
+  }
+
+  if (newPasswordValue !== confirmPasswordValue) {
+    showError(confirmPasswordInput, "*Passwords do not match.");
+    return;
+  }
+
+  form.submit();
+});
+
+function showError(input, message) {
+  const errorSpan = input.nextElementSibling;
+  input.classList.add("error");
+  errorSpan.textContent = message;
+  errorSpan.style.display = "block";
+
+  input.addEventListener("input", () => {
+    if (input.classList.contains("error")) {
+      input.classList.remove("error");
+    }
+    errorSpan.style.display = "none";
+  });
+}
+
 </script>
 
 {% endblock %}

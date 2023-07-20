@@ -158,5 +158,12 @@
     alert("Product added to cart!");
   });
 </script>
+{% if message %}
+<script>
+  window.onload = function () {
+    alert("{{ message }}");
+  };
+</script>
+{% endif %}
 
 {% endblock %}
