@@ -67,32 +67,20 @@
   });
 
   $(document).ready(() => {
-    const fs = require("fs");
-  const path = require("path");
+      function getTimestamp() {
+        const now = new Date();
+        const year = now.getFullYear().toString().slice(-2);
+        const month = (now.getMonth() + 1).toString().padStart(2, "0");
+        const day = now.getDate().toString().padStart(2, "0");
+        const hours = now.getHours().toString().padStart(2, "0");
+        const minutes = now.getMinutes().toString().padStart(2, "0");
+        const seconds = now.getSeconds().toString().padStart(2, "0");
+        return `${year}${month}${day}${hours}${minutes}${seconds}`;
+      }
 
-  function generateUniqueOrderId(filePath) {
-    try {
-      const lastOrderId = parseInt(fs.readFileSync(filePath, "utf8").trim());
-
-      const newOrderId = lastOrderId + 1;
-
-      fs.writeFileSync(filePath, newOrderId.toString());
-
-      return newOrderId;
-    } catch (err) {
-      const initialOrderId = 1000;
-      fs.writeFileSync(filePath, initialOrderId.toString());
-      return initialOrderId;
-    }
-  }
-
-  const filePath = path.join(__dirname, "lastOrderId.txt");
-
-  const orderId = generateUniqueOrderId(filePath);
-
-  const orderIdElement = document.getElementById("order-id");
-  orderIdElement.textContent = `Order ID: #GF${orderId}`;
-  });
+      const orderIdElement = document.getElementById("order-id");
+      orderIdElement.textContent = `Order ID: #AB${getTimestamp()}`;
+    });
 </script>
 
 {% endblock %}

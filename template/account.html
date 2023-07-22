@@ -20,7 +20,7 @@
       <div id="profileTab">
         <h3>Profile</h3>
         <hr />
-        <form id="profileForm" action="updateAccount" method="POST">
+        <form id="profileForm" action="updateAccount" onsubmit="return validateUserForm()" method="post">
           {% csrf_token %}
           <div class="input-cont">
             <label for="fname">First Name</label>
@@ -29,8 +29,7 @@
               type="text"
               id="fname"
               name="fname"
-              required
-            /><br />
+            />
             <span class="error-message" id="fname-error"></span>
           </div>
           <div class="input-cont">
@@ -40,8 +39,7 @@
               type="text"
               id="lname"
               name="lname"
-              required
-            /><br />
+            />
             <span class="error-message" id="lname-error"></span>
           </div>
           <div class="input-cont">
@@ -51,8 +49,7 @@
               type="email"
               id="email"
               name="email"
-              required
-            /><br />
+            />
             <span class="error-message" id="email-error"></span>
           </div>
           <!-- <div class="input-cont">
@@ -63,7 +60,7 @@
           </div>
           <button class="save-btn">Save Changes</button>
         </form>
-        <form action="setNewPassword" id="new-pass" method="post">
+        <form action="setNewPassword" onsubmit="return validateSetNewPasswordForm()" id="new-pass" method="post">
           {% csrf_token %}
           <div class="input-cont">
             <label for="password">Password:</label>
@@ -76,15 +73,13 @@
               type="email"
               id="email"
               name="email"
-              required
             />
               <label for="newPassword">New Password:</label>
               <input
                 type="password"
                 id="newPassword"
                 name="newPassword"
-                required
-              /><br />
+              />
             <span class="error-message" id="newPassword-error"></span>
             </div>
             <div class="input-cont">
@@ -93,8 +88,7 @@
                 type="password"
                 id="confirmPassword"
                 name="confirmPassword"
-                required
-              /><br />
+              />
             <span class="error-message" id="confirmPassword-error"></span>
             </div>
             <button class="save-btn" type="submit" form="new-pass">Save Password</button>
@@ -102,87 +96,6 @@
               Cancel
             </button>
           </form>
-      </div>
-
-      <div id="ordersTab" style="display: none">
-        <h3>My Orders</h3>
-        <hr />
-        <div class="product-container">
-          <div class="product">
-            <div class="product-image">
-              <img
-                src="../static/assets/imgs/product-imgs/product-1.png"
-                alt=""
-              />
-            </div>
-            <div class="produt-details">
-              <h5>AI / ML Model Test</h5>
-              <p>6 Months</p>
-              <p><strong>$10</strong></p>
-            </div>
-          </div>
-          <div class="product">
-            <div class="product-image">
-              <img
-                src="../static/assets/imgs/product-imgs/product-1.png"
-                alt=""
-              />
-            </div>
-            <div class="produt-details">
-              <h5>AI / ML Model Test</h5>
-              <p>6 Months</p>
-              <p><strong>$10</strong></p>
-            </div>
-          </div>
-          <div class="product">
-            <div class="product-image">
-              <img
-                src="../static/assets/imgs/product-imgs/product-1.png"
-                alt=""
-              />
-            </div>
-            <div class="produt-details">
-              <h5>AI / ML Model Test</h5>
-              <p>6 Months</p>
-              <p><strong>$10</strong></p>
-            </div>
-          </div>
-          <div class="product">
-            <div class="product-image">
-              <img
-                src="../static/assets/imgs/product-imgs/product-1.png"
-                alt=""
-              />
-            </div>
-            <div class="produt-details">
-              <h5>AI / ML Model Test</h5>
-              <p>6 Months</p>
-              <p><strong>$10</strong></p>
-            </div>
-          </div>
-          <div class="product">
-            <div class="product-image">
-              <img
-                src="../static/assets/imgs/product-imgs/product-1.png"
-                alt=""
-              />
-            </div>
-            <div class="produt-details">
-              <h5>AI / ML Model Test</h5>
-              <p>6 Months</p>
-              <p><strong>$10</strong></p>
-            </div>
-          </div>
-        </div>
-        <div class="pagination-container">
-          <a href="#" class="pagination-button previous"
-            ><i class="bi bi-arrow-left-square-fill"></i
-          ></a>
-          <span class="pagination-page">1</span>
-          <a href="#" class="pagination-button next"
-            ><i class="bi bi-arrow-right-square-fill"></i
-          ></a>
-        </div>
       </div>
     </div>
   </div>
@@ -209,7 +122,6 @@
     // Show the initial page
     showPage(currentPage);
 
-    // Handle previous page button click
     $(".pagination-button.previous").click(function (e) {
       e.preventDefault();
       if (currentPage > 1) {
@@ -218,7 +130,6 @@
       }
     });
 
-    // Handle next page button click
     $(".pagination-button.next").click(function (e) {
       e.preventDefault();
       if (currentPage < numPages) {
@@ -252,94 +163,81 @@
     document.getElementById("changePassword").style.display = "none";
   }
 
-  const form = document.getElementById("profileForm");
+  function validateUserForm () {
+    console.log('working');
+    const firstNameInput = document.getElementById('fname');
+    const lastNameInput = document.getElementById('lname');
+    const emailInput = document.getElementById('email');
 
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
+    const firstNameValue = firstNameInput.value;
+    const lastNameValue = lastNameInput.value;
+    const emailValue = emailInput.value;
 
-  const firstNameInput = form.elements.fname;
-  const lastNameInput = form.elements.lname;
-  const emailInput = form.elements.email;
+    if (firstNameValue === "") {
+      showError(firstNameInput, "*Please enter your first name.");
+      return false;
+    }
 
-  const firstNameValue = firstNameInput.value.trim();
-  const lastNameValue = lastNameInput.value.trim();
-  const emailValue = emailInput.value.trim();
+    if (!/^[a-zA-Z]+$/.test(firstNameValue)) {
+      showError(firstNameInput, "*First name should only contain letters.");
+      return false;
+    }
 
-  if (firstNameValue === "") {
-    showError(firstNameInput, "*Please enter your first name.");
-    return;
+    if (lastNameValue === "") {
+      showError(lastNameInput, "*Please enter your last name.");
+      return false;
+    }
+
+    if (!/^[a-zA-Z]+$/.test(lastNameValue)) {
+      showError(lastNameInput, "*Last name should only contain letters.");
+      return false;
+    }
+
+    if (emailValue === "") {
+      showError(emailInput, "*Please enter your email.");
+      return false;
+    }
+
+    if (!validateEmail(emailValue)) {
+      showError(emailInput, "*Please enter a valid email address.");
+      return false;
+    }
+
+    return true;
   }
 
-  if (!/^[a-zA-Z]+$/.test(firstNameValue)) {
-    showError(firstNameInput, "*First name should only contain letters.");
-    return;
+  function validateSetNewPasswordForm () {
+      const newPasswordInput = document.getElementById('newPassword');
+      const confirmPasswordInput =document.getElementById('confirmPassword');
+
+      const newPasswordValue = newPasswordInput.value.trim();
+      const confirmPasswordValue = confirmPasswordInput.value.trim();
+
+      if (newPasswordValue === "") {
+        showError(newPasswordInput, "*Please enter your new password.");
+        return false;
+      }
+
+      if (newPasswordValue.length < 8) {
+        showError(
+          newPasswordInput,
+          "*Password should be at least 8 characters long."
+        );
+        return false;
+      }
+
+      if (confirmPasswordValue === "") {
+        showError(confirmPasswordInput, "*Please confirm your password.");
+        return false;
+      }
+
+      if (newPasswordValue !== confirmPasswordValue) {
+        showError(confirmPasswordInput, "*Passwords do not match.");
+        return false;
+      }
+      
+      return true;
   }
-
-  if (lastNameValue === "") {
-    showError(lastNameInput, "*Please enter your last name.");
-    return;
-  }
-
-  if (!/^[a-zA-Z]+$/.test(lastNameValue)) {
-    showError(lastNameInput, "*Last name should only contain letters.");
-    return;
-  }
-
-  if (emailValue === "") {
-    showError(emailInput, "*Please enter your email.");
-    return;
-  }
-
-  if (!validateEmail(emailValue)) {
-    showError(emailInput, "*Please enter a valid email address.");
-    return;
-  }
-
-  form.submit();
-});
-
-function validateEmail(email) {
-  // Basic email validation regex
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
-}
-
-const form1 = document.getElementById("new-pass");
-
-form1.addEventListener("submit", (event) => {
-  event.preventDefault();
-
-  const newPasswordInput = form1.elements.newPassword;
-  const confirmPasswordInput = form1.elements.confirmPassword;
-
-  const newPasswordValue = newPasswordInput.value.trim();
-  const confirmPasswordValue = confirmPasswordInput.value.trim();
-
-  if (newPasswordValue === "") {
-    showError(newPasswordInput, "*Please enter your new password.");
-    return;
-  }
-
-  if (newPasswordValue.length < 8) {
-    showError(
-      newPasswordInput,
-      "*Password should be at least 8 characters long."
-    );
-    return;
-  }
-
-  if (confirmPasswordValue === "") {
-    showError(confirmPasswordInput, "*Please confirm your password.");
-    return;
-  }
-
-  if (newPasswordValue !== confirmPasswordValue) {
-    showError(confirmPasswordInput, "*Passwords do not match.");
-    return;
-  }
-
-  form.submit();
-});
 
 function showError(input, message) {
   const errorSpan = input.nextElementSibling;

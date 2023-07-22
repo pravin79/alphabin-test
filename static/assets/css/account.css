@@ -204,6 +204,16 @@ input[type="file"] {
   font-size: 32px;
 }
 
+input.error {
+  border: 1px solid red;
+}
+
+.error-message {
+  text-align: start;
+  font-size: 14px;
+  color: red;
+}
+
 @media (max-width: 768px) {
   .product {
     width: 100%;
