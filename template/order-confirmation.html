@@ -49,23 +49,23 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-  const decrementBtn = document.querySelector(".decrement");
-  const incrementBtn = document.querySelector(".increment");
-  const quantityInput = document.querySelector('input[type="number"]');
+  // const decrementBtn = document.querySelector(".decrement");
+  // const incrementBtn = document.querySelector(".increment");
+  // const quantityInput = document.querySelector('input[type="number"]');
 
-  decrementBtn.addEventListener("click", () => {
-    let currentValue = parseInt(quantityInput.value);
-    if (currentValue > 1) {
-      quantityInput.value = --currentValue;
-    }
-  });
+  // decrementBtn.addEventListener("click", () => {
+  //   let currentValue = parseInt(quantityInput.value);
+  //   if (currentValue > 1) {
+  //     quantityInput.value = --currentValue;
+  //   }
+  // });
 
-  incrementBtn.addEventListener("click", () => {
-    let currentValue = parseInt(quantityInput.value);
-    if (currentValue < parseInt(quantityInput.getAttribute("max"))) {
-      quantityInput.value = ++currentValue;
-    }
-  });
+  // incrementBtn.addEventListener("click", () => {
+  //   let currentValue = parseInt(quantityInput.value);
+  //   if (currentValue < parseInt(quantityInput.getAttribute("max"))) {
+  //     quantityInput.value = ++currentValue;
+  //   }
+  // });
 
   $(document).ready(() => {
       function getTimestamp() {
