@@ -34,14 +34,20 @@
   margin: 5px;
   width: 48%;
   border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .duration label {
-  padding: 15px 10px;
+  padding: 20px 30px;
   background-color: #9a9a9a20;
   margin: 5px;
   width: 48%;
   border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .categories label input,
@@ -82,4 +88,16 @@
 .img-bx {
   border: 1px solid;
   border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+    .categories label,
+    .duration label {
+      width: 100%;
+  }
+
+  .img-bx {
+    border: none;
+    border-radius: 0;
+  }
 }

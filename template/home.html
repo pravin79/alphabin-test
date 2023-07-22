@@ -62,51 +62,76 @@
     {% block content %}
     {% endblock %}
 
-    <footer class="container-fluid">
+    <footer id="footer" class="container-fluid">
       <div class="container">
         <div class="row">
           <div class="col-lg-6">
             <div class="footer__logo">
               <a href="home">
-                <img
-                  src="../static/assets/imgs/company_logo.png"
-                  alt=""/>
-                </a>
+                <img src="../static/assets/imgs/company_logo.png" alt="" />
+              </a>
             </div>
-            <p style="margin-right: 60px;">
-              Alphabin tech consulting is a trusted provider of comprehensive Quality Assurance (QA) testing services. We specialize in ensuring the high quality and reliability of software applications across various industries.
+            <p class="comlpany-desc">
+              Alphabin tech consulting is a trusted provider of comprehensive
+              Quality Assurance (QA) testing services. We specialize in ensuring
+              the high quality and reliability of software applications across
+              various industries.
             </p>
           </div>
           <div class="col-lg-3 all-serv">
             <h5>All Services</h5>
-            <p><a href="product1">AI/ML Model Testing</a></p>
-            <p><a href="product2">UI Automation Testing (Web)</a></p>
-            <p><a href="product3">UI Automation Testing (Mobile)</a></p>
-            <p><a href="product4">API Automation Testing</a></p>
-            <p><a href="product5">Smart UI Automation Testing (Web)</a></p>
-            <p><a href="product6">QA Performance & Capacity Planning</a></p>
-            <p><a href="product7">Manual Functional Testing</a></p>
+            <p>
+              <a href="product1" id="aiModelTestingLink">AI/ML Model Testing</a>
+            </p>
+            <p>
+              <a href="product2" id="uiAutomationWebLink"
+                >UI Automation Testing (Web)</a
+              >
+            </p>
+            <p>
+              <a href="product3" id="uiAutomationMobileLink"
+                >UI Automation Testing (Mobile)</a
+              >
+            </p>
+            <p>
+              <a href="product4" id="apiAutomationLink"
+                >API Automation Testing</a
+              >
+            </p>
+            <p>
+              <a href="product5" id="smartUIAutomationWebLink"
+                >Smart UI Automation Testing (Web)</a
+              >
+            </p>
+            <p>
+              <a href="product6" id="performanceCapacityPlanningLink"
+                >QA Performance & Capacity Planning</a
+              >
+            </p>
+            <p>
+              <a href="product7" id="manualFunctionalTestingLink"
+                >Manual Functional Testing</a
+              >
+            </p>
           </div>
-          <!-- <div class="col-lg-2 user-link">
-            <h5>Userful Links</h5>
-            <p><a href="#">About Us</a></p>
-            <p><a href="#">Contact Us</a></p>
-            <p><a href="#">Blog</a></p>
-          </div> -->
-          <div class="col-lg-3">
+          <div class="col-lg-3 useful-links">
             <h5>Social</h5>
             <div class="links">
-              <a href="#" target="_blank"><i class="bi bi-linkedin"></i></a>
-              <a href=""><i class="bi bi-skype"></i></a>
-              <a href=""><i class="bi bi-instagram icon"></i></a>
-              <a href="#" target="_blank"
+              <a href="#" target="_blank" id="linkedinLink"
+                ><i class="bi bi-linkedin"></i
+              ></a>
+              <a href="" id="skypeLink"><i class="bi bi-skype"></i></a>
+              <a href="" id="instagramLink"
+                ><i class="bi bi-instagram icon"></i
+              ></a>
+              <a href="#" target="_blank" id="facebookLink"
                 ><i class="bi bi-facebook icon"></i
               ></a>
-              <a href=""><i class="bi bi-twitter icon"></i></a>
+              <a href="" id="twitterLink"><i class="bi bi-twitter icon"></i></a>
             </div>
           </div>
         </div>
-        <hr class="hr"/>
+        <hr class="hr" />
         <div class="row term-condition">
           <div class="col-lg-9">
             <h6>Privacy</h6>

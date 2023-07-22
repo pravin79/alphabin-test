@@ -77,3 +77,50 @@
 .product img {
   width: 150px;
 }
+
+@media (max-width: 767px) {
+  .order-confirmation {
+    padding: 20px;
+  }
+
+  .order-summary td {
+    font-size: 14px;
+  }
+
+  .order-details {
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .shipping-info,
+  .payment-info {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .shipping-info h3,
+  .payment-info h3 {
+    margin-bottom: 10px;
+  }
+
+  .items {
+    flex-wrap: wrap;
+  }
+
+  .items img {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .product img {
+    width: 100%;
+  }
+
+  .confirmation-message p {
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}

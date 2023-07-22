@@ -135,3 +135,66 @@ button {
   margin-top: 30px;
   display: flex;
 }
+
+@media (max-width: 767px) {
+  .mycart {
+    padding-top: 100px;
+  }
+
+  .mycart__container h3 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .mycart__container .row {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .item img {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .item_description p {
+    text-align: center;
+  }
+
+  .item {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .quantity {
+    flex-direction: row;
+  }
+
+  .quantityInput {
+    margin: 0;
+    width: 40px;
+    text-align: center;
+  }
+
+  .amount .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .total-amount {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 20px;
+  }
+
+  .cta-btn {
+    flex-direction: column;
+  }
+
+  .continue-btn,
+  .proceed-checkout {
+    width: 100%;
+    max-width: 200px;
+    margin-bottom: 10px;
+  }
+}
