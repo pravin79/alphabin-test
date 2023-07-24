@@ -1,26 +1,25 @@
-
-{% extends "home.html" %}
-{% block content %}
+{% extends "home.html" %} {% block content %}
 <head>
-<link rel="stylesheet" href="static/assets/css/mycart.css" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<style>
-  table {
-    border-collapse: collapse;
-    width: 100%;
-    /* border: none; */
-  }
-  
-  th, td {
-    border: none;
-    padding: 8px;
-    text-align: left;
-  }
-  
-  img {
-    width: 70px;
-  }
-</style>
+  <link rel="stylesheet" href="static/assets/css/mycart.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      /* border: none; */
+    }
+
+    th,
+    td {
+      border: none;
+      padding: 8px;
+      text-align: left;
+    }
+
+    img {
+      width: 70px;
+    }
+  </style>
 </head>
 
 <section id="myCartSection" class="container-fuild mycart">
@@ -37,7 +36,7 @@
         <tbody>
           {% for item in result %}
           <tr>
-            <td><img src={{item.image}} alt="" /></td>
+            <td><img src="{{item.image}}" alt="" /></td>
             <td id="product">{{item.product}}</td>
             <td id="duration">{{item.duration}}</td>
             <td id="category">{{item.category}}</td>
@@ -58,64 +57,91 @@
           <strong><h5 id="totalAmount">${{total}}</h5></strong>
         </div>
         <div class="cta-btn">
-          <button id="continueButton" class="continue-btn" onclick="home()">Continue to buy</button>
-          <button id="checkoutButton" class="proceed-checkout" onclick="checkout()">Proceed to checkout</button>
+          <button id="continueButton" class="continue-btn" onclick="home()">
+            Continue to buy
+          </button>
+          <button
+            id="checkoutButton"
+            class="proceed-checkout"
+            onclick="checkout()"
+          >
+            Proceed to checkout
+          </button>
         </div>
       </div>
     </div>
   </div>
 </section>
-    
-    <script>
-      $(document).ready(function() {
-        $( ".testing" ).click(function() {
-        let rowLength = document.getElementById("tableMain").rows.length;
-         var $this = $(this);
-         let product = $this.closest('tr').children().eq(1).html();
-         let duration = $this.closest('tr').children().eq(2).html();
-         let category = $this.closest('tr').children().eq(3).html();
-         let qty = $this.closest('tr').children().eq(4).html();
-         let price = $this.closest('tr').children().eq(5).html();
-         window.open("deleteProduct?product="+product+"&duration="+duration
-            +"&category="+category+"&qty="+qty+"&price="+price,"_self");
-        //  if(parseInt($this.closest('tr').children().eq(9).html()) > 0){
-        //     w
-        //     $("#please_wait").css({'display':'flex','cursor': 'no-drop'})
-        //     setTimeout(function(){document.getElementById("please_wait").style.display = 'none';},8000);
-        //  }else{
-        //     alert("No Record Found");
-        //  }
-        });
-      });
 
-      function home(){
-        window.open("home","_self");
-      }
+<script>
+  $(document).ready(function () {
+    $(".testing").click(function () {
+      let rowLength = document.getElementById("tableMain").rows.length;
+      var $this = $(this);
+      let product = $this.closest("tr").children().eq(1).html();
+      let duration = $this.closest("tr").children().eq(2).html();
+      let category = $this.closest("tr").children().eq(3).html();
+      let qty = $this.closest("tr").children().eq(4).html();
+      let price = $this.closest("tr").children().eq(5).html();
+      window.open(
+        "deleteProduct?product=" +
+          product +
+          "&duration=" +
+          duration +
+          "&category=" +
+          category +
+          "&qty=" +
+          qty +
+          "&price=" +
+          price,
+        "_self"
+      );
+      //  if(parseInt($this.closest('tr').children().eq(9).html()) > 0){
+      //     w
+      //     $("#please_wait").css({'display':'flex','cursor': 'no-drop'})
+      //     setTimeout(function(){document.getElementById("please_wait").style.display = 'none';},8000);
+      //  }else{
+      //     alert("No Record Found");
+      //  }
+    });
+  });
 
-      function checkout(){
-        window.open("checkout","_self");
-      }
-      // function deleteProduct(){
-      //   alert("In delete");
-      //   let rowLength = document.getElementById("tableMain").rows.length;
-      // }
-        
-      const decrementBtn = document.querySelector(".decrement");
-      const incrementBtn = document.querySelector(".increment");
-      const quantityInput = document.querySelector('input[type="number"]');
+  function home() {
+    window.open("home", "_self");
+  }
 
-      decrementBtn.addEventListener("click", () => {
-        let currentValue = parseInt(quantityInput.value);
-        if (currentValue > 1) {
-          quantityInput.value = --currentValue;
-        }
-      });
+  function checkout() {
+    const totalAmount = document.getElementById("totalAmount").innerText;
 
-      incrementBtn.addEventListener("click", () => {
-        let currentValue = parseInt(quantityInput.value);
-        if (currentValue < parseInt(quantityInput.getAttribute("max"))) {
-          quantityInput.value = ++currentValue;
-        }
-      });
-    </script>
-  {% endblock %}
+    // Check if the total amount is $0
+    if (totalAmount.trim() === "$0") {
+      alert("Your cart is empty. Please add items to proceed to checkout.");
+    } else {
+      window.open("checkout", "_self");
+    }
+  }
+
+  // function deleteProduct(){
+  //   alert("In delete");
+  //   let rowLength = document.getElementById("tableMain").rows.length;
+  // }
+
+  const decrementBtn = document.querySelector(".decrement");
+  const incrementBtn = document.querySelector(".increment");
+  const quantityInput = document.querySelector('input[type="number"]');
+
+  decrementBtn.addEventListener("click", () => {
+    let currentValue = parseInt(quantityInput.value);
+    if (currentValue > 1) {
+      quantityInput.value = --currentValue;
+    }
+  });
+
+  incrementBtn.addEventListener("click", () => {
+    let currentValue = parseInt(quantityInput.value);
+    if (currentValue < parseInt(quantityInput.getAttribute("max"))) {
+      quantityInput.value = ++currentValue;
+    }
+  });
+</script>
+{% endblock %}

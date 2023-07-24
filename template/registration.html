@@ -37,14 +37,14 @@
           <div class="input-block">
             <div class="input_field">
               <span class="error-message" id="firstname-error"></span>
-              <label for="firstname">First Name</label>
-              <input id="firstNameInput" name="first_name" type="text" />
-              <!-- <span class="error-message" id="firstname-error"></span> -->
+              <label for="first_name">First Name</label>
+              <input id="first_name" name="first_name" type="text" />
+              <span class="error-message" id="first_name-error"></span>
             </div>
             <div class="input_field">
-              <label for="lastname">Last Name</label>
-              <input id="lastNameInput" name="last_name" type="text" />
-              <span class="error-message" id="lastname-error"></span>
+              <label for="last_name">Last Name</label>
+              <input id="last_name" name="last_name" type="text" />
+              <span class="error-message" id="last_name-error"></span>
             </div>
           </div>
           <div class="input_field">
@@ -53,9 +53,10 @@
             <span class="error-message" id="email-error"></span>
           </div>
           <div class="input_field">
-            <label for="password">Your Password</label>
-            <input id="passwordInput" name="password1" type="password" />
-            <span class="error-message" id="password-error"></span>
+            <label for="password1">Your Password</label>
+            <input id="password1" name="password1" type="password" />
+            <span class="small-text">At least 8 characters</span>
+            <span class="error-message" id="password1-error"></span>
           </div>
           <div class="input_field">
             <label for="confirm-password">Confirm Password</label>
@@ -64,7 +65,7 @@
               name="password2"
               type="password"
             />
-            <span class="error-message" id="password-error"></span>
+            <span class="error-message" id="password2-error"></span>
           </div>
           <button id="createAccountButton" class="registration-btn">
             Create Account
@@ -73,7 +74,7 @@
             <span>Already have an account? <a href="login">Log in</a></span>
           </div>
         </form>
-        {% if error %}
+        {% if error %} {{ error }}
         <script>
           window.onload = function () {
             alert("{{ error }}");
@@ -154,14 +155,35 @@
           return;
         }
 
+        if (
+          passwordValue.toLowerCase().includes(firstNameValue.toLowerCase())
+        ) {
+          showError(
+            passwordInput,
+            "*Password should not contain your first name."
+          );
+          return;
+        }
+
+        if (passwordValue.toLowerCase().includes(lastNameValue.toLowerCase())) {
+          showError(
+            passwordInput,
+            "*Password should not contain your last name."
+          );
+          return;
+        }
+
         form.submit();
       });
 
       function showError(input, message) {
-        const errorSpan = document.querySelector(`#${input.name}-error`);
+        const errorSpan = input.nextElementSibling;
         input.classList.add("error");
         errorSpan.textContent = message;
         errorSpan.style.display = "block";
+
+        // Scroll to the input field with an error
+        input.scrollIntoView({ behavior: "smooth", block: "center" });
 
         input.addEventListener("input", () => {
           if (input.classList.contains("error")) {

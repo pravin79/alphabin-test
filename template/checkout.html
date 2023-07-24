@@ -214,19 +214,22 @@
       return true;
     }
 
-function showError(input, message) {
-  const errorSpan = input.nextElementSibling;
-  input.classList.add('error');
-  errorSpan.textContent = message;
-  errorSpan.style.display = 'block';
+    function showError(input, message) {
+      const errorSpan = input.nextElementSibling;
+      input.classList.add('error');
+      errorSpan.textContent = message;
+      errorSpan.style.display = 'block';
 
-  input.addEventListener('input', () => {
-    if (input.classList.contains('error')) {
-      input.classList.remove('error');
+      // Scroll to the input field with an error
+      input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+      input.addEventListener('input', () => {
+        if (input.classList.contains('error')) {
+          input.classList.remove('error');
+        }
+        errorSpan.style.display = 'none';
+      });
     }
-    errorSpan.style.display = 'none';
-  });
-}
 
 function validateEmail(email) {
   // Basic email validation regex
