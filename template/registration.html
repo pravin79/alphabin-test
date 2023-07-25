@@ -55,8 +55,8 @@
           <div class="input_field">
             <label for="password1">Your Password</label>
             <input id="password1" name="password1" type="password" />
-            <span class="small-text">At least 8 characters</span>
             <span class="error-message" id="password1-error"></span>
+            <p class="small-text">At least 8 characters</p>
           </div>
           <div class="input_field">
             <label for="confirm-password">Confirm Password</label>
@@ -74,7 +74,7 @@
             <span>Already have an account? <a href="login">Log in</a></span>
           </div>
         </form>
-        {% if error %} {{ error }}
+        {% if error %}
         <script>
           window.onload = function () {
             alert("{{ error }}");
@@ -142,6 +142,20 @@
             passwordInput,
             "*Password should be at least 8 characters long."
           );
+          return;
+        }
+
+        if (/^\d+$/.test(passwordValue)) {
+          showError(passwordInput, "*Password should not contain only numeric characters.");
+          return;
+        }
+
+        const commonPasswords = [
+          "password", "1234567890", "qwerty", "qwertyuiop",
+        ];
+
+        if (commonPasswords.includes(passwordValue.toLowerCase())) {
+          showError(passwordInput, "This password is too common or easily guessable.");
           return;
         }
 

@@ -183,7 +183,8 @@
       }
 
       // Validate month (Assuming it should be a number between 1 and 12)
-      if (isNaN(month.value) || +month.value < 1 || +month.value > 12) {
+      const monthValue = parseInt(month.value);
+      if (isNaN(monthValue) || monthValue < 1 || monthValue > 12) {
         showError(month, "*Invalid month. Please enter a number between 1 and 12.");
         return false;
       }
@@ -195,8 +196,16 @@
 
       // Validate year (Assuming it should be a number and a future year)
       const currentYear = new Date().getFullYear();
-      if (isNaN(year.value) || +year.value < currentYear) {
+      const yearValue = parseInt(year.value);
+      if (isNaN(yearValue) || yearValue < currentYear) {
         showError(year, "*Invalid year. Please enter a future year.");
+        return false;
+      }
+
+      // Validate if the month and year are in the future (or current) compared to the current date
+      const currentMonth = new Date().getMonth() + 1; // Get current month (1-indexed)
+      if (yearValue === currentYear && monthValue < currentMonth) {
+        showError(month, "*The card has already expired.");
         return false;
       }
 
