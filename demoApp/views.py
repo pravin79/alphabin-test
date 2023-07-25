@@ -179,11 +179,13 @@ def registerUser(request):
                 # Data is invalid, handle the error
                 # For example, display error messages to the user
                 errors = form.errors
+                return render(request, 'registration.html', {'error': errors})
         else:
             return render(request, 'registration.html', {'error': 'Email id already exist!'})        
     else:
         form = UserCreationForm()
-    return render(request, 'registration.html', {'error': errors})
+        return render(request, 'registration.html', {'error': 'Request method invalid!'})
+    
 
 @csrf_exempt
 @login_required
