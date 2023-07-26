@@ -214,6 +214,15 @@ input.error {
   color: red;
 }
 
+.empty-cart-text {
+  width: 100%;
+  text-align: center;
+  font-size: 3rem;
+  font-weight: bold;
+  padding: 100px;
+  color: #8181819c;
+}
+
 @media (max-width: 768px) {
   .product {
     width: 100%;
