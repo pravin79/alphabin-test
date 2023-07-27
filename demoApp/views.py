@@ -11,13 +11,7 @@ import json
 
 # Create your views here.
 def index(request):
-    response = render(request,'index.html')
-
-    # Add the JSON data to the response headers
-    response['X-JSON-Data'] = JsonResponse({
-        "timepass": "testing"
-    }, safe=False).content
-    return response
+    return render(request,'index.html')
 
 def home(request):
     if str(request.user)=='AnonymousUser':
