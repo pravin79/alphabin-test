@@ -1,3 +1,6 @@
+
+
+
 {% extends "home.html" %} {% block content %}
 <head>
   <link rel="stylesheet" href="/static/assets/css/account.css" />
@@ -27,17 +30,15 @@
             {% for item in result %}
               <div class="product">
                 <div class="product-image">
-                  <img src="/static/assets/imgs/shopping-bag.png" alt="" />
+                  <img src="{{item.image}}" alt="" />
                 </div>
                 <div class="produt-details">
-                  <form action="orderHistory">
-                  <h5>Order ID:{{item.OrderNo}}</h5>
-                  <input style="display: none;" type="text" value="{{item.OrderNo}}" name="orderno">
-                  <p>Qty:{{item.qty}}</p>
-                  <p>Total Amount: ${{item.price}}</p>
+                  <h5>{{item.product}}</h5>
+                  <p>{{item.category}}</p>
+                  <p>{{item.durat}}</p>
+                  <p>{{item.qty}}</p>
+                  <p><strong>${{item.price}}</strong></p>
                 </div>
-                <button class="details-btn" type="submit">Details</button>
-              </form>
               </div>
             {% endfor %}
           </div>

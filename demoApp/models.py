@@ -52,6 +52,7 @@ class Order(models.Model):
     duration = models.ForeignKey(Duration, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     qty = models.IntegerField(blank=False,null=False)
+    orderNo = models.BigIntegerField(blank=False,null=False)
 
 class Address(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

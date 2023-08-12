@@ -26,7 +26,7 @@ def addToCart(request):
         data={
             'user_id':user_id
         }
-        data['qty']=0
+        data['qty']=1
         data['product_id']=request.POST.getlist('product')[0]
         
         if request.POST.getlist('duration')[0]=='6 Months':
@@ -96,7 +96,7 @@ def order_history(request):
          "Join	demoApp_category on demoApp_order.category_id=demoApp_category.id   "
          "Join	demoApp_product on demoApp_order.product_id=demoApp_product.id   "
          "Join	demoApp_duration on demoApp_order.duration_id=demoApp_duration.id  "
-         "where auth_user.username='"+str(request.user)+"'  "
+         "where auth_user.username='"+str(request.user)+"' and demoApp_order.orderNo='"+request.GET['orderno'].strip()+"'"
          "Group by  demoApp_product.name,demoApp_product.image,demoApp_duration.name,demoApp_category.name,demoApp_duration.price"))
     for i in data:
         result['product']=i.prod
@@ -108,7 +108,36 @@ def order_history(request):
         total = total + float(i.price)*float(i.qty)
         result_list.append(result)
         result={}
+    return render(request,'orderDetails.html',{'result':result_list,'total':total})
+
+
+@csrf_exempt
+@login_required
+def getOrders(request):
+    total=0
+    result={}
+    result_list=[]
+    data = Order.objects.raw(
+        ("SELECT "
+         "1 as id "
+         ",count(*) as qty  "
+         ",sum(demoApp_duration.price) as price"
+         ",demoApp_order.OrderNo as OrderNo"
+         " FROM  demoApp_order  "
+         " Join	auth_user on demoApp_order.user_id=auth_user.id   "
+         "Join	demoApp_duration on demoApp_order.duration_id=demoApp_duration.id  "
+         " where auth_user.username='"+str(request.user)+"'  "
+         " Group by  demoApp_order.orderNo"
+         " Order by OrderNo desc"))
+    print(data)
+    for i in data:
+        result['qty']=i.qty
+        result['OrderNo']=i.OrderNo
+        result['price']=i.price
+        result_list.append(result)
+        result={}
     return render(request,'order-history.html',{'result':result_list,'total':total})
+
 
 @csrf_exempt
 @login_required 

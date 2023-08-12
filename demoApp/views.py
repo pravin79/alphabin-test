@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.http.response import JsonResponse
 from .models import Cart, Order
 import json
-
+from . import utils
 # Create your views here.
 def index(request):
     return render(request,'index.html')
@@ -77,6 +77,8 @@ def orderConfirmation(request):
     userdata['month']=request.GET['month']
     userdata['year']=request.GET['year']
     userdata['cvv']=request.GET['cvv']
+    orderNo = utils.generate_unique_number()
+    userdata['orderno']=orderNo
     carts = Cart.objects.all()
     for cart in carts:
         Order.objects.create(
@@ -84,7 +86,8 @@ def orderConfirmation(request):
             category_id=cart.category_id,
             duration_id=cart.duration_id,
             product_id=cart.product_id,
-            user_id=cart.user_id
+            user_id=cart.user_id,
+            orderNo=orderNo
         )
     user_id=User.objects.filter(username = request.user).values()[0]['id']
     Cart.objects.filter(user_id=user_id).delete()

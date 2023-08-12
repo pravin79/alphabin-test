@@ -25,6 +25,7 @@ urlpatterns = [
     path('addToCart',apiViews.addToCart,name='addToCart'),  
     path('deleteProduct',apiViews.deleteProduct,name='deleteProduct'),
     path('orderHistory',apiViews.order_history,name='orderHistory'),
+    path('getOrders',apiViews.getOrders,name='getOrders'),
     path('forgotPassGuest',apiViews.forgotPassGuest,name='forgotPassGuest'),
     path('forgotPass',views.forgotPass,name='forgotPass'),
     path('setNewPassword',views.setNewPassword,name='setNewPassword'),

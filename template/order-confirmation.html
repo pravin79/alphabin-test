@@ -6,7 +6,7 @@
 
 <section id="orderConfirmationSection" class="container-fluid">
   <div class="order-confirmation">
-    <h2>Order Confirmation</h2>
+    <h2>Order Confirmation: {{userdata.orderno}}</h2>
     <div style="display: flex">
       <div class="shipping-info">
         <h3>Shipping Information</h3>
@@ -68,7 +68,7 @@
       }
 
       const orderIdElement = document.getElementById("order-id");
-      orderIdElement.textContent = `Order ID: #AB${getTimestamp()}`;
+      orderIdElement.textContent = `Order ID: {{userdata.orderno}}`;
     });
 </script>
 
